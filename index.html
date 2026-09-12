@@ -231,7 +231,41 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 #profile .profile-panel,#profile .profile-edit-card,#profile .profile-security-card{border-radius:12px;border:1px solid #dce6f0;box-shadow:0 4px 18px rgba(35,67,105,.07);background:#fff}
 @media(max-width:650px){#profile .profile-dashboard{padding:0}#profile .profile-hero-card{border-radius:0;border-left:0;border-right:0}#profile .profile-clean-menu{grid-template-columns:1fr;margin-left:14px;margin-right:14px}#profile .profile-clean-menu .profile-menu-card{min-height:58px}}
 </style>
-</head><body>
+<style id="kbp-profile-reference-ui">
+/* Kinbech Profile UI — built to match the supplied 8-screen reference */
+#profile{background:#f7faff}
+.kbp-app{max-width:760px;margin:0 auto;padding:0 0 30px;font-family:inherit;color:#172033}
+.kbp-screen{min-height:680px;background:#fff;border:1px solid #dce5ef;border-radius:12px;box-shadow:0 4px 18px rgba(35,67,105,.07);overflow:hidden;position:relative;padding-bottom:20px}
+.kbp-screen.hidden{display:none!important}
+.kbp-head{height:52px;display:grid;grid-template-columns:42px 1fr 42px;align-items:center;border-bottom:1px solid #edf1f5;padding:0 10px;background:#fff}
+.kbp-head h2{font-size:15px;margin:0;font-weight:850;text-align:left}.kbp-back,.kbp-head-icon{border:0;background:transparent;font-size:24px;color:#172033;cursor:pointer;height:40px}.kbp-head-icon{font-size:19px;text-align:right}
+.kbp-profile-top{text-align:center;padding:12px 16px 12px}.kbp-avatar-wrap{width:92px;height:92px;margin:0 auto 7px;position:relative}.kbp-avatar{width:92px;height:92px;border-radius:50%;background:#dcecff;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:45px}.kbp-avatar img{width:100%;height:100%;object-fit:cover}.kbp-camera{position:absolute;right:-2px;bottom:0;width:24px;height:24px;border-radius:50%;background:#1267dc;color:#fff;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer}.kbp-camera input{display:none}.kbp-profile-top h1{font-size:15px;margin:3px 0 8px;font-weight:850}.kbp-small-btn{width:125px!important;height:31px!important;font-size:11px!important;padding:0!important}
+.kbp-primary,.kbp-outline,.kbp-danger{width:calc(100% - 28px);margin:0 14px;height:38px;border-radius:9px;font-weight:800;font-size:12px;cursor:pointer}.kbp-primary{background:#1267dc;color:#fff;border:1px solid #1267dc}.kbp-outline{background:#fff;color:#1267dc;border:1px solid #1267dc}.kbp-danger{background:#ef2b2b;color:#fff;border:1px solid #ef2b2b}.kbp-bottom-btn{margin-top:16px}
+.kbp-card{margin:8px 14px 0;border:1px solid #e0e7ef;border-radius:10px;background:#fff;overflow:hidden}.kbp-card-title{padding:10px 12px 3px;font-size:12px;font-weight:850}.kbp-row{width:100%;min-height:48px;border:0;border-top:1px solid #edf1f5;background:#fff;display:grid;grid-template-columns:28px 1fr auto 16px;gap:7px;align-items:center;text-align:left;padding:7px 11px;color:#172033;cursor:pointer}.kbp-card .kbp-row:first-of-type{border-top:0}.kbp-row b{display:block;font-size:12px}.kbp-row small{display:block;color:#78859a;font-size:10px;margin-top:2px}.kbp-row i{font-style:normal;font-size:20px;color:#718096;text-align:right}.kbp-ico{font-size:17px;text-align:center}.kbp-ico.blue{width:18px;height:18px;border-radius:50%;background:#1267dc;color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center}.kbp-single-row{grid-template-columns:28px 1fr auto 16px;min-height:49px}.kbp-status{font-style:normal;font-size:9px;font-weight:800;border-radius:12px;padding:5px 8px;white-space:nowrap}.kbp-status.gray{background:#eaf7f0;color:#2b8a57}.kbp-status.green{background:#dff7ea;color:#16824a}.kbp-status.yellow{background:#fff2d5;color:#d78a00}.kbp-label{font-size:12px;font-weight:850;margin:15px 16px 5px;color:#1b2a42}.kbp-logout{width:calc(100% - 28px);margin:14px 14px 0;border:1px solid #f0dada;background:#fff;color:#e13c3c;border-radius:9px;text-align:left;padding:13px 12px;cursor:pointer;font-size:12px}
+.kbp-edit-top{text-align:center;padding:14px 16px 4px}.kbp-link{border:0;background:none;color:#1267dc;font-weight:800;font-size:12px;cursor:pointer}.kbp-form{padding:10px 16px}.kbp-form label{display:block;font-size:11px;font-weight:800;margin:12px 0 6px}.kbp-input-row{display:grid;grid-template-columns:1fr auto;gap:0;border:1px solid #dbe5ef;border-radius:8px;overflow:hidden;background:#f8fbff}.kbp-input-row input,.kbp-form select,.kbp-form textarea{width:100%;box-sizing:border-box;border:0;background:#f8fbff;padding:11px 10px;font:inherit;font-size:11px;outline:none;color:#4e5d73}.kbp-input-row button{border:0;background:transparent;color:#1267dc;font-size:10px;font-weight:850;padding:0 11px;cursor:pointer}.kbp-info{margin:12px 0 0;padding:10px 11px;border-radius:8px;background:#eaf5ff;color:#3970ad;font-size:10px;line-height:1.45}
+.kbp-verified{margin:12px 14px 8px;border:1px solid #bdebd3;background:#f2fff8;border-radius:9px;padding:10px;display:flex;gap:10px;align-items:center;color:#258553}.kbp-verified>strong{width:28px;height:28px;border-radius:50%;background:#3bb66f;color:#fff;display:flex;align-items:center;justify-content:center}.kbp-verified b{display:block;font-size:12px}.kbp-verified small{display:block;font-size:9px;margin-top:2px}.kbp-tabs{display:grid;grid-template-columns:1fr 1fr;margin:0 14px;border-bottom:1px solid #e5e9ef}.kbp-tabs button{border:0;background:#fff;padding:10px 0;font-size:11px;font-weight:800;color:#657286;border-bottom:2px solid transparent}.kbp-tabs .active{color:#1267dc;border-bottom-color:#1267dc}.kbp-subtitle{font-size:12px;font-weight:850;margin:14px 16px 7px}.kbp-detail{display:grid;grid-template-columns:28px 1fr 20px;gap:8px;align-items:center;padding:7px 16px}.kbp-detail>span:first-child{font-size:17px;text-align:center}.kbp-detail b{font-size:10px;display:block}.kbp-detail small{font-size:10px;color:#657286;display:block;margin-top:2px}.kbp-divider{height:1px;background:#e7ebf0;margin:8px 16px}.kbp-doc-row{width:calc(100% - 28px);margin:0 14px;border:0;border-top:1px solid #edf1f5;background:#fff;min-height:38px;display:grid;grid-template-columns:22px 1fr auto;gap:6px;align-items:center;text-align:left;color:#172033;font-size:10px;cursor:pointer}.kbp-doc-row span:last-child{color:#1267dc;font-weight:800}.kbp-doc-preview{margin:12px 14px 10px;background:#f5f8fc;border:1px solid #e0e7ef;border-radius:9px;padding:10px}.kbp-doc-fake{height:205px;border:2px solid #d6c79b;border-radius:5px;background:#f8f0d8;position:relative;text-align:center;padding-top:13px;box-sizing:border-box;color:#3d4b62}.kbp-doc-emblem{font-size:20px}.kbp-doc-fake>b{display:block;font-size:13px}.kbp-doc-fake>strong{display:block;font-size:10px;margin-top:2px}.kbp-doc-line{height:1px;background:#bda96c;margin:10px 30px}.kbp-doc-person{width:48px;height:62px;background:#dce4ef;border:1px solid #8e9aab;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:25px}.kbp-doc-fake small{font-size:8px}.kbp-doc-name{padding:0 16px}.kbp-doc-name b{display:block;font-size:11px}.kbp-doc-name small{display:block;color:#748198;font-size:9px;margin-top:2px}
+.kbp-security-card{margin:12px 14px;border:1px solid #e0e7ef;border-radius:10px;overflow:hidden}.kbp-security-row{width:100%;min-height:78px;border:0;border-top:1px solid #edf1f5;background:#fff;display:grid;grid-template-columns:30px 1fr 18px;gap:8px;align-items:center;text-align:left;padding:10px 12px;cursor:pointer}.kbp-security-row:first-child{border-top:0}.kbp-security-row>span{font-size:19px;text-align:center}.kbp-security-row b{font-size:12px;display:block}.kbp-security-row small{font-size:10px;color:#748198;display:block;margin-top:3px}.kbp-security-row i{font-style:normal;font-size:20px;color:#718096}
+.kbp-step{display:grid;grid-template-columns:32px 1fr;gap:9px;padding:12px 14px 0}.kbp-step>span{width:24px;height:24px;border-radius:50%;background:#dcecff;color:#1267dc;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:12px}.kbp-step-body>b{font-size:10px;display:block;margin:4px 0 6px}.kbp-password-input{border:1px solid #dbe5ef;background:#f8fbff;border-radius:7px;display:grid;grid-template-columns:1fr 25px;align-items:center;margin-bottom:7px}.kbp-password-input input{border:0;background:transparent;padding:9px;font-size:10px;outline:0}.kbp-password-input span{font-size:10px;color:#6f7d92}.kbp-radio{display:block;font-size:9px!important;font-weight:500!important;margin:5px 0!important}.kbp-otp-line{display:grid;grid-template-columns:1fr auto;gap:6px}.kbp-otp-line input{border:1px solid #dbe5ef;background:#f8fbff;border-radius:7px;padding:9px;font-size:10px}.kbp-otp-line button{border:0;border-radius:7px;background:#1267dc;color:#fff;font-size:10px;font-weight:800;padding:0 12px}
+.kbp-account-list{margin:12px 14px;border-bottom:1px solid #e5eaf0}.kbp-account-row{min-height:55px;border-top:1px solid #edf1f5;display:grid;grid-template-columns:25px 1fr auto;gap:7px;align-items:center;font-size:10px}.kbp-account-row:first-child{border-top:0}.kbp-account-row>span:first-child{font-size:13px}.kbp-delete-card{position:relative;width:calc(100% - 28px);margin:12px 14px;padding:12px 34px 12px 12px;border:1px solid #ffd3d3;background:#fffafa;border-radius:9px;text-align:left;cursor:pointer}.kbp-delete-card strong{display:block;color:#e13c3c;font-size:11px}.kbp-delete-card small{display:block;color:#78859a;font-size:9px;line-height:1.45;margin-top:5px}.kbp-delete-card i{position:absolute;right:12px;top:28px;font-style:normal;font-size:19px;color:#718096}.kbp-warning{margin:12px 14px 10px;border:1px solid #ffbebe;background:#fff6f6;border-radius:8px;padding:10px;color:#d83d3d}.kbp-warning b{font-size:11px}.kbp-warning p{font-size:9px;line-height:1.5;color:#657286;margin:5px 0 0}.kbp-form select{border:1px solid #dbe5ef;border-radius:7px}.kbp-form textarea{border:1px solid #dbe5ef;border-radius:7px;height:78px;resize:none}.kbp-check{display:flex!important;gap:7px;align-items:flex-start;font-size:9px!important;font-weight:500!important;line-height:1.4}.kbp-check input{margin-top:1px}
+@media(max-width:650px){#profile{margin-left:-14px;margin-right:-14px}.kbp-app{padding:0;max-width:none}.kbp-screen{border-radius:0;border-left:0;border-right:0;box-shadow:none;min-height:calc(100vh - 100px)}.kbp-profile-top{padding-top:16px}.kbp-row{min-height:52px}.kbp-security-row{min-height:82px}}
+</style>
+<style id="v50-profile-fullscreen-upgrade">
+.kbp-screen{min-height:calc(100vh - 145px);padding-bottom:28px}
+.kbp-form label{display:block;margin:13px 0 6px;font-weight:750;color:#344054}
+.kbp-form input,.kbp-form select,.kbp-form textarea{width:100%;border:1px solid #dbe5ef;border-radius:10px;background:#fff;padding:12px 13px;font:inherit;outline:0}
+.kbp-form input:focus,.kbp-form select:focus,.kbp-form textarea:focus{border-color:#e85d04;box-shadow:0 0 0 3px rgba(232,93,4,.08)}
+.kbp-form textarea{min-height:78px;resize:vertical}
+.kbp-pending{background:#fff9ed!important;border-color:#f2d38a!important;color:#805b00}
+.kbp-doc-action{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:1px solid #e1e7ef;border-radius:13px;padding:14px;margin:9px 0;cursor:pointer}
+.kbp-doc-action span{font-size:24px}.kbp-doc-action div{flex:1}.kbp-doc-action small{display:block;color:#748094;margin-top:3px}.kbp-doc-action i{font-size:22px;color:#8a94a6}
+.kbp-upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.kbp-upload-card{min-height:170px;border:2px dashed #cfd8e3;border-radius:14px;background:#fafcff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:12px;cursor:pointer;overflow:hidden}
+.kbp-upload-card input{display:none}.kbp-upload-card span{font-size:32px;color:#e85d04}.kbp-upload-card b{font-size:13px}.kbp-upload-card img{width:100%;height:125px;object-fit:cover;border-radius:9px}
+.kbp-selfie-box{display:flex;justify-content:center;margin:20px 0}.kbp-selfie-preview{width:220px;height:270px;border-radius:18px;border:2px dashed #cbd5e1;background:#f7faff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden}.kbp-selfie-preview span{font-size:52px}.kbp-selfie-preview small{text-align:center;color:#6b7280;padding:0 20px}.kbp-selfie-preview img{width:100%;height:100%;object-fit:cover}
+.kbp-file-button{display:block;text-align:center;cursor:pointer}.kbp-file-button input{display:none}
+.kbp-review-card{display:flex;justify-content:space-between;gap:14px;background:#fff;border:1px solid #e1e7ef;border-radius:11px;padding:13px;margin:8px 0}.kbp-review-card span{color:#667085;text-align:right}
+@media(max-width:650px){.kbp-screen{min-height:calc(100vh - 105px);padding-bottom:24px}.kbp-upload-grid{grid-template-columns:1fr}.kbp-upload-card{min-height:145px}}
+</style></head><body>
 <header><div class="top"><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button class="icon-btn" type="button" aria-label="P2P SMS" title="P2P SMS" onclick="show('sms')">📩</button><button class="icon-btn" type="button" aria-label="Notifications" title="Notifications" onclick="show('sms')">🔔</button><span class="hide">💬</span><div class="profile-menu"><button class="icon-btn profile-btn" type="button" aria-label="Profile" title="Profile" onclick="handleProfileIcon(event)" aria-expanded="false"><span id="headerProfileFallback" class="profile-fallback">👤</span><img id="headerProfilePhoto" class="hidden" alt="Profile photo"></button><div id="profileMenu" class="profile-dropdown hidden"></div></div></div><div class="lang">🌐 <select id="language" onchange="window.changeLanguage()"><option value="ne">नेपाली</option><option value="en">English</option><option value="hi">हिन्दी</option></select></div></div><nav><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="show('kyc')"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="show('admin')"><span class="nav-ico">⚙️</span>Admin</a><a href="#"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
 <main class="page">
 <section id="home"><div class="hero"><h1 id="heroTitle">किन्नुहोस् • बेच्नुहोस् • सुरक्षित रूपमा 🇳🇵</h1><p id="heroText">नयाँ तथा Second-hand सामानका लागि नेपालको भरपर्दो marketplace। Verified Seller, chat, payment र delivery सुविधासहित।</p></div>
@@ -313,9 +347,7 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 </div>
 <div class="crumb">Home › Mobile › iPhone 13</div><div class="detail"><div class="gallery"><div class="mainphoto">📱</div><div class="thumbs"><div class="thumb">📱</div><div class="thumb">📸</div><div class="thumb">📦</div><div class="thumb">🔍</div></div></div><div class="panel"><span class="condition">✓ Like New</span><h1>iPhone 13 128GB</h1><div class="rating">★ 4.8 · 12 reviews</div><div class="bigprice">रु 58,000</div><div class="muted">📍 Kathmandu · Posted 2 hours ago</div><div class="specs"><div class="spec"><small>Brand</small>Apple</div><div class="spec"><small>Model</small>iPhone 13</div><div class="spec"><small>Storage</small>128GB</div><div class="spec"><small>Condition</small>Like New</div></div><div class="buttons"><button class="btn chat" onclick="alert('Seller chat खोलिँदैछ...')">💬 Chat Seller</button><button class="btn buy" onclick="openPaymentOptions()">🛒 Buy Now</button></div><button class="btn wish" onclick="this.textContent='❤️ Wishlist मा थपियो'">♡ Add to Wishlist</button><div class="box payment-box" style="margin-top:16px"><h2>💳 Payment Options</h2><label style="display:block;padding:9px 0"><input type="radio" name="paymentMethod" value="esewa" checked> eSewa</label><label style="display:block;padding:9px 0"><input type="radio" name="paymentMethod" value="khalti"> Khalti</label><label style="display:block;padding:9px 0"><input type="radio" name="paymentMethod" value="bank"> Bank Transfer</label><label style="display:block;padding:9px 0"><input type="radio" name="paymentMethod" value="cod"> Cash on Delivery</label><button class="submit" style="margin-top:8px" onclick="continuePayment()">Continue to Payment</button></div></div></div><div class="lower"><div class="box"><h2>Description</h2><p>फोन सावधानीपूर्वक प्रयोग गरिएको हो। ठूलो scratch वा damage छैन। सबै function राम्रोसँग काम गर्छ।</p></div><div class="box"><h2>Seller</h2><div class="seller"><div class="avatar">👤</div><div><b>Ram Thapa <span class="verified">✓ Verified Seller</span></b><div class="muted">★ 4.8 · 126 reviews · Kathmandu</div></div></div></div></div><div class="box" style="margin-top:18px"><h2>🛡️ Buyer Protection</h2><p>✓ Verified Seller &nbsp; ✓ Secure Payment &nbsp; ✓ Report Listing &nbsp; ✓ Fraud Protection</p></div></section>
 
-<section id="authEntry" class="hidden"><div class="form" style="max-width:520px;text-align:center"><h1>👤 Kinbech Account</h1><p class="muted">आफ्नो खाता प्रयोग गर्न Login गर्नुहोस् वा नयाँ खाता बनाउन Register गर्नुहोस्।</p><button class="submit" type="button" onclick="show('login')">🔐 Login</button><button class="submit" type="button" style="margin-top:10px;background:#fff;color:#172033;border:1px solid #dfe3ea" onclick="show('register')">📝 Create New Account</button></div></section>
-<section id="login" class="hidden"><div class="form"><h1>🔐 Login</h1><label>Mobile Number / Email</label><input id="loginIdentifier" placeholder="98XXXXXXXX वा email@example.com"><label>Password</label><input id="loginPassword" type="password" placeholder="••••••••"><button class="submit" type="button" onclick="kinbechLogin()">Login</button><button type="button" onclick="alert('Demo: Password reset का लागि वास्तविक OTP/email service backend मा जोड्नुपर्छ।')" style="margin-top:10px;width:100%;padding:11px;border:0;background:transparent;color:#1976d2;font-weight:750">Forgot Password?</button><p class="muted" style="text-align:center;margin-top:18px">नयाँ हुनुहुन्छ?</p><button type="button" onclick="show('register')" style="width:100%;padding:12px;border:1px solid #dfe3ea;border-radius:9px;background:#fff;font-weight:800">Create New Account → Register</button></div></section>
-<section id="register" class="hidden"><div class="form"><h1>📝 Create New Account</h1><label>Account Type</label><select id="registerRole"><option value="buyer">🛒 Buyer</option><option value="seller">🏪 Seller</option></select><label>Full Name</label><input id="registerName" placeholder="तपाईंको पूरा नाम"><label>Mobile Number</label><input id="registerMobile" placeholder="98XXXXXXXX"><label>Email</label><input id="registerEmail" type="email" placeholder="email@example.com"><label>Password</label><input id="registerPassword" type="password" placeholder="कम्तीमा 6 characters"><label>Confirm Password</label><input id="registerConfirmPassword" type="password" placeholder="Password फेरि लेख्नुहोस्"><label>OTP Verification</label><input id="registerOtp" placeholder="Demo OTP: 123456" inputmode="numeric" maxlength="6"><button class="submit" type="button" onclick="kinbechRegister()">Create Account</button><button type="button" onclick="show('login')" style="margin-top:10px;width:100%;padding:11px;border:1px solid #dfe3ea;border-radius:9px;background:#fff;font-weight:800">Already have an account? → Login</button><p class="muted">OTP demo: 123456 — V49 prototype</p></div></section>
+<section id="login" class="hidden"><div class="form"><h1>👤 Login / Register</h1><label>Mobile Number / Email</label><input placeholder="98XXXXXXXX"><label>Password</label><input type="password" placeholder="••••••••"><button class="submit" onclick="setKinbechLoggedIn(true); show('profile');">Login</button><p class="muted">नयाँ हुनुहुन्छ? Register गर्दा Buyer वा Seller account रोज्न सक्नुहुन्छ।</p></div></section>
 <section id="sell" class="hidden"><div class="form"><h1>📦 सामान बेच्नुहोस्</h1><label>Product Name</label><input placeholder="जस्तै: iPhone 13 128GB"><label>Price (रु)</label><input placeholder="58000"><label>Condition</label><select><option>New</option><option>Like New</option><option>Good</option><option>Fair</option></select><label>Category</label><select><option>Mobile & Electronics</option><option>Laptop & Computer</option><option>Bike & Vehicles</option><option>Furniture</option><option>Fashion</option></select><label>Description</label><textarea placeholder="सामानको अवस्था र विशेषता लेख्नुहोस्..."></textarea><label>Photos / Video</label><input type="file" multiple><button class="submit" onclick="alert('Demo listing submit भयो। वास्तविक version मा Admin approval पछि प्रकाशित हुनेछ।')">Listing Submit गर्नुहोस्</button></div></section>
 
 <section id="kyc" class="hidden"><div class="form"><h1>🛡️ KYC / Document Verification</h1>
@@ -356,53 +388,151 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 
 
 <section id="profile" class="hidden">
-  <div class="profile-dashboard">
-    <div class="profile-hero-card">
-      <div class="profile-avatar-wrap"><div id="avatarPreview" class="profile-avatar"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><circle cx='100' cy='100' r='96' fill='%2317823b'/><circle cx='100' cy='100' r='78' fill='white'/><text x='100' y='91' text-anchor='middle' font-family='Arial,sans-serif' font-size='34' font-weight='800' fill='%23172033'>किनबेच</text><text x='100' y='125' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%2317823b'>.com</text></svg>' style="width:100%;height:100%;object-fit:cover;border-radius:50%" alt="किनबेच.com logo"></div></div>
-      <div class="profile-main-info"><div class="profile-kicker">किनबेच.com</div><h1 id="profileNameDisplay">@Username <span id="profileBlueTick" class="v47-blue-tick hidden" title="Kinbech Verified">✓</span></h1><div class="profile-badges"><span id="phoneBadge" class="condition">📱 Phone Not Verified</span><span id="kycBadge" class="condition">🛡️ KYC Pending</span></div></div>
+  <div class="kbp-app" id="kbpApp">
+    <div class="kbp-screen" id="kbp-profile">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="show('home',{restore:true})">←</button><h2>Profile</h2><button class="kbp-head-icon" type="button" onclick="kbpGo('account')">⚙</button></div>
+      <div class="kbp-profile-top">
+        <div class="kbp-avatar-wrap"><div id="avatarPreview" class="kbp-avatar"><span>👤</span></div><label class="kbp-camera">◉<input id="profilePhoto" type="file" accept="image/*" onchange="kbpEditPhoto(this)"></label></div>
+        <h1 id="profileNameDisplay">@user123 <span id="profileBlueTick" class="v47-blue-tick hidden">✓</span></h1>
+        <button class="kbp-primary kbp-small-btn" type="button" onclick="kbpGo('edit')">Edit Profile</button>
+      </div>
+      <div class="kbp-card">
+        <div class="kbp-card-title">Account Information</div>
+        <button class="kbp-row" type="button" onclick="kbpGo('edit')"><span class="kbp-ico">♧</span><span><b>Phone Number</b><small id="profilePhoneDisplay">+977 98********</small></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpGo('edit')"><span class="kbp-ico">✉</span><span><b>Email</b><small id="profileEmailDisplay">user@example.com</small></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpGo('edit')"><span class="kbp-ico">⌖</span><span><b>Country &amp; Address</b><small id="profileAddressDisplay">Nepal · Address not set</small></span><i>›</i></button>
+      </div>
+      <button class="kbp-row kbp-card kbp-single-row" type="button" onclick="kbpGo('kyc')"><span class="kbp-ico">▣</span><span><b>KYC</b></span><em id="profileKycStatus" class="kbp-status yellow">Pending</em><i>›</i></button>
+      <div class="kbp-label">Settings</div>
+      <div class="kbp-card">
+        <button class="kbp-row" type="button" onclick="kbpGo('privacy')"><span class="kbp-ico">⚙</span><span><b>Privacy &amp; Security</b></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpGo('password')"><span class="kbp-ico">▣</span><span><b>Change Password</b></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpGo('account')"><span class="kbp-ico">⚙</span><span><b>Account Settings</b></span><i>›</i></button>
+      </div>
+      <div class="kbp-label">Help &amp; Support</div>
+      <div class="kbp-card">
+        <button class="kbp-row" type="button" onclick="kbpInfo('help')"><span class="kbp-ico blue">?</span><span><b>Help Center</b></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpInfo('support')"><span class="kbp-ico">♧</span><span><b>Contact Support</b></span><i>›</i></button>
+        <button class="kbp-row" type="button" onclick="kbpInfo('report')"><span class="kbp-ico">◉</span><span><b>Report a Problem</b></span><i>›</i></button>
+      </div>
+      <button class="kbp-logout" type="button" onclick="logoutKinbech()">⇥ <b>Logout</b></button>
     </div>
 
-    <div class="kb48-account-card">
-      <div class="kb48-card-title">Account Information</div>
-      <button type="button" class="kb48-info-row" onclick="openProfilePanel('phone')"><span class="kb48-icon">♧</span><span><b>Phone Number</b><small>+977 98********</small></span><i>›</i></button>
-      <button type="button" class="kb48-info-row" onclick="openProfilePanel('email')"><span class="kb48-icon">✉</span><span><b>Email</b><small>user@example.com</small></span><i>›</i></button>
+    <div class="kbp-screen hidden" id="kbp-edit">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('profile')">←</button><h2>Edit Profile</h2><span></span></div>
+      <div class="kbp-edit-top"><div class="kbp-avatar-wrap"><div id="kbpEditAvatar" class="kbp-avatar"><span>👤</span></div><label class="kbp-camera">◉<input type="file" accept="image/*" onchange="kbpEditPhoto(this)"></label></div><button class="kbp-link" type="button" onclick="document.querySelector('#kbp-edit input[type=file]').click()">Change Profile Photo</button></div>
+      <div class="kbp-form">
+        <label>Username</label><div class="kbp-input-row"><input id="profileName" value="@user123"><button type="button" onclick="kbpVerifyChange('Username')">Change</button></div>
+        <label>Phone Number</label><div class="kbp-input-row"><input id="phoneNumber" value="+977 98********"><button type="button" onclick="kbpVerifyChange('Phone Number')">Change</button></div>
+        <label>Email</label><div class="kbp-input-row"><input id="emailInput" value="user@example.com"><button type="button" onclick="kbpVerifyChange('Email')">Change</button></div>
+        <label>Country / देश</label><select id="countryInput"><option value="Nepal">🇳🇵 Nepal</option><option>India</option><option>United Arab Emirates</option><option>Qatar</option><option>Saudi Arabia</option><option>United Kingdom</option><option>United States</option><option>Australia</option><option>Other</option></select>
+        <label>Province / State</label><input id="provinceInput" placeholder="Province / State">
+        <label>District / City</label><input id="districtInput" placeholder="District / City">
+        <label>Municipality / Locality</label><input id="municipalityInput" placeholder="Municipality / Locality">
+        <label>Ward</label><input id="wardInput" placeholder="Ward No.">
+        <label>Address</label><textarea id="addressInput" placeholder="Street / Tole / Full address"></textarea>
+        <div class="kbp-info">ⓘ Country र address पछि marketplace मा location, delivery र KYC का लागि प्रयोग गर्न सकिनेछ।</div>
+      </div>
+      <button class="kbp-primary kbp-bottom-btn" type="button" onclick="kbpSaveProfile()">Save Changes</button>
     </div>
 
-    <div class="profile-clean-menu">
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('edit')"><span>✏️</span><div><b>Edit Profile</b><small>Username, phone र email परिवर्तन</small></div><i>›</i></button>
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('kyc')"><span>🪪</span><div><b>KYC</b><small>पहिचान प्रमाणीकरण र KYC विवरण</small></div><i>›</i></button>
+    <div class="kbp-screen hidden" id="kbp-kyc">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('profile')">←</button><h2>KYC</h2><span></span></div>
+      <div class="kbp-verified kbp-pending"><strong>!</strong><div><b>KYC Pending</b><small>पहिचान प्रमाणित गर्न तलबाट आफ्नो सरकारी कागजात छान्नुहोस्।</small></div></div>
+      <div class="kbp-subtitle">Personal Information</div>
+      <div class="kbp-detail"><span>♙</span><div><b>Full Name</b><small id="kycFullName">Not submitted</small></div></div>
+      <div class="kbp-detail"><span>▣</span><div><b>Date of Birth</b><small id="kycDob">Not submitted</small></div></div>
+      <div class="kbp-detail"><span>⌖</span><div><b>Country / Address</b><small id="kycAddress">Nepal · Not submitted</small></div></div>
+      <div class="kbp-divider"></div>
+      <div class="kbp-subtitle">Identity Document</div>
+      <div class="kbp-form">
+        <label>Document Type / कागजात</label>
+        <select id="kycDocType" onchange="kbpSelectDocument(this.value)">
+          <option value="Citizenship">🇳🇵 Citizenship / नागरिकता</option>
+          <option value="National ID">National ID / राष्ट्रिय परिचयपत्र</option>
+          <option value="Driving License">Driving License / सवारी चालक अनुमतिपत्र</option>
+          <option value="Voter Card">Voter Card / मतदाता परिचयपत्र</option>
+          <option value="PAN Card">PAN Card</option>
+          <option value="Passport">Passport</option>
+          <option value="Other Government Document">Other Government Document / अन्य सरकारी कागजात</option>
+        </select>
+      </div>
+      <button class="kbp-doc-action" type="button" onclick="kbpGo('document-upload')"><span>▣</span><div><b>Upload / Capture Document</b><small>Front + Back जहाँ लागू हुन्छ</small></div><i>›</i></button>
+      <button class="kbp-doc-action" type="button" onclick="kbpGo('selfie')"><span>◉</span><div><b>Live Passport-size Photo</b><small>Camera बाट अहिलेको फोटो लिनुहोस्</small></div><i>›</i></button>
+      <button class="kbp-outline kbp-bottom-btn" type="button" onclick="kbpGo('review')">Review &amp; Submit</button>
     </div>
 
-    <h2 class="profile-section-title">⚙️ Settings</h2>
-    <div class="profile-clean-menu">
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('privacy')"><span>🔒</span><div><b>Privacy &amp; Security</b><small>Password, 2FA, sessions र privacy</small></div><i>›</i></button>
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('account')"><span>👤</span><div><b>Account Settings</b><small>Account status, KYC status र deletion</small></div><i>›</i></button>
+    <div class="kbp-screen hidden" id="kbp-document-upload">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('kyc')">←</button><h2>Document Upload</h2><span></span></div>
+      <div class="kbp-info"><b id="selectedDocTitle">Citizenship</b><br><span id="selectedDocHelp">Front र back दुवै फोटो राख्नुहोस्।</span></div>
+      <div class="kbp-upload-grid">
+        <label class="kbp-upload-card"><input id="docFront" type="file" accept="image/*" capture="environment" onchange="kbpPreviewFile(this,'docFrontPreview')"><span>＋</span><b>Front / अगाडिको भाग</b><img id="docFrontPreview" class="hidden" alt="Document front preview"></label>
+        <label class="kbp-upload-card" id="docBackCard"><input id="docBack" type="file" accept="image/*" capture="environment" onchange="kbpPreviewFile(this,'docBackPreview')"><span>＋</span><b>Back / पछाडिको भाग</b><img id="docBackPreview" class="hidden" alt="Document back preview"></label>
+      </div>
+      <div class="kbp-info">Passport जस्ता कागजातमा front/back को सट्टा मुख्य identity/data page प्रयोग गर्न सकिन्छ।</div>
+      <button class="kbp-primary kbp-bottom-btn" type="button" onclick="kbpGo('selfie')">Continue → Live Photo</button>
     </div>
 
-    <h2 class="profile-section-title">❓ Help &amp; Support</h2>
-    <div class="profile-clean-menu">
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('help')"><span>❓</span><div><b>Help Center</b><small>सामान्य प्रश्न र सहायता</small></div><i>›</i></button>
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('support')"><span>💬</span><div><b>Contact Support</b><small>Kinbech support सँग सम्पर्क</small></div><i>›</i></button>
-      <button class="profile-menu-card" type="button" onclick="openProfilePanel('report')"><span>⚠️</span><div><b>Report a Problem</b><small>समस्या वा गलत गतिविधि report गर्नुहोस्</small></div><i>›</i></button>
+    <div class="kbp-screen hidden" id="kbp-selfie">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('document-upload')">←</button><h2>Live Passport Photo</h2><span></span></div>
+      <div class="kbp-selfie-box"><div id="selfiePreview" class="kbp-selfie-preview"><span>📷</span><small>Camera बाट passport-size photo लिनुहोस्</small></div></div>
+      <label class="kbp-primary kbp-bottom-btn kbp-file-button">📷 Take Live Photo<input id="liveSelfie" type="file" accept="image/*" capture="user" onchange="kbpPreviewFile(this,'selfiePreview')"></label>
+      <button class="kbp-outline kbp-bottom-btn" type="button" onclick="kbpGo('review')">Use Photo &amp; Continue</button>
     </div>
 
-    <button class="profile-logout-btn" type="button" onclick="logoutKinbech()">🚪 Logout</button>
-
-    <div id="profilePanel" class="profile-panel hidden">
-      <div class="profile-panel-head"><div><h2 id="profilePanelTitle">Profile</h2><p id="profilePanelText">Account सम्बन्धी विवरण</p></div><button type="button" onclick="closeProfilePanel()" aria-label="Close">✕</button></div>
-      <div id="profilePanelBody" class="profile-panel-body"></div>
+    <div class="kbp-screen hidden" id="kbp-review">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('selfie')">←</button><h2>KYC Review</h2><span></span></div>
+      <div class="kbp-subtitle">Review Before Submit</div>
+      <div class="kbp-review-card"><b>Document</b><span id="reviewDocType">Citizenship</span></div>
+      <div class="kbp-review-card"><b>Front / Identity Page</b><span id="reviewFrontStatus">Not uploaded</span></div>
+      <div class="kbp-review-card"><b>Back</b><span id="reviewBackStatus">Not uploaded</span></div>
+      <div class="kbp-review-card"><b>Live Photo</b><span id="reviewSelfieStatus">Not uploaded</span></div>
+      <div class="kbp-info">Submit गरेपछि status <b>Pending</b> हुनेछ। वास्तविक verification र secure document storage पछि Supabase मा जोडिनेछ।</div>
+      <button class="kbp-primary kbp-bottom-btn" type="button" onclick="kbpSubmitKyc()">Submit KYC</button>
     </div>
 
-    <div id="profileEditArea" class="profile-edit-card hidden">
-      <div class="profile-card-heading"><div><h2>Profile Details</h2><p>Username, phone र email व्यवस्थापन</p></div><span>✏️</span></div>
-      <label>Username</label><input id="profileName" placeholder="तपाईंको username">
-      <label>Profile Photo</label><input id="profilePhoto" type="file" accept="image/*" onchange="previewPhoto(this)">
-      <label>Mobile Number</label><div class="otp-row"><input id="phoneNumber" inputmode="numeric" placeholder="98XXXXXXXX"><button class="btn chat" onclick="sendOTP()">OTP पठाउनुहोस्</button></div>
-      <div id="otpArea" class="hidden" style="margin-top:8px"><div class="otp-row"><input id="otpInput" inputmode="numeric" maxlength="6" placeholder="6-digit OTP"><button class="btn buy" onclick="verifyOTP()">Verify OTP</button></div><div id="otpStatus" class="status">Demo OTP: 123456</div></div>
-      <button class="submit" onclick="saveProfile();closeProfilePanel()">Profile Save गर्नुहोस्</button>
+    <div class="kbp-screen hidden" id="kbp-document">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('kyc')">←</button><h2>Document Details</h2><span></span></div>
+      <div class="kbp-doc-preview"><div id="documentDetailsPreview" class="kbp-doc-fake"><div class="kbp-doc-emblem">🇳🇵</div><b>नेपाल सरकार</b><strong id="documentDetailsName">नेपाली नागरिकताको प्रमाणपत्र</strong><div class="kbp-doc-line"></div><div class="kbp-doc-person">👤</div><small>Document preview</small></div></div>
+      <div class="kbp-doc-name"><b id="documentDetailsTitle">Citizenship / National ID</b><small>Front / Back previews available after upload</small></div>
+      <button class="kbp-primary kbp-bottom-btn" onclick="kbpGo('document-upload')">Edit / Replace Document</button>
+      <button class="kbp-outline kbp-bottom-btn" onclick="kbpGo('kyc')">← Back to KYC</button>
     </div>
 
-    <div id="securityArea" class="profile-security-card hidden"><div class="profile-card-heading"><div><h2>Privacy &amp; Security</h2><p>Account लाई सुरक्षित बनाउनुहोस्</p></div><span>🔒</span></div><div class="profile-info-row"><b>Change Password</b><button class="btn chat" type="button" onclick="openProfilePanel('password')">खोल्नुहोस्</button></div><div class="profile-info-row"><b>Two-Factor Authentication (2FA)</b><span id="twofaStatus">Off</span></div><label class="security-toggle"><input id="twofa" type="checkbox"><span>2FA Enable गर्नुहोस्</span></label><button class="btn buy" style="margin-top:10px" onclick="enable2FA()">Enable 2FA</button><div class="profile-info-row"><b>Active Sessions / Logged-in Devices</b><span>Manage</span></div><div class="profile-info-row"><b>Privacy Settings</b><span>Manage</span></div></div>
+    <div class="kbp-screen hidden" id="kbp-privacy">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('profile')">←</button><h2>Privacy &amp; Security</h2><span></span></div>
+      <div class="kbp-security-card">
+        <button class="kbp-security-row" onclick="kbpGo('password')"><span>♢</span><div><b>Change Password</b><small>Update your password.</small></div><i>›</i></button>
+        <button class="kbp-security-row" onclick="kbpInfo('sessions')"><span>▯</span><div><b>Active Sessions</b><small>Manage your logged-in devices.</small></div><i>›</i></button>
+        <button class="kbp-security-row" onclick="kbpInfo('2fa')"><span>▣</span><div><b>Two-Factor Authentication (2FA)</b><small>Add extra security to your account.</small></div><i>›</i></button>
+        <button class="kbp-security-row" onclick="kbpInfo('privacySettings')"><span>◉</span><div><b>Privacy Settings</b><small>Control who can see your information.</small></div><i>›</i></button>
+      </div>
+    </div>
+
+    <div class="kbp-screen hidden" id="kbp-password">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('privacy')">←</button><h2>Change Password</h2><span></span></div>
+      <div class="kbp-step"><span>1</span><div class="kbp-step-body"><b>Current Password</b><div class="kbp-password-input"><input type="password" placeholder="Enter your current password"><span>◉</span></div></div></div>
+      <div class="kbp-step"><span>2</span><div class="kbp-step-body"><b>Verify with OTP</b><label class="kbp-radio"><input type="radio" name="otpway" checked> Send OTP to Phone &nbsp; +977 98********</label><label class="kbp-radio"><input type="radio" name="otpway"> Send OTP to Email &nbsp; user@example.com</label><div class="kbp-otp-line"><input id="passwordOtp" placeholder="Enter 6-digit OTP"><button onclick="alert('Demo OTP: 123456')">Send OTP</button></div></div></div>
+      <div class="kbp-step"><span>3</span><div class="kbp-step-body"><b>New Password</b><div class="kbp-password-input"><input type="password" placeholder="Enter new password"><span>◉</span></div><div class="kbp-password-input"><input type="password" placeholder="Confirm new password"><span>◉</span></div></div></div>
+      <button class="kbp-primary kbp-bottom-btn" onclick="alert('Demo: Password change सफल भयो।')">Change Password</button>
+    </div>
+
+    <div class="kbp-screen hidden" id="kbp-account">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('profile')">←</button><h2>Account Settings</h2><span></span></div>
+      <div class="kbp-account-list">
+        <div class="kbp-account-row"><span>♙</span><b>Account Status</b><em class="kbp-status green">Active</em></div>
+        <div class="kbp-account-row"><span>♙</span><b>KYC Status</b><em id="accountKycStatus" class="kbp-status yellow">Pending</em></div>
+        <div class="kbp-account-row"><span>♙</span><b>Country</b><span id="accountCountry">Nepal</span></div>
+      </div>
+      <button class="kbp-delete-card" onclick="kbpGo('deletion')"><strong>! &nbsp; Delete Account</strong><small>Request account deletion. It will be reviewed by an admin before permanent deletion.</small><i>›</i></button>
+    </div>
+
+    <div class="kbp-screen hidden" id="kbp-deletion">
+      <div class="kbp-head"><button class="kbp-back" type="button" onclick="kbpGo('account')">←</button><h2>Request Account Deletion</h2><span></span></div>
+      <div class="kbp-warning"><b>ⓘ &nbsp; Important!</b><p>Your account will not be deleted immediately. It will be reviewed by an admin. If you have active orders, listings or disputes, please resolve them first.</p></div>
+      <div class="kbp-form"><label>Reason for Deletion</label><select><option>Select a reason</option><option>No longer use Kinbech</option><option>Privacy concerns</option><option>Other</option></select><label>Additional details (optional)</label><textarea placeholder="Additional details (optional)"></textarea><label class="kbp-check"><input type="checkbox"> I understand that my account will be reviewed by an admin before deletion.</label></div>
+      <button class="kbp-danger kbp-bottom-btn" onclick="alert('Demo: Deletion request admin review मा पठाइयो।')">Submit Request</button>
+    </div>
   </div>
 </section>
 <section id="legal" class="legal"><div class="box" onclick="alert('Terms & Conditions\n\nकिनबेच.com प्रयोग गर्दा प्रयोगकर्ताले सामान, मूल्य, भुक्तानी, डेलिभरी र कानुनी जिम्मेवारीसम्बन्धी नियम पालना गर्नुपर्नेछ।')"><h3>📜 Terms & Conditions</h3><p class="muted">सेवा प्रयोगका नियम र जिम्मेवारी</p></div><div class="box" onclick="alert('Privacy Policy\n\nव्यक्तिगत विवरण, KYC documents र transaction information लाई आवश्यक प्रयोजनमा मात्र प्रयोग गर्ने तथा सुरक्षा उपाय अपनाउने नीति।')"><h3>🔐 Privacy Policy</h3><p class="muted">डाटा र KYC गोपनीयता नीति</p></div><div class="box" onclick="alert('Safety & Refund\n\nठगी, गलत विवरण वा विवाद भएमा report/support मार्फत जानकारी दिनुहोस्। Refund/return वास्तविक policy अनुसार लागू हुनेछ।')"><h3>🛡️ Safety & Refund</h3><p class="muted">सुरक्षा, report, return/refund</p></div></section></main><footer>
@@ -786,33 +916,7 @@ function refreshPage(){ window.location.reload(); }
   });
 })();
 </script>
-<script id="v44-profile-navigation">
-(function(){
-  window.openProfile=function(){
-    if(typeof window.show==='function') window.show('profile');
-    setTimeout(function(){ window.scrollTo({top:0,behavior:'smooth'}); },30);
-  };
-  window.closeProfilePanel=function(){
-    const p=document.getElementById('profilePanel'); if(p)p.classList.add('hidden');
-  };
-  window.openProfilePanel=function(type){
-    if(typeof window.show==='function') window.show('profile');
-    const p=document.getElementById('profilePanel'), title=document.getElementById('profilePanelTitle'), text=document.getElementById('profilePanelText'), body=document.getElementById('profilePanelBody');
-    if(!p||!title||!text||!body)return;
-    const data={
-      listings:['My Listings','तपाईंले बेच्न राखेका सामान','<div class="profile-empty">अहिले तपाईंले कुनै सामान बिक्रीका लागि राख्नुभएको छैन।<br><button class="btn buy" onclick="show(\'sell\')">+ सामान बेच्नुहोस्</button></div>'],
-      orders:['My Orders','तपाईंका खरीद तथा order विवरण','<div class="profile-empty">अहिले कुनै order छैन। सामान किन्नु भएपछि order यहाँ देखिनेछ।</div>'],
-      favorites:['Favorites','मन परेका सामानहरूको सूची','<div class="profile-empty">अहिले कुनै Favorite छैन। सामानमा ♡ थिचेर यहाँ राख्न सकिन्छ।</div>'],
-      cart:['My Cart','कार्टमा राखिएका सामान','<div class="profile-empty">तपाईंको Cart खाली छ। सामानमा Add Cart थिचेर यहाँ राख्न सकिन्छ।</div>'],
-      edit:['Edit Profile','नाम, फोटो, मोबाइल र location परिवर्तन गर्नुहोस्','<div class="profile-info-row"><b>Profile Details</b><span>तलको form प्रयोग गर्नुहोस्</span></div>'],
-      kyc:['KYC Verification','पहिचान प्रमाणीकरणको अवस्था','<div class="profile-info-row"><b>Status</b><span>🛡️ KYC Pending</span></div><button class="btn buy" onclick="show(\'kyc\')">KYC सुरु गर्नुहोस्</button>'],
-      security:['Security','तपाईंको account सुरक्षा','<div class="profile-info-row"><b>Two-Factor Authentication</b><span>अहिले Off</span></div><button class="btn buy" onclick="document.getElementById(\'securityArea\').scrollIntoView({behavior:\'smooth\'})">2FA सेटिङ खोल्नुहोस्</button>'],
-      notifications:['Notifications','Message, order र account alerts','<div class="profile-empty">अहिले नयाँ notification छैन।</div>']
-    };
-    const d=data[type]||data.edit; [title.textContent,text.textContent,body.innerHTML]=d; p.classList.remove('hidden'); p.scrollIntoView({behavior:'smooth',block:'center'});
-  };
-})();
-</script>
+
 <script id="v42-category-navigation">
 (function(){
   const labels={
@@ -945,33 +1049,7 @@ function refreshPage(){ window.location.reload(); }
   });
 })();
 </script>
-<script id="v46-profile-clean-navigation">
-(function(){
-  const originalOpenProfilePanel=window.openProfilePanel;
-  window.openProfilePanel=function(type){
-    const p=document.getElementById('profilePanel'), title=document.getElementById('profilePanelTitle'), text=document.getElementById('profilePanelText'), body=document.getElementById('profilePanelBody');
-    const edit=document.getElementById('profileEditArea'), security=document.getElementById('securityArea');
-    if(!p||!title||!text||!body)return;
-    if(edit)edit.classList.add('hidden'); if(security)security.classList.add('hidden');
-    const data={
-      kyc:['KYC','पहिचान प्रमाणीकरण','<div class="profile-info-row"><b>KYC Status</b><span>🛡️ Pending</span></div><button class="btn buy" onclick="show(\'kyc\')">KYC खोल्नुहोस्</button>'],
-      privacy:['Privacy & Security','Account security settings','<div class="profile-info-row"><b>Change Password</b><button class="btn chat" onclick="openProfilePanel(\'password\')">खोल्नुहोस्</button></div><div class="profile-info-row"><b>Two-Factor Authentication</b><span>2FA</span></div><div class="profile-info-row"><b>Active Sessions / Logged-in Devices</b><span>Manage</span></div><div class="profile-info-row"><b>Privacy Settings</b><span>Manage</span></div>'],
-      password:['Change Password','पहिले हालको password verify गर्नुहोस्','<div class="profile-info-row"><b>Current Password</b><span>Required</span></div><div class="profile-info-row"><b>Verification</b><span>Phone OTP / Email OTP / 2FA</span></div><div class="profile-info-row"><b>New Password</b><span>Set a new password</span></div>'],
-      account:['Account Settings','Account status र KYC status','<div class="profile-info-row"><b>Account Status</b><span>Active</span></div><div class="profile-info-row"><b>KYC Status</b><span>Pending</span></div><div class="profile-info-row"><b>Account Information</b><span>View</span></div><div class="profile-info-row"><b>Request Account Deletion</b><span>Admin Review</span></div>'],
-      help:['Help Center','सामान्य प्रश्न र सहायता','<div class="profile-empty">Help Center यहाँबाट खोल्न सकिनेछ।</div>'],
-      support:['Contact Support','Kinbech support','<div class="profile-empty">Support लाई आफ्नो समस्या पठाउन सकिनेछ।</div>'],
-      report:['Report a Problem','समस्या report गर्नुहोस्','<div class="profile-empty">समस्या, गलत listing वा अन्य issue report गर्न सकिनेछ।</div>']
-    };
-    if(type==='edit'){if(edit){edit.classList.remove('hidden');edit.scrollIntoView({behavior:'smooth',block:'start'});}return;}
-    if(type==='security'){type='privacy';}
-    const d=data[type]||['Profile','Account सम्बन्धी विवरण','<div class="profile-empty">विवरण उपलब्ध छैन।</div>'];
-    title.textContent=d[0];text.textContent=d[1];body.innerHTML=d[2];p.classList.remove('hidden');p.scrollIntoView({behavior:'smooth',block:'start'});
-  };
-  window.closeProfilePanel=function(){const p=document.getElementById('profilePanel');if(p)p.classList.add('hidden');const e=document.getElementById('profileEditArea');if(e)e.classList.add('hidden');const s=document.getElementById('securityArea');if(s)s.classList.add('hidden');};
-  window.logoutKinbech=function(){if(confirm('Logout गर्न चाहनुहुन्छ?')){alert('Demo: Logout');show('login');}};
-  document.addEventListener('DOMContentLoaded',function(){try{const n=localStorage.getItem('kinbechProfileName');if(n){const e=document.getElementById('profileNameDisplay');if(e)e.textContent='@'+n.replace(/^@/,'');}}catch(e){}});
-})();
-</script>
+
 <script id="v48-profile-auth-routing">
 (function(){
   function isLoggedIn(){
@@ -994,22 +1072,66 @@ function refreshPage(){ window.location.reload(); }
   };
 })();
 </script>
-<script id="v48-profile-screen-flow">
+
+<script id="kbp-profile-flow">
 (function(){
-  const old=window.openProfilePanel;
-  window.openProfilePanel=function(type){
-    if(type==='phone') return old.call(this,'phone');
-    if(type==='email') return old.call(this,'email');
-    return old.call(this,type);
+  const screens=['profile','edit','kyc','document-upload','selfie','review','document','privacy','password','account','deletion'];
+  function el(id){return document.getElementById('kbp-'+id)}
+  window.kbpGo=function(id){
+    screens.forEach(x=>{const e=el(x);if(e)e.classList.toggle('hidden',x!==id)});
+    const p=document.getElementById('profile');if(p)p.scrollIntoView({behavior:'smooth',block:'start'});
+    if(id==='review') kbpRefreshReview();
   };
+  window.kbpInfo=function(type){
+    const msg={phone:'Phone Number
+
++977 98********
+Change गर्न verification आवश्यक हुनेछ।',email:'Email
+
+user@example.com
+Change गर्न verification आवश्यक हुनेछ।',help:'Help Center
+
+Kinbech को सामान्य सहायता र FAQ यहाँ उपलब्ध हुनेछ।',support:'Contact Support
+
+Support team लाई आफ्नो समस्या पठाउन सकिनेछ।',report:'Report a Problem
+
+गलत listing, fraud वा अन्य समस्या report गर्न सकिनेछ।',sessions:'Active Sessions
+
+Logged-in devices व्यवस्थापन यहाँबाट हुनेछ।','2fa':'Two-Factor Authentication
+
+Phone/Email OTP सहित 2FA enable गर्न सकिनेछ।',privacySettings:'Privacy Settings
+
+तपाईंको जानकारी कसले हेर्न सक्छ भन्ने नियन्त्रण यहाँ हुनेछ।'};alert(msg[type]||'Details');
+  };
+  window.kbpVerifyChange=function(name){alert(name+' परिवर्तन गर्न verification आवश्यक हुनेछ। Demo मा verification flow पछि जोडिनेछ।');};
+  window.kbpSaveProfile=function(){
+    const name=(document.getElementById('profileName')?.value||'@user123').trim()||'@user123';
+    const country=document.getElementById('countryInput')?.value||'Nepal';
+    const district=document.getElementById('districtInput')?.value||''; const address=document.getElementById('addressInput')?.value||'';
+    const display=document.getElementById('profileNameDisplay');if(display)display.innerHTML=(name.startsWith('@')?name:'@'+name)+' <span id="profileBlueTick" class="v47-blue-tick hidden">✓</span>';
+    const ad=document.getElementById('profileAddressDisplay');if(ad)ad.textContent=country+' · '+(district||address||'Address not set');
+    const ac=document.getElementById('accountCountry');if(ac)ac.textContent=country;
+    const ph=document.getElementById('profilePhoneDisplay');if(ph)ph.textContent=document.getElementById('phoneNumber')?.value||'';
+    const em=document.getElementById('profileEmailDisplay');if(em)em.textContent=document.getElementById('emailInput')?.value||'';
+    try{localStorage.setItem('kinbechProfileName',name);localStorage.setItem('kinbechCountry',country);localStorage.setItem('kinbechDistrict',district);localStorage.setItem('kinbechAddress',address);}catch(e){}
+    alert('Profile changes saved.');kbpGo('profile');
+  };
+  window.kbpEditPhoto=function(input){const f=input?.files?.[0];if(!f)return;const r=new FileReader();r.onload=e=>{const src=e.target.result;['avatarPreview','kbpEditAvatar'].forEach(id=>{const a=document.getElementById(id);if(a)a.innerHTML='<img src="'+src+'" alt="Profile photo">'});const hp=document.getElementById('headerProfilePhoto'),hf=document.getElementById('headerProfileFallback');if(hp){hp.src=src;hp.classList.remove('hidden')}if(hf)hf.classList.add('hidden');try{localStorage.setItem('kinbechProfilePhoto',src)}catch(e){}};r.readAsDataURL(f)};
+  window.kbpSelectDocument=function(v){document.getElementById('selectedDocTitle').textContent=v;document.getElementById('reviewDocType').textContent=v;document.getElementById('selectedDocHelp').textContent=v==='Passport'?'Passport को मुख्य identity/data page राख्नुहोस्।':'Front र back दुवै फोटो राख्नुहोस्।';document.getElementById('docBackCard').classList.toggle('hidden',v==='Passport');document.getElementById('documentDetailsTitle').textContent=v;};
+  window.kbpPreviewFile=function(input,targetId){const f=input?.files?.[0];if(!f)return;const r=new FileReader();r.onload=e=>{const t=document.getElementById(targetId);if(!t)return;if(t.tagName==='IMG'){t.src=e.target.result;t.classList.remove('hidden')}else{t.innerHTML='<img src="'+e.target.result+'" alt="Live photo">';}};r.readAsDataURL(f)};
+  window.kbpRefreshReview=function(){const front=document.getElementById('docFront')?.files?.length,back=document.getElementById('docBack')?.files?.length,selfie=document.getElementById('liveSelfie')?.files?.length;document.getElementById('reviewFrontStatus').textContent=front?'Uploaded':'Not uploaded';document.getElementById('reviewBackStatus').textContent=back?'Uploaded':'Not uploaded';document.getElementById('reviewSelfieStatus').textContent=selfie?'Uploaded':'Not uploaded';document.getElementById('reviewDocType').textContent=document.getElementById('kycDocType')?.value||'Citizenship';};
+  window.kbpSubmitKyc=function(){try{localStorage.setItem('kinbechKycStatus','Pending')}catch(e){}document.getElementById('profileKycStatus').textContent='Pending';document.getElementById('accountKycStatus').textContent='Pending';alert('KYC submission तयार भयो। Demo मा status Pending राखिएको छ।');kbpGo('kyc');};
   document.addEventListener('DOMContentLoaded',function(){
-    const hero=document.querySelector('#profile .profile-hero-card');
-    if(hero){
-      hero.addEventListener('click',function(e){
-        if(!e.target.closest('button')) openProfilePanel('edit');
-      });
-    }
+    try{const n=localStorage.getItem('kinbechProfileName');if(n){const d=document.getElementById('profileNameDisplay');if(d)d.innerHTML=(n.startsWith('@')?n:'@'+n)+' <span id="profileBlueTick" class="v47-blue-tick hidden">✓</span>';const inp=document.getElementById('profileName');if(inp)inp.value=n;}const src=localStorage.getItem('kinbechProfilePhoto');if(src){['avatarPreview','kbpEditAvatar'].forEach(id=>{const a=document.getElementById(id);if(a)a.innerHTML='<img src="'+src+'" alt="Profile photo">'});const hp=document.getElementById('headerProfilePhoto'),hf=document.getElementById('headerProfileFallback');if(hp){hp.src=src;hp.classList.remove('hidden')}if(hf)hf.classList.add('hidden')}const c=localStorage.getItem('kinbechCountry');if(c){const x=document.getElementById('countryInput');if(x)x.value=c;const ac=document.getElementById('accountCountry');if(ac)ac.textContent=c;}const d=localStorage.getItem('kinbechDistrict');if(d){const x=document.getElementById('districtInput');if(x)x.value=d;}const a=localStorage.getItem('kinbechAddress');if(a){const x=document.getElementById('addressInput');if(x)x.value=a;}}
+    catch(e){}
   });
 })();
 </script>
-<script id="v49-auth-routing">(function(){function acc(){try{return JSON.parse(localStorage.getItem('kinbechAccount')||'null')}catch(e){return null}}function logged(){try{return localStorage.getItem('kinbechLoggedIn')==='true'}catch(e){return false}}window.handleProfileIcon=function(e){if(e)e.preventDefault();show(logged()?'profile':'authEntry')};window.setKinbechLoggedIn=function(v){try{localStorage.setItem('kinbechLoggedIn',v?'true':'false')}catch(e){}};window.kinbechLogin=function(){var i=(document.getElementById('loginIdentifier').value||'').trim(),pw=document.getElementById('loginPassword').value||'',a=acc();if(!i||!pw)return alert('Mobile Number/Email र Password दुवै लेख्नुहोस्।');if(!a)return alert('खाता भेटिएन। पहिले Register गर्नुहोस्।');if(i.toLowerCase()!==String(a.email||'').toLowerCase()&&i!==String(a.mobile||''))return alert('Mobile Number वा Email मिलेन।');if(pw!==String(a.password||''))return alert('Password मिलेन।');setKinbechLoggedIn(true);show('profile')};window.kinbechRegister=function(){var r=document.getElementById('registerRole').value,n=document.getElementById('registerName').value.trim(),m=document.getElementById('registerMobile').value.trim(),em=document.getElementById('registerEmail').value.trim(),pw=document.getElementById('registerPassword').value,cp=document.getElementById('registerConfirmPassword').value,otp=document.getElementById('registerOtp').value.trim();if(!n||!m||!em||!pw||!cp||!otp)return alert('सबै विवरण भर्नुहोस्।');if(pw.length<6)return alert('Password कम्तीमा 6 characters हुनुपर्छ।');if(pw!==cp)return alert('Password र Confirm Password मिलेन।');if(otp!=='123456')return alert('OTP मिलेन। Demo OTP: 123456');try{localStorage.setItem('kinbechAccount',JSON.stringify({role:r,name:n,mobile:m,email:em,password:pw}));localStorage.setItem('kinbechLoggedIn','true');localStorage.setItem('kinbechUserName',n)}catch(e){}var pn=document.getElementById('profileNameDisplay');if(pn)pn.textContent=n;alert('Account सफलतापूर्वक बन्यो।');show('profile')};window.logoutKinbech=function(){try{localStorage.setItem('kinbechLoggedIn','false')}catch(e){}show('home')};})();</script></body></html>
+<script id="v50-no-profile-panel">
+window.openProfilePanel=function(type){
+  const map={edit:'edit',kyc:'kyc',privacy:'privacy',security:'privacy',password:'password',account:'account',deletion:'deletion'};
+  if(map[type]&&typeof window.kbpGo==='function'){window.show('profile');window.kbpGo(map[type]);return;}
+  if(typeof window.show==='function')window.show('profile');
+};
+window.closeProfilePanel=function(){if(typeof window.kbpGo==='function')window.kbpGo('profile');};
+</script></body></html>
