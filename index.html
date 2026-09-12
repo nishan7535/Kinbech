@@ -189,6 +189,17 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 .premium-cat-icon svg{width:132px!important;height:124px!important;display:block!important;}
 @media(max-width:650px){.premium-cat-icon{width:118px!important;height:111px!important}.premium-cat-icon svg{width:118px!important;height:111px!important}}
 </style>
+
+<style id="v46-profile-clean-design">
+.profile-clean-menu{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 22px}
+.profile-clean-menu .profile-menu-card{width:100%;text-align:left}
+.profile-logout-btn{width:100%;border:1px solid #ffd4d4;background:#fff7f7;color:#c62828;border-radius:14px;padding:14px 16px;font-size:15px;font-weight:800;cursor:pointer;margin:4px 0 24px}
+.profile-logout-btn:active{transform:scale(.99)}
+#profile .profile-section-title{margin-top:24px}
+#profile .profile-panel{margin-top:0;margin-bottom:18px}
+#profile .profile-edit-card,#profile .profile-security-card{margin-top:14px}
+@media(max-width:650px){.profile-clean-menu{grid-template-columns:1fr;gap:10px}.profile-clean-menu .profile-menu-card{min-height:64px}}
+</style>
 </head><body>
 <header><div class="top"><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button class="icon-btn" type="button" aria-label="P2P SMS" title="P2P SMS" onclick="show('sms')">📩</button><button class="icon-btn" type="button" aria-label="Notifications" title="Notifications" onclick="show('sms')">🔔</button><span class="hide">💬</span><div class="profile-menu"><button class="icon-btn profile-btn" type="button" aria-label="Profile" title="Profile" onclick="toggleProfileMenu(event)" aria-expanded="false"><span id="headerProfileFallback" class="profile-fallback">👤</span><img id="headerProfilePhoto" class="hidden" alt="Profile photo"></button><div id="profileMenu" class="profile-dropdown hidden"><button type="button" onclick="show('profile');closeProfileMenu()">👤 Profile</button><button type="button" onclick="show('login');closeProfileMenu()">🔐 Login / Register</button></div></div></div><div class="lang">🌐 <select id="language" onchange="window.changeLanguage()"><option value="ne">नेपाली</option><option value="en">English</option><option value="hi">हिन्दी</option></select></div></div><nav><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="show('kyc')"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="show('admin')"><span class="nav-ico">⚙️</span>Admin</a><a href="#"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
 <main class="page">
@@ -287,6 +298,20 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 <section id="admin" class="hidden"><div class="form"><h1>👑 Admin Verification Center</h1>
 <div class="box"><b>Pending KYC #KYC-1024</b><p>Seller: Ram Thapa</p><p>Document: Citizenship · Selfie: Uploaded</p><button class="submit" onclick="alert('Demo: Approved')">✓ Approve</button><button class="submit" style="background:#172033" onclick="alert('Demo: Rejected / Resubmit requested')">✕ Request Resubmission</button></div>
 <div class="box" style="margin-top:15px"><b>Fraud / Risk Checks</b><p>✓ Duplicate document check &nbsp; ✓ Account history &nbsp; ✓ Suspicious listing review &nbsp; ✓ Manual escalation</p></div>
+<div class="box v47-blue-admin" style="margin-top:15px">
+  <div class="v47-admin-title"><b>🔵 Blue Tick Management</b><span class="v47-rule">100 successful transactions</span></div>
+  <p class="muted">KYC Verified + 100 सफल Buyer वा Seller transactions + Good Standing पुगेपछि system ले automatic eligibility देखाउँछ। Admin ले आवश्यक परे manual रूपमा Give / Revoke गर्न सक्छ।</p>
+  <div class="v47-user-grid">
+    <div><label>Username</label><input id="btAdminUser" value="@example" placeholder="@username"></div>
+    <div><label>Buyer Successful Transactions</label><input id="btBuyerCount" type="number" min="0" value="100"></div>
+    <div><label>Seller Successful Transactions</label><input id="btSellerCount" type="number" min="0" value="100"></div>
+    <div><label>KYC</label><select id="btKyc"><option value="yes">Verified</option><option value="no">Not Verified</option></select></div>
+  </div>
+  <div class="v47-checks"><label><input id="btGoodStanding" type="checkbox" checked> Good Standing</label><label><input id="btManual" type="checkbox"> Manual Blue Tick</label></div>
+  <div id="btEligibility" class="v47-eligibility">🔵 Eligible for Blue Tick</div>
+  <div class="v47-actions"><button class="submit" type="button" onclick="checkBlueTickEligibility()">Check Eligibility</button><button class="submit" type="button" style="background:#172033" onclick="adminGiveBlueTick()">Give Blue Tick</button><button class="submit" type="button" style="background:#b42318" onclick="adminRevokeBlueTick()">Revoke</button></div>
+  <small>Demo मा count localStorage मा राखिन्छ। Production मा completed transactions table बाट server-side count गर्नुपर्छ।</small>
+</div>
 </div></section>
 
 <section id="sms" class="hidden"><div class="form"><h1>📩 P2P SMS / Transaction Messages</h1>
@@ -300,47 +325,45 @@ footer .social a{width:52px!important;height:52px!important;min-width:52px!impor
 <section id="profile" class="hidden">
   <div class="profile-dashboard">
     <div class="profile-hero-card">
-      <div class="profile-avatar-wrap"><div id="avatarPreview" class="profile-avatar"> <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><circle cx='100' cy='100' r='96' fill='%2317823b'/><circle cx='100' cy='100' r='78' fill='white'/><text x='100' y='91' text-anchor='middle' font-family='Arial,sans-serif' font-size='34' font-weight='800' fill='%23172033'>किनबेच</text><text x='100' y='125' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%2317823b'>.com</text></svg>' style="width:100%;height:100%;object-fit:cover;border-radius:50%" alt="किनबेच.com logo"></div></div>
-      <div class="profile-main-info"><div class="profile-kicker">किनबेच.com</div><h1 id="profileNameDisplay">User</h1><div class="profile-badges"><span id="phoneBadge" class="condition">📱 Phone Not Verified</span><span id="kycBadge" class="condition">🛡️ KYC Pending</span></div></div>
-      <button class="profile-login-btn" type="button" onclick="show('login')">🔐 Login / Register</button>
+      <div class="profile-avatar-wrap"><div id="avatarPreview" class="profile-avatar"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><circle cx='100' cy='100' r='96' fill='%2317823b'/><circle cx='100' cy='100' r='78' fill='white'/><text x='100' y='91' text-anchor='middle' font-family='Arial,sans-serif' font-size='34' font-weight='800' fill='%23172033'>किनबेच</text><text x='100' y='125' text-anchor='middle' font-family='Arial,sans-serif' font-size='22' font-weight='700' fill='%2317823b'>.com</text></svg>' style="width:100%;height:100%;object-fit:cover;border-radius:50%" alt="किनबेच.com logo"></div></div>
+      <div class="profile-main-info"><div class="profile-kicker">किनबेच.com</div><h1 id="profileNameDisplay">@Username <span id="profileBlueTick" class="v47-blue-tick hidden" title="Kinbech Verified">✓</span></h1><div class="profile-badges"><span id="phoneBadge" class="condition">📱 Phone Not Verified</span><span id="kycBadge" class="condition">🛡️ KYC Pending</span></div></div>
     </div>
 
-    <div class="profile-stats">
-      <div class="profile-stat"><strong>0</strong><span>Listings</span></div><div class="profile-stat"><strong>0</strong><span>Orders</span></div><div class="profile-stat"><strong>0</strong><span>Favorites</span></div><div class="profile-stat"><strong>0</strong><span>Cart</span></div>
+    <div class="profile-clean-menu">
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('edit')"><span>✏️</span><div><b>Edit Profile</b><small>Username, phone र email परिवर्तन</small></div><i>›</i></button>
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('kyc')"><span>🪪</span><div><b>KYC</b><small>पहिचान प्रमाणीकरण र KYC विवरण</small></div><i>›</i></button>
     </div>
 
-    <h2 class="profile-section-title">My Kinbech</h2>
-    <div class="profile-menu-grid">
-      <button class="profile-menu-card" onclick="openProfilePanel('listings')"><span>📦</span><div><b>My Listings</b><small>तपाईंले बेच्न राखेका सामान</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('orders')"><span>🛍️</span><div><b>My Orders</b><small>किनेका सामान र अर्डर स्थिति</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('favorites')"><span>♡</span><div><b>Favorites</b><small>मन परेका सामानहरू</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('cart')"><span>🛒</span><div><b>My Cart</b><small>कार्टमा राखिएका सामान</small></div><i>›</i></button>
+    <h2 class="profile-section-title">⚙️ Settings</h2>
+    <div class="profile-clean-menu">
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('privacy')"><span>🔒</span><div><b>Privacy &amp; Security</b><small>Password, 2FA, sessions र privacy</small></div><i>›</i></button>
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('account')"><span>👤</span><div><b>Account Settings</b><small>Account status, KYC status र deletion</small></div><i>›</i></button>
     </div>
 
-    <h2 class="profile-section-title">Account &amp; Security</h2>
-    <div class="profile-menu-grid">
-      <button class="profile-menu-card" onclick="openProfilePanel('edit')"><span>✏️</span><div><b>Edit Profile</b><small>नाम, फोटो, मोबाइल र location</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('kyc')"><span>🛡️</span><div><b>KYC Verification</b><small>पहिचान प्रमाणीकरण पूरा गर्नुहोस्</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('security')"><span>🔐</span><div><b>Security</b><small>2FA र account सुरक्षा</small></div><i>›</i></button>
-      <button class="profile-menu-card" onclick="openProfilePanel('notifications')"><span>🔔</span><div><b>Notifications</b><small>सन्देश र account alerts</small></div><i>›</i></button>
+    <h2 class="profile-section-title">❓ Help &amp; Support</h2>
+    <div class="profile-clean-menu">
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('help')"><span>❓</span><div><b>Help Center</b><small>सामान्य प्रश्न र सहायता</small></div><i>›</i></button>
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('support')"><span>💬</span><div><b>Contact Support</b><small>Kinbech support सँग सम्पर्क</small></div><i>›</i></button>
+      <button class="profile-menu-card" type="button" onclick="openProfilePanel('report')"><span>⚠️</span><div><b>Report a Problem</b><small>समस्या वा गलत गतिविधि report गर्नुहोस्</small></div><i>›</i></button>
     </div>
+
+    <button class="profile-logout-btn" type="button" onclick="logoutKinbech()">🚪 Logout</button>
 
     <div id="profilePanel" class="profile-panel hidden">
-      <div class="profile-panel-head"><div><h2 id="profilePanelTitle">My Kinbech</h2><p id="profilePanelText">यहाँ तपाईंको account सम्बन्धी विवरण देखिनेछ।</p></div><button type="button" onclick="closeProfilePanel()" aria-label="Close">✕</button></div>
+      <div class="profile-panel-head"><div><h2 id="profilePanelTitle">Profile</h2><p id="profilePanelText">Account सम्बन्धी विवरण</p></div><button type="button" onclick="closeProfilePanel()" aria-label="Close">✕</button></div>
       <div id="profilePanelBody" class="profile-panel-body"></div>
     </div>
 
-    <div id="profileEditArea" class="profile-edit-card">
-      <div class="profile-card-heading"><div><h2>Profile Details</h2><p>आफ्नो account जानकारी अपडेट गर्नुहोस्</p></div><span>👤</span></div>
+    <div id="profileEditArea" class="profile-edit-card hidden">
+      <div class="profile-card-heading"><div><h2>Profile Details</h2><p>Username, phone र email व्यवस्थापन</p></div><span>✏️</span></div>
+      <label>Username</label><input id="profileName" placeholder="तपाईंको username">
       <label>Profile Photo</label><input id="profilePhoto" type="file" accept="image/*" onchange="previewPhoto(this)">
-      <label>Full Name</label><input id="profileName" placeholder="तपाईंको नाम">
       <label>Mobile Number</label><div class="otp-row"><input id="phoneNumber" inputmode="numeric" placeholder="98XXXXXXXX"><button class="btn chat" onclick="sendOTP()">OTP पठाउनुहोस्</button></div>
       <div id="otpArea" class="hidden" style="margin-top:8px"><div class="otp-row"><input id="otpInput" inputmode="numeric" maxlength="6" placeholder="6-digit OTP"><button class="btn buy" onclick="verifyOTP()">Verify OTP</button></div><div id="otpStatus" class="status">Demo OTP: 123456</div></div>
-      <label>Location</label><input id="locationText" placeholder="Map मा location छान्नुहोस्"><div id="map"></div><div class="map-actions"><button class="btn chat" onclick="locateMe()">📍 मेरो Location</button><button class="btn chat" onclick="saveMapLocation()">Location Save</button></div>
-      <button class="submit" onclick="saveProfile()">Profile Save गर्नुहोस्</button>
+      <button class="submit" onclick="saveProfile();closeProfilePanel()">Profile Save गर्नुहोस्</button>
     </div>
 
-    <div id="securityArea" class="profile-security-card"><div class="profile-card-heading"><div><h2>Security</h2><p>Account लाई अझ सुरक्षित बनाउनुहोस्</p></div><span>🔐</span></div><label class="security-toggle"><input id="twofa" type="checkbox"><span>Two-Factor Authentication (2FA)</span></label><button class="btn buy" style="margin-top:10px" onclick="enable2FA()">Enable 2FA</button><div id="twofaStatus" class="status">2FA: Off</div></div>
+    <div id="securityArea" class="profile-security-card hidden"><div class="profile-card-heading"><div><h2>Privacy &amp; Security</h2><p>Account लाई सुरक्षित बनाउनुहोस्</p></div><span>🔒</span></div><div class="profile-info-row"><b>Change Password</b><button class="btn chat" type="button" onclick="openProfilePanel('password')">खोल्नुहोस्</button></div><div class="profile-info-row"><b>Two-Factor Authentication (2FA)</b><span id="twofaStatus">Off</span></div><label class="security-toggle"><input id="twofa" type="checkbox"><span>2FA Enable गर्नुहोस्</span></label><button class="btn buy" style="margin-top:10px" onclick="enable2FA()">Enable 2FA</button><div class="profile-info-row"><b>Active Sessions / Logged-in Devices</b><span>Manage</span></div><div class="profile-info-row"><b>Privacy Settings</b><span>Manage</span></div></div>
   </div>
 </section>
 <section id="legal" class="legal"><div class="box" onclick="alert('Terms & Conditions\n\nकिनबेच.com प्रयोग गर्दा प्रयोगकर्ताले सामान, मूल्य, भुक्तानी, डेलिभरी र कानुनी जिम्मेवारीसम्बन्धी नियम पालना गर्नुपर्नेछ।')"><h3>📜 Terms & Conditions</h3><p class="muted">सेवा प्रयोगका नियम र जिम्मेवारी</p></div><div class="box" onclick="alert('Privacy Policy\n\nव्यक्तिगत विवरण, KYC documents र transaction information लाई आवश्यक प्रयोजनमा मात्र प्रयोग गर्ने तथा सुरक्षा उपाय अपनाउने नीति।')"><h3>🔐 Privacy Policy</h3><p class="muted">डाटा र KYC गोपनीयता नीति</p></div><div class="box" onclick="alert('Safety & Refund\n\nठगी, गलत विवरण वा विवाद भएमा report/support मार्फत जानकारी दिनुहोस्। Refund/return वास्तविक policy अनुसार लागू हुनेछ।')"><h3>🛡️ Safety & Refund</h3><p class="muted">सुरक्षा, report, return/refund</p></div></section></main><footer>
@@ -804,7 +827,7 @@ function refreshPage(){ window.location.reload(); }
     profile:['👤 Profile','👤 Profile','👤 प्रोफ़ाइल'], login:['🔐 Login / Register','🔐 Login / Register','🔐 लॉगिन / रजिस्टर'],
     sell:['📦 सामान बेच्नुहोस्','📦 Sell an Item','📦 सामान बेचें'], payment:['💳 Payment Options','💳 Payment Options','💳 भुगतान विकल्प'],
     buy:['🛒 Buy Now','🛒 Buy Now','🛒 अभी खरीदें'], cart:['🛒 My Cart','🛒 My Cart','🛒 मेरी कार्ट'],
-    mylist:['My Listings','My Listings','मेरी लिस्टिंग'], orders:['My Orders','My Orders','मेरे ऑर्डर'], favorites:['Favorites','Favorites','पसंदीदा'], edit:['Edit Profile','Edit Profile','प्रोफ़ाइल संपादित करें'], security:['Security','Security','सुरक्षा'], notifications:['Notifications','Notifications','सूचनाएँ'],
+    edit:['Edit Profile','Edit Profile','प्रोफ़ाइल संपादित करें'], security:['Security','Security','सुरक्षा'],
     searchbtn:['खोज्नुहोस्','Search','खोजें'], save:['Profile Save गर्नुहोस्','Save Profile','प्रोफ़ाइल सेव करें'], otp:['OTP पठाउनुहोस्','Send OTP','OTP भेजें'], verify:['Verify OTP','Verify OTP','OTP सत्यापित करें'],
     location:['📍 मेरो Location','📍 My Location','📍 मेरी लोकेशन'], locsave:['Location Save','Save Location','लोकेशन सेव करें'], enable2fa:['Enable 2FA','Enable 2FA','2FA सक्षम करें'],
     continuepay:['Continue to Payment','Continue to Payment','भुगतान जारी रखें']
@@ -836,6 +859,78 @@ function refreshPage(){ window.location.reload(); }
     if(select)select.value=saved;
     window.changeLanguage();
   });
+})();
+</script>
+
+
+<style id="v47-blue-tick-design">
+.v47-blue-tick{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-left:7px;border-radius:50%;background:#1877f2;color:#fff;font-size:14px;font-weight:900;line-height:1;vertical-align:middle;box-shadow:0 1px 3px rgba(0,0,0,.16)}
+.v47-blue-tick.hidden{display:none}
+.v47-admin-title{display:flex;justify-content:space-between;align-items:center;gap:12px}.v47-rule{font-size:12px;padding:5px 9px;border-radius:999px;background:#eef5ff;color:#1769d2;font-weight:800}
+.v47-user-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v47-user-grid label{display:block;font-weight:700;margin:5px 0}.v47-user-grid input,.v47-user-grid select{width:100%;box-sizing:border-box;padding:11px;border:1px solid #dfe5ee;border-radius:10px;background:#fff}.v47-checks{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0;font-weight:700}.v47-eligibility{padding:11px 13px;border-radius:11px;background:#f3f8ff;color:#1769d2;font-weight:800;margin-bottom:10px}.v47-actions{display:flex;gap:8px;flex-wrap:wrap}.v47-actions .submit{flex:1;min-width:120px}.v47-admin-title b{font-size:17px}@media(max-width:650px){.v47-user-grid{grid-template-columns:1fr}.v47-admin-title{align-items:flex-start;flex-direction:column}}
+</style>
+<script id="v47-blue-tick-system">
+(function(){
+  const KEY='kinbechBlueTick';
+  function getState(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
+  function save(st){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  function eligible(buyer,seller,kyc,good,manual){return manual || (kyc==='yes' && good && (buyer>=100 || seller>=100));}
+  function render(st){
+    const tick=document.getElementById('profileBlueTick');
+    if(tick){tick.classList.toggle('hidden',!st.blueTick);tick.title=st.blueTick?'Kinbech Verified':'Kinbech Verified';}
+  }
+  window.updateBlueTickStatus=function(){
+    const st=getState();
+    st.buyer=Number(st.buyer||0);st.seller=Number(st.seller||0);
+    st.eligible=eligible(st.buyer,st.seller,st.kyc||'no',st.goodStanding!==false,st.manual===true);
+    if(st.eligible) st.blueTick=true;
+    save(st);render(st);return st;
+  };
+  window.recordSuccessfulTransaction=function(role){
+    const st=getState(); if(role==='buyer')st.buyer=Number(st.buyer||0)+1; if(role==='seller')st.seller=Number(st.seller||0)+1; updateBlueTickStatus();
+  };
+  window.checkBlueTickEligibility=function(){
+    const buyer=Number(document.getElementById('btBuyerCount')?.value||0), seller=Number(document.getElementById('btSellerCount')?.value||0), kyc=document.getElementById('btKyc')?.value||'no', good=document.getElementById('btGoodStanding')?.checked, manual=document.getElementById('btManual')?.checked;
+    const ok=eligible(buyer,seller,kyc,good,manual); const el=document.getElementById('btEligibility'); if(el)el.textContent=ok?'🔵 Eligible for Blue Tick':'⚪ Not eligible yet — KYC, 100 successful transactions वा Admin manual approval आवश्यक'; return ok;
+  };
+  window.adminGiveBlueTick=function(){
+    if(!checkBlueTickEligibility()){alert('यो user automatic criteria पूरा गरेको छैन। Manual Blue Tick दिन चाहनुहुन्छ भने Manual Blue Tick चयन गर्नुहोस्।');return;}
+    const st={username:document.getElementById('btAdminUser')?.value||'@example',buyer:Number(document.getElementById('btBuyerCount')?.value||0),seller:Number(document.getElementById('btSellerCount')?.value||0),kyc:document.getElementById('btKyc')?.value||'no',goodStanding:document.getElementById('btGoodStanding')?.checked,manual:document.getElementById('btManual')?.checked,blueTick:true}; save(st);render(st);alert('🔵 Blue Tick दिइयो।');
+  };
+  window.adminRevokeBlueTick=function(){const st=getState();st.blueTick=false;st.manual=false;save(st);render(st);alert('Blue Tick revoke गरियो।');};
+  document.addEventListener('DOMContentLoaded',function(){
+    const st=getState();
+    const b=document.getElementById('btBuyerCount'),s=document.getElementById('btSellerCount'),k=document.getElementById('btKyc'),g=document.getElementById('btGoodStanding');
+    if(b&&st.buyer!=null)b.value=st.buyer; if(s&&st.seller!=null)s.value=st.seller; if(k&&st.kyc)k.value=st.kyc; if(g&&st.goodStanding!=null)g.checked=st.goodStanding;
+    updateBlueTickStatus();
+  });
+})();
+</script>
+<script id="v46-profile-clean-navigation">
+(function(){
+  const originalOpenProfilePanel=window.openProfilePanel;
+  window.openProfilePanel=function(type){
+    const p=document.getElementById('profilePanel'), title=document.getElementById('profilePanelTitle'), text=document.getElementById('profilePanelText'), body=document.getElementById('profilePanelBody');
+    const edit=document.getElementById('profileEditArea'), security=document.getElementById('securityArea');
+    if(!p||!title||!text||!body)return;
+    if(edit)edit.classList.add('hidden'); if(security)security.classList.add('hidden');
+    const data={
+      kyc:['KYC','पहिचान प्रमाणीकरण','<div class="profile-info-row"><b>KYC Status</b><span>🛡️ Pending</span></div><button class="btn buy" onclick="show(\'kyc\')">KYC खोल्नुहोस्</button>'],
+      privacy:['Privacy & Security','Account security settings','<div class="profile-info-row"><b>Change Password</b><button class="btn chat" onclick="openProfilePanel(\'password\')">खोल्नुहोस्</button></div><div class="profile-info-row"><b>Two-Factor Authentication</b><span>2FA</span></div><div class="profile-info-row"><b>Active Sessions / Logged-in Devices</b><span>Manage</span></div><div class="profile-info-row"><b>Privacy Settings</b><span>Manage</span></div>'],
+      password:['Change Password','पहिले हालको password verify गर्नुहोस्','<div class="profile-info-row"><b>Current Password</b><span>Required</span></div><div class="profile-info-row"><b>Verification</b><span>Phone OTP / Email OTP / 2FA</span></div><div class="profile-info-row"><b>New Password</b><span>Set a new password</span></div>'],
+      account:['Account Settings','Account status र KYC status','<div class="profile-info-row"><b>Account Status</b><span>Active</span></div><div class="profile-info-row"><b>KYC Status</b><span>Pending</span></div><div class="profile-info-row"><b>Account Information</b><span>View</span></div><div class="profile-info-row"><b>Request Account Deletion</b><span>Admin Review</span></div>'],
+      help:['Help Center','सामान्य प्रश्न र सहायता','<div class="profile-empty">Help Center यहाँबाट खोल्न सकिनेछ।</div>'],
+      support:['Contact Support','Kinbech support','<div class="profile-empty">Support लाई आफ्नो समस्या पठाउन सकिनेछ।</div>'],
+      report:['Report a Problem','समस्या report गर्नुहोस्','<div class="profile-empty">समस्या, गलत listing वा अन्य issue report गर्न सकिनेछ।</div>']
+    };
+    if(type==='edit'){if(edit){edit.classList.remove('hidden');edit.scrollIntoView({behavior:'smooth',block:'start'});}return;}
+    if(type==='security'){type='privacy';}
+    const d=data[type]||['Profile','Account सम्बन्धी विवरण','<div class="profile-empty">विवरण उपलब्ध छैन।</div>'];
+    title.textContent=d[0];text.textContent=d[1];body.innerHTML=d[2];p.classList.remove('hidden');p.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  window.closeProfilePanel=function(){const p=document.getElementById('profilePanel');if(p)p.classList.add('hidden');const e=document.getElementById('profileEditArea');if(e)e.classList.add('hidden');const s=document.getElementById('securityArea');if(s)s.classList.add('hidden');};
+  window.logoutKinbech=function(){if(confirm('Logout गर्न चाहनुहुन्छ?')){alert('Demo: Logout');show('login');}};
+  document.addEventListener('DOMContentLoaded',function(){try{const n=localStorage.getItem('kinbechProfileName');if(n){const e=document.getElementById('profileNameDisplay');if(e)e.textContent='@'+n.replace(/^@/,'');}}catch(e){}});
 })();
 </script>
 </body></html>
