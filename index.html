@@ -1028,4 +1028,4 @@ window.kbpInfo=function(t){const m={phone:'Phone Number\n\nVerification is requi
 document.addEventListener('DOMContentLoaded',()=>{try{const n=localStorage.getItem('kinbechProfileName'),p=localStorage.getItem('kinbechProfilePhone'),em=localStorage.getItem('kinbechProfileEmail'),src=localStorage.getItem('kinbechProfilePhoto');if(n){if($('profileNameDisplay'))$('profileNameDisplay').innerHTML=(n.startsWith('@')?n:'@'+n)+' <span id="profileBlueTick" class="v47-blue-tick hidden">✓</span>';if($('profileName'))$('profileName').value=n}if(p){if($('phoneNumber'))$('phoneNumber').value=p;if($('profilePhoneText'))$('profilePhoneText').textContent=p}if(em){if($('emailInput'))$('emailInput').value=em;if($('profileEmailText'))$('profileEmailText').textContent=em}if(src){['avatarPreview','kbpEditAvatar'].forEach(id=>{const a=$(id);if(a)a.innerHTML='<img src="'+src+'" alt="Profile photo">'})}}catch(e){}setOnly('profile');syncStatus()});
 })();
 </script>
-</body></html>
+</body></html >
