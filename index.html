@@ -776,13 +776,6 @@ body:has(#home:not(.hidden)) > #kbSellerFinanceV52 {
   display:none !important;
 }
 </style>
-
-<style id="v52-profile-click-fix">
-header .actions .profile-menu{position:relative!important;z-index:100!important;pointer-events:auto!important}
-header .actions .profile-menu .profile-btn{position:relative!important;z-index:101!important;pointer-events:auto!important;cursor:pointer!important}
-header .actions .profile-menu .profile-btn *{pointer-events:none!important}
-</style>
-
 </head><body>
 <script id="kinbech-v52-unified-feedback-shim">
 (function(){
@@ -3002,6 +2995,8 @@ body:has(#home:not(.hidden)) .v52nh-search{order:1;width:100%;box-sizing:border-
 
 <style id="v52-home-location-same-header-row">
 /* V52: keep language + location in the same header row as Kinbech.com; search remains below. */
+body:has(#home:not(.hidden)) .v52-native-home .v52nh-location{display:none!important}
+
 body:has(#home:not(.hidden)) .v52nh-location{display:none!important}
 body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;align-items:center;gap:7px;white-space:nowrap;position:static;flex:0 0 auto;margin-left:-4px}
 body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px}
@@ -3754,20 +3749,5 @@ window.addEventListener('hashchange',function(){if(location.hash==='#profile')op
 if(location.hash==='#profile')open('main');
 })();
 </script>
-
-<script>
-function isLoggedIn(){
-  try { return localStorage.getItem('kinbechLoggedIn') === 'true'; } catch(e) { return false; }
-}
-window.handleProfileIcon = function(event){
-  if(event) event.preventDefault();
-  if(isLoggedIn()){
-    if(typeof window.show === 'function') window.show('profile');
-  } else {
-    if(typeof window.show === 'function') window.show('login');
-  }
-};
-</script>
-
 </body>
 </html>
