@@ -458,7 +458,7 @@ body.v52-reference-home>header .actions .mobile-cart{display:none!important}
 body.v52-reference-home>header .profile-menu{display:block!important}
 body.v52-reference-home>header .lang{display:flex!important;margin-left:0!important}
 body.v52-reference-home>header .lang select{width:42px!important;height:36px!important;padding:0!important;border:0!important;background:transparent!important;font-size:0!important}
-body.v52-reference-home>header .lang:before{content:"";font-size:21px!important;pointer-events:none}
+body.v52-reference-home>header .lang:before{content:"🌐";font-size:21px!important;pointer-events:none}
 body.v52-reference-home>header .lang select option{font-size:14px!important}
 body.v52-reference-home>header .actions .icon-btn{
   width:42px!important;height:42px!important;border:0!important;background:#fff!important;border-radius:50%!important;
@@ -776,6 +776,13 @@ body:has(#home:not(.hidden)) > #kbSellerFinanceV52 {
   display:none !important;
 }
 </style>
+
+<style id="v52-profile-click-fix">
+header .actions .profile-menu{position:relative!important;z-index:100!important;pointer-events:auto!important}
+header .actions .profile-menu .profile-btn{position:relative!important;z-index:101!important;pointer-events:auto!important;cursor:pointer!important}
+header .actions .profile-menu .profile-btn *{pointer-events:none!important}
+</style>
+
 </head><body>
 <script id="kinbech-v52-unified-feedback-shim">
 (function(){
@@ -3747,5 +3754,20 @@ window.addEventListener('hashchange',function(){if(location.hash==='#profile')op
 if(location.hash==='#profile')open('main');
 })();
 </script>
+
+<script>
+function isLoggedIn(){
+  try { return localStorage.getItem('kinbechLoggedIn') === 'true'; } catch(e) { return false; }
+}
+window.handleProfileIcon = function(event){
+  if(event) event.preventDefault();
+  if(isLoggedIn()){
+    if(typeof window.show === 'function') window.show('profile');
+  } else {
+    if(typeof window.show === 'function') window.show('login');
+  }
+};
+</script>
+
 </body>
 </html>
