@@ -458,7 +458,7 @@ body.v52-reference-home>header .actions .mobile-cart{display:none!important}
 body.v52-reference-home>header .profile-menu{display:block!important}
 body.v52-reference-home>header .lang{display:flex!important;margin-left:0!important}
 body.v52-reference-home>header .lang select{width:42px!important;height:36px!important;padding:0!important;border:0!important;background:transparent!important;font-size:0!important}
-body.v52-reference-home>header .lang:before{content:"🌐";font-size:21px!important;pointer-events:none}
+body.v52-reference-home>header .lang:before{content:none!important}
 body.v52-reference-home>header .lang select option{font-size:14px!important}
 body.v52-reference-home>header .actions .icon-btn{
   width:42px!important;height:42px!important;border:0!important;background:#fff!important;border-radius:50%!important;
@@ -571,7 +571,7 @@ function syncSearch(v){const q=document.getElementById('q');if(q){q.value=v||'';
 function homeHTML(){
 return `<div class="v52-ref-home" id="v52ReferenceHome">
   <div class="v52-ref-search"><input id="v52RefSearch" placeholder="Search for products, people or categories..." aria-label="Search"><button type="button" onclick="(function(){syncSearch(document.getElementById('v52RefSearch').value)})()">⌕</button></div>
-  <div class="v52-ref-location"><span>📍</span><span>Kathmandu, Nepal</span><span>⌄</span></div>
+  <div class="v52-ref-location"><span>📍</span><b class="v52-location-label">Select location</b><span>⌄</span></div>
   <div class="v52-ref-banner"><h3>Celebrate with</h3><h2>Kinbech.com</h2><p>Amazing deals &amp; rewards</p><button type="button" onclick="go('products')">Explore Now</button><div class="v52-ref-gift">🎁</div><div class="v52-ref-dots"><b>●</b> • • • •</div></div>
   <div class="v52-ref-trust" aria-label="Kinbech trust features">
     <div><i class="trust-ico" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 4l15 6v11c0 10-6.5 18.3-15 23-8.5-4.7-15-13-15-23V10l15-6z"/><path d="M16 24l5 5 11-12"/></svg></i>Buyer Protection</div>
@@ -587,7 +587,7 @@ return `<div class="v52-ref-home" id="v52ReferenceHome">
     <button class="v52-ref-cat" onclick="openCategory('Fashion')"><span class="ico">👕</span>Fashion</button>
     <button class="v52-ref-cat" onclick="openCategory('Home & Kitchen')"><span class="ico">🛋️</span>Home &amp; Kitchen</button>
     <button class="v52-ref-cat" onclick="openCategory('Real Estate')"><span class="ico">🏠</span>Real Estate</button>
-    <button class="v52-ref-cat" onclick="openCategory('__all__')"><span class="ico">•••</span>All Categories</button>
+    <button class="v52-ref-cat" onclick="openAllCategories()"><span class="ico">🗂️</span>All Categories</button>
   </div>
   <div class="v52-ref-section-head"><h3>Featured for you</h3><button type="button" onclick="document.querySelector('#products')?.scrollIntoView({behavior:'smooth'})">View All</button></div>
   <div class="v52-ref-products">
@@ -803,7 +803,13 @@ body:has(#signup:not(.hidden)) > #kbSellerReviewsV52,
 body:has(#forgot-password:not(.hidden)) > #kbSellerReviewsV52,
 body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; }
 </style>
-</head><body>
+<style id="v52-all-categories-style">
+.v52-all-categories-overlay{position:fixed;inset:0;z-index:10050;background:rgba(15,23,42,.42);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:14px}
+.v52-all-categories-overlay.hidden{display:none!important}.v52-all-categories-card{width:min(760px,100%);max-height:88vh;overflow:auto;background:#fff;border:1px solid #e7eaf0;border-radius:22px;box-shadow:0 24px 70px rgba(15,23,42,.22);padding:17px}.v52-all-categories-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.v52-all-categories-head small{color:#64748b;font-weight:800}.v52-all-categories-head h2{margin:3px 0 0;font-size:21px}.v52-all-categories-head>button{width:40px;height:40px;border:1px solid #e5e7eb;border-radius:50%;background:#fff;font-size:25px;cursor:pointer}.v52-all-categories-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.v52-all-categories-grid button{min-height:98px;border:1px solid #e8ebf1;background:#fff;border-radius:16px;padding:10px 7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;cursor:pointer}.v52-all-categories-grid button:hover{transform:translateY(-1px);border-color:#f3a4bb}.v52-all-categories-grid span{font-size:29px;line-height:1}.v52-all-categories-grid b{font-size:12px;text-align:center}@media(max-width:600px){.v52-all-categories-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.v52-all-categories-grid button{min-height:90px}.v52-all-categories-grid span{font-size:27px}}@media(max-width:380px){.v52-all-categories-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+body.v52-all-categories-open{overflow:hidden}
+body:not(.v52-current-home) #pullRefresh{display:none!important}
+body.v52-current-home #pullRefresh{display:block}
+</style></head><body>
 <script id="kinbech-v52-unified-feedback-shim">
 (function(){
   const show=(msg)=>{
@@ -816,12 +822,12 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 })();
 </script>
 <!-- KINBECH V52 MASTER — unified UI architecture; existing features preserved -->
-<header><div class="top"><button aria-expanded="false" aria-label="Menu" class="mobile-menu-toggle" onclick="toggleKinbechMobileMenu(event)" type="button">☰</button><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."/><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button aria-label="P2P SMS" class="icon-btn mobile-p2p" onclick="show('sms')" title="P2P SMS" type="button">📩</button><button aria-label="Messages" class="icon-btn" onclick="kbpGo('messages')" title="Messages" type="button">💬</button><button aria-label="Notifications" class="icon-btn" onclick="show('notifications')" title="Notifications" type="button">🔔</button><button aria-label="Cart" class="icon-btn mobile-cart" onclick="showCart()" title="Cart" type="button">🛒</button><div class="profile-menu"><button aria-expanded="false" aria-label="Profile" class="icon-btn profile-btn" onclick="handleProfileIcon(event)" title="Profile" type="button"><span class="profile-fallback" id="headerProfileFallback">👤</span><img alt="Profile photo" class="hidden" id="headerProfilePhoto"/></button><div class="profile-dropdown hidden" id="profileMenu"></div></div></div><div class="lang v52-header-location"><span class="v52-header-globe">🌐</span><span class="v52-header-place">📍 Kathmandu</span><button type="button" onclick="v52Alert('Location selector is ready for the existing location system.')">Change</button><select id="language" aria-label="Language" onchange="window.changeLanguage()"><option value="ne">🇳🇵 नेपाली</option><option value="en">🇬🇧 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="bn">🇧🇩 বাংলা</option><option value="ur">🇵🇰 اردو</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="es">🇪🇸 Español</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="ar">🇸🇦 العربية</option><option value="tr">🇹🇷 Türkçe</option><option value="fa">🇮🇷 فارسی</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="ms">🇲🇾 Bahasa Melayu</option><option value="th">🇹🇭 ไทย</option><option value="vi">🇻🇳 Tiếng Việt</option><option value="nl">🇳🇱 Nederlands</option><option value="pl">🇵🇱 Polski</option><option value="uk">🇺🇦 Українська</option><option value="cs">🇨🇿 Čeština</option><option value="sk">🇸🇰 Slovenčina</option><option value="ro">🇷🇴 Română</option><option value="hu">🇭🇺 Magyar</option><option value="el">🇬🇷 Ελληνικά</option><option value="he">🇮🇱 עברית</option><option value="sv">🇸🇪 Svenska</option><option value="no">🇳🇴 Norsk</option><option value="da">🇩🇰 Dansk</option><option value="fi">🇫🇮 Suomi</option><option value="is">🇮🇸 Íslenska</option><option value="et">🇪🇪 Eesti</option><option value="lv">🇱🇻 Latviešu</option><option value="lt">🇱🇹 Lietuvių</option><option value="sl">🇸🇮 Slovenščina</option><option value="bg">🇧🇬 Български</option><option value="sr">🇷🇸 Српски</option><option value="hr">🇭🇷 Hrvatski</option><option value="bs">🇧🇦 Bosanski</option><option value="mk">🇲🇰 Македонски</option><option value="sq">🇦🇱 Shqip</option><option value="sw">🇰🇪 Kiswahili</option><option value="am">🇪🇹 አማርኛ</option><option value="ta">🇮🇳 தமிழ்</option><option value="te">🇮🇳 తెలుగు</option><option value="mr">🇮🇳 मराठी</option><option value="gu">🇮🇳 ગુજરાતી</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="kn">🇮🇳 ಕನ್ನಡ</option><option value="ml">🇮🇳 മലയാളം</option><option value="fil">🇵🇭 Filipino</option><option value="tl">🇵🇭 Tagalog</option><option value="my">🇲🇲 မြန်မာ</option><option value="km">🇰🇭 ខ្មែរ</option><option value="lo">🇱🇦 ລາວ</option><option value="si">🇱🇰 සිංහල</option><option value="uz">🇺🇿 O‘zbek</option><option value="kk">🇰🇿 Қазақша</option><option value="az">🇦🇿 Azərbaycan</option><option value="ka">🇬🇪 ქართული</option></select></div></div><nav class="header-nav"><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="handleProfileIcon(event);setTimeout(function(){if(window.kinbechIsLoggedIn?.())window.kbpGo('kyc')},80)"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="show('admin')"><span class="nav-ico">⚙️</span>Admin</a><a href="#" onclick="show('safety')"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
+<header><div class="top"><button aria-expanded="false" aria-label="Menu" class="mobile-menu-toggle" onclick="toggleKinbechMobileMenu(event)" type="button">☰</button><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."/><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button aria-label="P2P SMS" class="icon-btn mobile-p2p" onclick="show('sms')" title="P2P SMS" type="button">📩</button><button aria-label="Messages" class="icon-btn" onclick="kbpGo('messages')" title="Messages" type="button">💬</button><button aria-label="Notifications" class="icon-btn" onclick="show('notifications')" title="Notifications" type="button">🔔</button><button aria-label="Cart" class="icon-btn mobile-cart" onclick="showCart()" title="Cart" type="button">🛒</button><div class="profile-menu"><button aria-expanded="false" aria-label="Profile" class="icon-btn profile-btn" onclick="handleProfileIcon(event)" title="Profile" type="button"><span class="profile-fallback" id="headerProfileFallback">👤</span><img alt="Profile photo" class="hidden" id="headerProfilePhoto"/></button><div class="profile-dropdown hidden" id="profileMenu"></div></div></div><div class="lang v52-header-location"><span class="v52-header-globe">🌐</span><span class="v52-header-place">📍 <b class="v52-location-label">Select location</b></span><button type="button" onclick="v52OpenLocationSelector();return false;">Change</button><select id="language" aria-label="Language" onchange="window.changeLanguage()"><option value="ne">🇳🇵 नेपाली</option><option value="en">🇬🇧 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="bn">🇧🇩 বাংলা</option><option value="ur">🇵🇰 اردو</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="es">🇪🇸 Español</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="ar">🇸🇦 العربية</option><option value="tr">🇹🇷 Türkçe</option><option value="fa">🇮🇷 فارسی</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="ms">🇲🇾 Bahasa Melayu</option><option value="th">🇹🇭 ไทย</option><option value="vi">🇻🇳 Tiếng Việt</option><option value="nl">🇳🇱 Nederlands</option><option value="pl">🇵🇱 Polski</option><option value="uk">🇺🇦 Українська</option><option value="cs">🇨🇿 Čeština</option><option value="sk">🇸🇰 Slovenčina</option><option value="ro">🇷🇴 Română</option><option value="hu">🇭🇺 Magyar</option><option value="el">🇬🇷 Ελληνικά</option><option value="he">🇮🇱 עברית</option><option value="sv">🇸🇪 Svenska</option><option value="no">🇳🇴 Norsk</option><option value="da">🇩🇰 Dansk</option><option value="fi">🇫🇮 Suomi</option><option value="is">🇮🇸 Íslenska</option><option value="et">🇪🇪 Eesti</option><option value="lv">🇱🇻 Latviešu</option><option value="lt">🇱🇹 Lietuvių</option><option value="sl">🇸🇮 Slovenščina</option><option value="bg">🇧🇬 Български</option><option value="sr">🇷🇸 Српски</option><option value="hr">🇭🇷 Hrvatski</option><option value="bs">🇧🇦 Bosanski</option><option value="mk">🇲🇰 Македонски</option><option value="sq">🇦🇱 Shqip</option><option value="sw">🇰🇪 Kiswahili</option><option value="am">🇪🇹 አማርኛ</option><option value="ta">🇮🇳 தமிழ்</option><option value="te">🇮🇳 తెలుగు</option><option value="mr">🇮🇳 मराठी</option><option value="gu">🇮🇳 ગુજરાતી</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="kn">🇮🇳 ಕನ್ನಡ</option><option value="ml">🇮🇳 മലയാളം</option><option value="fil">🇵🇭 Filipino</option><option value="tl">🇵🇭 Tagalog</option><option value="my">🇲🇲 မြန်မာ</option><option value="km">🇰🇭 ខ្មែរ</option><option value="lo">🇱🇦 ລາວ</option><option value="si">🇱🇰 සිංහල</option><option value="uz">🇺🇿 O‘zbek</option><option value="kk">🇰🇿 Қазақша</option><option value="az">🇦🇿 Azərbaycan</option><option value="ka">🇬🇪 ქართული</option></select></div></div><nav class="header-nav"><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="handleKycNav(event);return false;"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="showAdminV52();return false;"><span class="nav-ico">⚙️</span>Admin</a><a href="#" onclick="show('safety')"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
 <main class="page">
 <section id="home">
 <!-- V52 NATIVE HOMEPAGE — visual structure only; existing V52 nodes/functions remain below -->
 <div class="v52-native-home" id="v52NativeHome">
-<div class="v52nh-location"><button class="v52nh-language" aria-label="Language" type="button" onclick="document.getElementById('v52NativeLanguage')?.focus();document.getElementById('v52NativeLanguage')?.click();"><span class="v52nh-globe">🌐</span><select aria-label="Language" id="v52NativeLanguage" onchange="event.stopPropagation();try{document.getElementById('language').value=this.value;window.changeLanguage?.()}catch(e){}"></select></button><div class="v52nh-place"><span>📍</span><b>Kathmandu</b></div><button onclick="v52Alert('Location selector is ready for the existing location system.')" type="button">Change</button></div>
+<div class="v52nh-location"><button class="v52nh-language" aria-label="Language" type="button" onclick="document.getElementById('v52NativeLanguage')?.focus();document.getElementById('v52NativeLanguage')?.click();"><span class="v52nh-globe">🌐</span><select aria-label="Language" id="v52NativeLanguage" onchange="event.stopPropagation();try{document.getElementById('language').value=this.value;window.changeLanguage?.()}catch(e){}"></select></button><div class="v52nh-place"><span>📍</span><b class="v52-location-label">Select location</b></div><button onclick="v52OpenLocationSelector();return false;" type="button">Change</button></div>
 <div class="v52nh-search">
 <input aria-label="Search" id="v52NativeSearch" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..." type="search"/>
 <button aria-label="Search" onclick="(function(){var v=document.getElementById('v52NativeSearch')?.value||'';var q=document.getElementById('q');if(q){q.value=v;}try{doSearch()}catch(e){}})()" type="button">⌕</button>
@@ -832,7 +838,7 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 </div><div class="v52nh-banner-art">🎁</div>
 </section>
 
-<div class="v52nh-head"><h2>Categories</h2><button onclick="document.getElementById('cats')?.scrollIntoView({behavior:'smooth'})" type="button">View all</button></div>
+<div class="v52nh-head"><h2>Categories</h2><button onclick="openAllCategories()" type="button">View all</button></div>
 <div class="v52nh-cats">
 <button onclick="openCategory('Mobile')"><i class="v52-cat-photo v52-cat-icon">📱</i><span>Mobiles</span></button>
 <button onclick="openCategory('Laptop')"><i class="v52-cat-photo v52-cat-icon">💻</i><span>Electronics</span></button>
@@ -840,7 +846,8 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 <button onclick="openCategory('Fashion')"><i>👕</i><span>Fashion</span></button>
 <button onclick="openCategory('Home &amp; Kitchen')"><i>🛋️</i><span>Home &amp; Kitchen</span></button>
 <button onclick="openCategory('Real Estate')"><i>🏠</i><span>Real Estate</span></button>
-<button onclick="document.getElementById('cats')?.scrollIntoView({behavior:'smooth'})"><i>•••</i><span>All</span></button>
+<button onclick="openCategory('Second-hand')"><i>♻️</i><span>Second-hand</span></button>
+<button onclick="openAllCategories()"><i>🗂️</i><span>All Categories</span></button>
 </div>
 <div class="v52nh-head"><h2>Featured</h2><button onclick="document.getElementById('v52HomeLatestProducts')?.scrollIntoView({behavior:'smooth'})" type="button">View all</button></div>
 <div aria-live="polite" class="v52nh-products" id="v52FeaturedProducts">
@@ -853,9 +860,9 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 </div>
 <div class="v52-native-bottom" id="v52NativeHomeBottom">
 <button class="active" onclick="show('home',{restore:true})"><i>⌂</i><span>Home</span></button>
-<button onclick="document.getElementById('cats')?.scrollIntoView({behavior:'smooth'})"><i>⊞</i><span>Categories</span></button>
+<button onclick="openAllCategories()"><i>⊞</i><span>Categories</span></button>
 <button class="sell" onclick="show('sell')"><i>＋</i><span>Sell</span></button>
-<button onclick="window.kbpGo?kbpGo('messages'):show('profile')"><i>▢</i><span>Messages</span></button>
+<button onclick="handleMessagesIcon(event);return false;"><i>▢</i><span>Messages</span></button>
 <button onclick="handleProfileIcon(event)"><i>♙</i><span>Profile</span></button>
 </div>
 <div class="hero"><h1 id="heroTitle">किन्नुहोस् • बेच्नुहोस् • सुरक्षित रूपमा 🇳🇵</h1><p id="heroText">नयाँ तथा Second-hand सामानका लागि नेपालको भरपर्दो marketplace। Verified Seller, chat, payment र delivery सुविधासहित।</p></div>
@@ -946,6 +953,9 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 </div>
 <div class="card cat category-liquid-card" data-category="Other" onclick="openCategory('Other')" onkeydown="if(event.key==='Enter'||event.key===' ')openCategory('Other')" role="button" tabindex="0">
 <div aria-hidden="true" class="category-liquid-icon premium-cat-icon">📦</div><div class="category-name">Other</div>
+</div>
+<div class="card cat category-liquid-card" data-category="Second-hand" onclick="openCategory('Second-hand')" onkeydown="if(event.key==='Enter'||event.key===' ')openCategory('Second-hand')" role="button" tabindex="0">
+<div aria-hidden="true" class="category-liquid-icon premium-cat-icon">♻️</div><div class="category-name">Second-hand</div>
 </div>
 <div class="card cat category-liquid-card" data-category="__all__" onclick="openCategory('__all__')" onkeydown="if(event.key==='Enter'||event.key===' ')openCategory('__all__')" role="button" tabindex="0">
 <div aria-hidden="true" class="category-liquid-icon premium-cat-icon">🗂️</div><div class="category-name" data-i18n-key="viewAllCategories">View All Categories</div>
@@ -1323,7 +1333,32 @@ YouTube | https://youtube.com/watch?v=..."></textarea><div class="muted">हर�
 <div class="founder-ceo"><strong>Founder &amp; CEO: Nar Bahadur B.K.</strong></div>
 <div class="footer-bottom"><span>© 2026 Kinbech.com — All Rights Reserved.</span><span>🇳🇵 Made for Nepal</span><span>🛡️ Safe Marketplace · 📱 Phone Verify · 🔐 2FA · 🛡️ KYC</span></div>
 </footer>
+<div aria-hidden="true" class="v52-all-categories-overlay hidden" id="v52AllCategoriesOverlay">
+  <div class="v52-all-categories-card" role="dialog" aria-modal="true" aria-labelledby="v52AllCategoriesTitle">
+    <div class="v52-all-categories-head"><div><small>Kinbech</small><h2 id="v52AllCategoriesTitle">🗂️ All Categories</h2></div><button type="button" aria-label="Close categories" onclick="closeAllCategories()">×</button></div>
+    <div class="v52-all-categories-grid">
+      <button type="button" onclick="openCategory('Mobile');closeAllCategories()"><span>📱</span><b>Mobiles</b></button>
+      <button type="button" onclick="openCategory('Laptop');closeAllCategories()"><span>💻</span><b>Electronics</b></button>
+      <button type="button" onclick="openCategory('Bike');closeAllCategories()"><span>🏍️</span><b>Bikes</b></button>
+      <button type="button" onclick="openCategory('Vehicles');closeAllCategories()"><span>🚗</span><b>Vehicles</b></button>
+      <button type="button" onclick="openCategory('Furniture');closeAllCategories()"><span>🛋️</span><b>Furniture</b></button>
+      <button type="button" onclick="openCategory('Fashion');closeAllCategories()"><span>👕</span><b>Fashion</b></button>
+      <button type="button" onclick="openCategory('Home &amp; Kitchen');closeAllCategories()"><span>🏠</span><b>Home &amp; Kitchen</b></button>
+      <button type="button" onclick="openCategory('Real Estate');closeAllCategories()"><span>🏢</span><b>Real Estate</b></button>
+      <button type="button" onclick="openCategory('Books &amp; Education');closeAllCategories()"><span>📚</span><b>Books &amp; Education</b></button>
+      <button type="button" onclick="openCategory('Sports');closeAllCategories()"><span>⚽</span><b>Sports</b></button>
+      <button type="button" onclick="openCategory('Kids &amp; Toys');closeAllCategories()"><span>🧸</span><b>Kids &amp; Toys</b></button>
+      <button type="button" onclick="openCategory('Beauty');closeAllCategories()"><span>💄</span><b>Beauty</b></button>
+      <button type="button" onclick="openCategory('Tools &amp; Machinery');closeAllCategories()"><span>🛠️</span><b>Tools &amp; Machinery</b></button>
+      <button type="button" onclick="openCategory('Second-hand');closeAllCategories()"><span>♻️</span><b>Second-hand</b></button>
+      <button type="button" onclick="openCategory('Other');closeAllCategories()"><span>📦</span><b>Other</b></button>
+    </div>
+  </div>
+</div>
 <button aria-label="माथि जानुहोस्" id="v52ScrollTop" title="माथि जानुहोस्" type="button">↑</button><div id="pullRefresh">↓ तल तान्नुहोस् र Refresh गर्नुहोस्</div>
+<style id="v52-all-categories-and-refresh-guard">
+.v52-all-categories-overlay{position:fixed;inset:0;z-index:10050;background:rgba(15,23,42,.42);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:18px}.v52-all-categories-overlay.hidden{display:none!important}.v52-all-categories-card{width:min(760px,100%);max-height:min(86vh,760px);overflow:auto;background:#fff;border:1px solid #e7eaf0;border-radius:24px;box-shadow:0 24px 70px rgba(15,23,42,.22);padding:18px}.v52-all-categories-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}.v52-all-categories-head small{color:#64748b;font-weight:800}.v52-all-categories-head h2{margin:3px 0 0;font-size:22px}.v52-all-categories-head>button{width:40px;height:40px;border:1px solid #e5e7eb;border-radius:50%;background:#fff;font-size:25px;line-height:1;cursor:pointer}.v52-all-categories-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.v52-all-categories-grid button{min-height:104px;border:1px solid #e8ebf1;background:linear-gradient(180deg,#fff,#f8fafc);border-radius:17px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer}.v52-all-categories-grid button:hover{border-color:#ffb0c5;transform:translateY(-1px)}.v52-all-categories-grid span{font-size:30px;line-height:1}.v52-all-categories-grid b{font-size:12px;text-align:center}.v52-current-home #pullRefresh{display:block}.v52-non-home-refresh-hidden{display:none!important}@media(max-width:600px){.v52-all-categories-overlay{padding:10px}.v52-all-categories-card{border-radius:20px;padding:14px}.v52-all-categories-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.v52-all-categories-grid button{min-height:92px}.v52-all-categories-grid span{font-size:27px}}@media(max-width:380px){.v52-all-categories-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
 <script id="kinbech-v52-country-catalog">
 window.KinbechCountryCatalog=[{"code":"AF","name":"Afghanistan"},{"code":"AL","name":"Albania"},{"code":"DZ","name":"Algeria"},{"code":"AD","name":"Andorra"},{"code":"AO","name":"Angola"},{"code":"AG","name":"Antigua and Barbuda"},{"code":"AR","name":"Argentina"},{"code":"AM","name":"Armenia"},{"code":"AU","name":"Australia"},{"code":"AT","name":"Austria"},{"code":"AZ","name":"Azerbaijan"},{"code":"BS","name":"Bahamas"},{"code":"BH","name":"Bahrain"},{"code":"BD","name":"Bangladesh"},{"code":"BB","name":"Barbados"},{"code":"BY","name":"Belarus"},{"code":"BE","name":"Belgium"},{"code":"BZ","name":"Belize"},{"code":"BJ","name":"Benin"},{"code":"BT","name":"Bhutan"},{"code":"BO","name":"Bolivia"},{"code":"BA","name":"Bosnia and Herzegovina"},{"code":"BW","name":"Botswana"},{"code":"BR","name":"Brazil"},{"code":"BN","name":"Brunei"},{"code":"BG","name":"Bulgaria"},{"code":"BF","name":"Burkina Faso"},{"code":"BI","name":"Burundi"},{"code":"CV","name":"Cabo Verde"},{"code":"KH","name":"Cambodia"},{"code":"CM","name":"Cameroon"},{"code":"CA","name":"Canada"},{"code":"CF","name":"Central African Republic"},{"code":"TD","name":"Chad"},{"code":"CL","name":"Chile"},{"code":"CN","name":"China"},{"code":"CO","name":"Colombia"},{"code":"KM","name":"Comoros"},{"code":"CG","name":"Congo"},{"code":"CR","name":"Costa Rica"},{"code":"HR","name":"Croatia"},{"code":"CU","name":"Cuba"},{"code":"CY","name":"Cyprus"},{"code":"CZ","name":"Czechia"},{"code":"CI","name":"Côte d'Ivoire"},{"code":"CD","name":"Democratic Republic of the Congo"},{"code":"DK","name":"Denmark"},{"code":"DJ","name":"Djibouti"},{"code":"DM","name":"Dominica"},{"code":"DO","name":"Dominican Republic"},{"code":"EC","name":"Ecuador"},{"code":"EG","name":"Egypt"},{"code":"SV","name":"El Salvador"},{"code":"GQ","name":"Equatorial Guinea"},{"code":"ER","name":"Eritrea"},{"code":"EE","name":"Estonia"},{"code":"SZ","name":"Eswatini"},{"code":"ET","name":"Ethiopia"},{"code":"FJ","name":"Fiji"},{"code":"FI","name":"Finland"},{"code":"FR","name":"France"},{"code":"GA","name":"Gabon"},{"code":"GM","name":"Gambia"},{"code":"GE","name":"Georgia"},{"code":"DE","name":"Germany"},{"code":"GH","name":"Ghana"},{"code":"GR","name":"Greece"},{"code":"GD","name":"Grenada"},{"code":"GT","name":"Guatemala"},{"code":"GN","name":"Guinea"},{"code":"GW","name":"Guinea-Bissau"},{"code":"GY","name":"Guyana"},{"code":"HT","name":"Haiti"},{"code":"HN","name":"Honduras"},{"code":"HU","name":"Hungary"},{"code":"IS","name":"Iceland"},{"code":"IN","name":"India"},{"code":"ID","name":"Indonesia"},{"code":"IR","name":"Iran"},{"code":"IQ","name":"Iraq"},{"code":"IE","name":"Ireland"},{"code":"IL","name":"Israel"},{"code":"IT","name":"Italy"},{"code":"JM","name":"Jamaica"},{"code":"JP","name":"Japan"},{"code":"JO","name":"Jordan"},{"code":"KZ","name":"Kazakhstan"},{"code":"KE","name":"Kenya"},{"code":"KI","name":"Kiribati"},{"code":"KW","name":"Kuwait"},{"code":"KG","name":"Kyrgyzstan"},{"code":"LA","name":"Laos"},{"code":"LV","name":"Latvia"},{"code":"LB","name":"Lebanon"},{"code":"LS","name":"Lesotho"},{"code":"LR","name":"Liberia"},{"code":"LY","name":"Libya"},{"code":"LI","name":"Liechtenstein"},{"code":"LT","name":"Lithuania"},{"code":"LU","name":"Luxembourg"},{"code":"MG","name":"Madagascar"},{"code":"MW","name":"Malawi"},{"code":"MY","name":"Malaysia"},{"code":"MV","name":"Maldives"},{"code":"ML","name":"Mali"},{"code":"MT","name":"Malta"},{"code":"MH","name":"Marshall Islands"},{"code":"MR","name":"Mauritania"},{"code":"MU","name":"Mauritius"},{"code":"MX","name":"Mexico"},{"code":"FM","name":"Micronesia"},{"code":"MD","name":"Moldova"},{"code":"MC","name":"Monaco"},{"code":"MN","name":"Mongolia"},{"code":"ME","name":"Montenegro"},{"code":"MA","name":"Morocco"},{"code":"MZ","name":"Mozambique"},{"code":"MM","name":"Myanmar"},{"code":"NA","name":"Namibia"},{"code":"NR","name":"Nauru"},{"code":"NP","name":"Nepal"},{"code":"NL","name":"Netherlands"},{"code":"NZ","name":"New Zealand"},{"code":"NI","name":"Nicaragua"},{"code":"NE","name":"Niger"},{"code":"NG","name":"Nigeria"},{"code":"KP","name":"North Korea"},{"code":"MK","name":"North Macedonia"},{"code":"NO","name":"Norway"},{"code":"OM","name":"Oman"},{"code":"PK","name":"Pakistan"},{"code":"PW","name":"Palau"},{"code":"PS","name":"Palestine"},{"code":"PA","name":"Panama"},{"code":"PG","name":"Papua New Guinea"},{"code":"PY","name":"Paraguay"},{"code":"PE","name":"Peru"},{"code":"PH","name":"Philippines"},{"code":"PL","name":"Poland"},{"code":"PT","name":"Portugal"},{"code":"QA","name":"Qatar"},{"code":"RO","name":"Romania"},{"code":"RU","name":"Russia"},{"code":"RW","name":"Rwanda"},{"code":"KN","name":"Saint Kitts and Nevis"},{"code":"LC","name":"Saint Lucia"},{"code":"VC","name":"Saint Vincent and the Grenadines"},{"code":"WS","name":"Samoa"},{"code":"SM","name":"San Marino"},{"code":"ST","name":"Sao Tome and Principe"},{"code":"SA","name":"Saudi Arabia"},{"code":"SN","name":"Senegal"},{"code":"RS","name":"Serbia"},{"code":"SC","name":"Seychelles"},{"code":"SL","name":"Sierra Leone"},{"code":"SG","name":"Singapore"},{"code":"SK","name":"Slovakia"},{"code":"SI","name":"Slovenia"},{"code":"SB","name":"Solomon Islands"},{"code":"SO","name":"Somalia"},{"code":"ZA","name":"South Africa"},{"code":"KR","name":"South Korea"},{"code":"SS","name":"South Sudan"},{"code":"ES","name":"Spain"},{"code":"LK","name":"Sri Lanka"},{"code":"SD","name":"Sudan"},{"code":"SR","name":"Suriname"},{"code":"SE","name":"Sweden"},{"code":"CH","name":"Switzerland"},{"code":"SY","name":"Syria"},{"code":"TJ","name":"Tajikistan"},{"code":"TZ","name":"Tanzania"},{"code":"TH","name":"Thailand"},{"code":"TL","name":"Timor-Leste"},{"code":"TG","name":"Togo"},{"code":"TO","name":"Tonga"},{"code":"TT","name":"Trinidad and Tobago"},{"code":"TN","name":"Tunisia"},{"code":"TR","name":"Turkiye"},{"code":"TM","name":"Turkmenistan"},{"code":"TV","name":"Tuvalu"},{"code":"UG","name":"Uganda"},{"code":"UA","name":"Ukraine"},{"code":"AE","name":"United Arab Emirates"},{"code":"GB","name":"United Kingdom"},{"code":"US","name":"United States"},{"code":"UY","name":"Uruguay"},{"code":"UZ","name":"Uzbekistan"},{"code":"VU","name":"Vanuatu"},{"code":"VA","name":"Vatican City"},{"code":"VE","name":"Venezuela"},{"code":"VN","name":"Vietnam"},{"code":"YE","name":"Yemen"},{"code":"ZM","name":"Zambia"},{"code":"ZW","name":"Zimbabwe"}];
 window.KinbechCountryFlag=function(code){return String(code||'').toUpperCase().replace(/[A-Z]/g,c=>String.fromCodePoint(127397+c.charCodeAt(0)));};
@@ -1333,6 +1368,13 @@ window.KinbechCountryFlag=function(code){return String(code||'').toUpperCase().r
   function renderDelivery(q){const sel=document.getElementById('deliveryCountry');if(!sel)return;const prev=sel.value||'Nepal';q=String(q||'').trim().toLowerCase();const rows=list.filter(c=>!q||c.name.toLowerCase().startsWith(q)||c.code.toLowerCase().startsWith(q));sel.innerHTML=rows.map(c=>`<option value="${c.name}" data-code="${c.code}">${window.KinbechCountryFlag(c.code)} ${c.name}</option>`).join('');if(rows.some(c=>c.name===prev))sel.value=prev;else if(rows[0])sel.value=rows[0].name;}
   window.KinbechRenderCountries=function(){renderKyc(document.getElementById('kycCountrySearch')?.value||'');renderDelivery(document.getElementById('deliveryCountrySearch')?.value||'');};
   document.addEventListener('DOMContentLoaded',()=>{renderKyc('');renderDelivery('');const ks=document.getElementById('kycCountrySearch');const ds=document.getElementById('deliveryCountrySearch');ks?.addEventListener('input',()=>renderKyc(ks.value));ds?.addEventListener('input',()=>renderDelivery(ds.value));});
+})();
+</script>
+<script id="v52-all-categories-controller">
+(function(){
+ function setOpen(open){const el=document.getElementById('v52AllCategoriesOverlay');if(!el)return;el.classList.toggle('hidden',!open);el.setAttribute('aria-hidden',String(!open));if(open)setTimeout(()=>el.querySelector('.v52-all-categories-head>button')?.focus(),0);}
+ window.openAllCategories=function(){setOpen(true)}; window.closeAllCategories=function(){setOpen(false)};
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')setOpen(false)}); document.addEventListener('click',e=>{const el=document.getElementById('v52AllCategoriesOverlay');if(el&&e.target===el)setOpen(false)});
 })();
 </script>
 <script id="kinbech-v52-mobile-menu">
@@ -1350,6 +1392,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(nav){nav.classList.remove('mobile-open');} if(btn)btn.setAttribute('aria-expanded','false');
   }));
 });
+</script>
+<script id="v52-dynamic-header-location">
+(function(){
+  function getLabel(){
+    try{
+      const raw=localStorage.getItem('kinbechLocation');
+      if(!raw)return 'Select location';
+      const d=JSON.parse(raw);
+      if(d && typeof d.text==='string' && d.text.trim()) return d.text.trim();
+      if(d && d.lat!=null && d.lng!=null) return 'Current location';
+    }catch(e){}
+    return 'Select location';
+  }
+  function sync(){document.querySelectorAll('.v52-location-label').forEach(el=>{el.textContent=getLabel();});}
+  window.v52SyncHeaderLocation=sync;
+  document.addEventListener('DOMContentLoaded',sync);
+  window.addEventListener('storage',e=>{if(e.key==='kinbechLocation')sync();});
+})();
 </script>
 <script id="kinbech-consolidated-js">
 
@@ -1526,6 +1586,8 @@ window.v52Nav = window.v52Nav || function(id){
   if(typeof window.show==='function') window.show(id);
 };
 function v52UpdateHomeFloatingTools(view){
+  document.body.classList.toggle('v52-current-home', view==='home');
+  if(view!=='home') window.closeAllCategories?.();
   const isDetail = view==='detail';
   const floatNav=document.getElementById('v52FloatingProductNav');
   if(floatNav){
@@ -1554,6 +1616,8 @@ function show(id, options={}){
   if(!options.restore && id !== window.v52CurrentView) window.v52SavePosition(window.v52CurrentView);
   ids.forEach(x=>{const el=document.getElementById(x); if(el) el.classList.toggle('hidden',x!==id);});
   window.v52CurrentView = id;
+  document.body.classList.toggle('v52-current-home', id==='home');
+  if(id!=='home') window.closeAllCategories?.();
 
   if(options.restore){
     window.v52Restoring = true;
@@ -1611,11 +1675,6 @@ async function doSearch(){
 
 window.openCategory=async function(category){
   const key=String(category||'').trim(); if(!key)return;
-  try{
-    const policy=await fetch('/api/category-policies/check?category='+encodeURIComponent(key),{credentials:'include'});
-    if(policy.status===401){show('login');v52Alert('यो category हेर्न पहिले Login गर्नुहोस्।');return;}
-    if(!policy.ok){const d=await policy.json().catch(()=>({}));v52Alert(d.message||d.error||'यो category अहिले उपलब्ध छैन।');return;}
-  }catch(e){ console.warn('Category policy check unavailable:',e.message); }
   show('home');
   const grid=document.getElementById('grid'), title=document.querySelector('#products h2');
   try{
@@ -1744,15 +1803,19 @@ function refreshPage(){ window.location.reload(); }
   let startY=0, active=false, triggered=false;
   const indicator=document.getElementById('pullRefresh');
   function setIndicator(show){if(indicator) indicator.classList.toggle('show',show);}
+  function isHomeVisible(){const h=document.getElementById('home');return !!h && !h.classList.contains('hidden');}
   document.addEventListener('touchstart',e=>{
+    if(!isHomeVisible()){active=false;setIndicator(false);return;}
     if(window.scrollY<=2 && e.touches.length===1){startY=e.touches[0].clientY;active=true;triggered=false;} else active=false;
   },{passive:true});
   document.addEventListener('touchmove',e=>{
+    if(!isHomeVisible()){active=false;setIndicator(false);return;}
     if(!active || e.touches.length!==1) return;
     const dy=e.touches[0].clientY-startY;
     if(dy>10){ setIndicator(dy>55); if(dy>90) triggered=true; }
   },{passive:true});
   document.addEventListener('touchend',()=>{
+    if(!isHomeVisible()){active=false;setIndicator(false);return;}
     if(!active)return;
     const doRefresh=triggered; active=false; setIndicator(false);
     if(doRefresh){setTimeout(()=>window.location.reload(),80);}
@@ -1793,6 +1856,7 @@ function refreshPage(){ window.location.reload(); }
     'Kids & Toys':['kids','kids & toys','toys'],
     Beauty:['beauty'],
     'Tools & Machinery':['tools','tools & machinery','machinery'],
+    'Second-hand':['second-hand','second hand','used','pre-owned'],
     Other:['other','others']
   };
   const categoryKey = category => String(category||'').trim();
@@ -2137,12 +2201,10 @@ window.continuePaymentReal = window.continuePaymentReal || function(){
 <script id="v52-category-policy-js">
 (function(){
   const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  async function policy(category){try{const r=await fetch('/api/category-policies/check?category='+encodeURIComponent(category),{credentials:'include'});return await r.json()}catch(e){return {allowed:true,serverUnavailable:true}}}
+  // V52: Category policy remains an Admin/server-side control for restricted goods.
+  // Normal category browsing must remain open to buyers/guests.
   const originalOpen=window.openCategory;
   window.openCategory=async function(category){
-    const p=await policy(category);
-    if(p.serverUnavailable){if(typeof originalOpen==='function') return originalOpen(category);return;}
-    if(!p.allowed){v52Alert(p.message||'यो category तपाईंको account बाट access गर्न मिल्दैन।');return;}
     if(typeof originalOpen==='function') return originalOpen(category);
   };
   async function load(){
@@ -2246,7 +2308,7 @@ window.continuePaymentReal = window.continuePaymentReal || function(){
 <div class="kbp-center-box"><h3>🛒 Shopping</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.orders()">📦 Orders</button><button onclick="show('cart');KinbechCenter.close()">🛒 Cart</button><button onclick="KinbechCenter.wishlist()">❤️ Wishlist</button><button onclick="KinbechCenter.addresses()">📍 Addresses</button></div><div class="kbp-center-list" id="kcShopping"><div class="kbp-center-muted">Choose a section.</div></div></div>
 <div class="kbp-center-box"><h3>💬 Communication</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.chats()">Open Chats</button><button onclick="loadNotifications();KinbechCenter.notifications()">🔔 Notifications</button></div><div class="kbp-center-list" id="kcComms"><div class="kbp-center-muted">Messages and notifications use the server APIs.</div></div></div>
 <div class="kbp-center-box"><h3>🏪 Seller Center</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.seller()">Dashboard</button><button onclick="KinbechCenter.withdraw()">Withdrawal</button></div><div class="kbp-center-list" id="kcSeller"><div class="kbp-center-muted">Seller KYC and transaction rules remain enforced server-side.</div></div></div>
-<div class="kbp-center-box"><h3>💳 Payments</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.paymentInfo()">Payment Status</button><button onclick="KinbechCenter.international()">🌍 International</button></div><div class="kbp-center-list" id="kcPayment"><div class="kbp-center-muted">No fake success is shown. Real gateway credentials are required.</div></div></div>
+<div class="kbp-center-box"><h3>💳 Payments</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.paymentInfo()">💳 Payments</button><button onclick="KinbechCenter.international()">💳 International Payment</button><button onclick="KinbechCenter.worldwide()">🌍 Worldwide Payment</button></div><div class="kbp-center-list" id="kcPayment"><div class="kbp-center-muted">No fake success is shown. Real gateway credentials are required.</div></div></div>
 <div class="kbp-center-box"><h3>🛡️ Safety &amp; Support</h3><div class="kbp-center-actions"><button onclick="show('safety');KinbechCenter.close()">Safety</button><button onclick="show('profile');setTimeout(()=&gt;window.kbpGo?.('report',true),50);KinbechCenter.close()">Report</button><button onclick="show('profile');setTimeout(()=&gt;window.kbpGo?.('support',true),50);KinbechCenter.close()">Support</button></div><div class="kbp-center-muted">Fraud reports, disputes and refunds remain tied to real orders.</div></div>
 <div class="kbp-center-box" id="kcAdminBox" style="display:none"><h3>🛠️ Admin</h3><div class="kbp-center-actions"><button onclick="KinbechCenter.adminAnalytics()">Analytics</button><button onclick="KinbechCenter.adminOrders()">📦 Orders</button><button onclick="KinbechCenter.adminCases()">Reports / Disputes</button><button onclick="KinbechCenter.adminWithdrawals()">💰 Withdrawals</button></div><div class="kbp-center-list" id="kcAdmin"></div></div>
 </div>
@@ -2277,8 +2339,10 @@ window.continuePaymentReal = window.continuePaymentReal || function(){
   async notifications(){try{const d=await api2('/api/notifications');box('kcComms').innerHTML=(d.items||[]).map(n=>`<div class="kbp-center-item"><b>${esc(n.title)}</b><div>${esc(n.body)}</div><small>${new Date(n.created_at).toLocaleString()}</small></div>`).join('')||'<div class="kbp-center-muted">No notifications.</div>'}catch(e){v52Alert(e.message)}},
   async seller(){try{const d=await api2('/api/seller/dashboard');box('kcSeller').innerHTML=`<div class="kbp-center-item"><b>Listings:</b> ${esc(d.listings)}<br><b>Orders:</b> ${esc(d.orders)}<br><b>Sales:</b> ${money(d.sales)}<br><b>Rating:</b> ${esc(d.rating)}</div>`}catch(e){v52Alert(e.message)}},
   async withdraw(){const amount=prompt('Withdrawal amount (NPR):');if(!amount)return;try{const d=await api2('/api/seller/withdrawals',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amount})});v52Alert('Withdrawal request: '+d.request.id)}catch(e){v52Alert(e.message)}},
-  paymentInfo(){box('kcPayment').innerHTML='<div class="kbp-center-item">Domestic gateways: eSewa / Khalti / Bank / COD. International card flow is prepared but must be enabled only after approved gateway merchant credentials and return/webhook configuration are supplied.</div>'},
-  international(){box('kcPayment').innerHTML='<div class="kbp-center-item"><b>🌍 International payments</b><p>Kinbech supports an adapter slot for an approved Nepal acquiring gateway that accepts international Visa/Mastercard/UnionPay. No fake payment is enabled.</p><div class="kbp-center-muted">Recommended onboarding path: Nepal acquiring bank / gateway with international-card acceptance, then enter credentials in Super Admin Payment Provider.</div></div>'},
+  paymentInfo(){box('kcPayment').innerHTML='<div class="kbp-center-item"><button onclick="KinbechCenter.clearPayment()">← Back to Payments</button><br><br>Domestic gateways: eSewa / Khalti / Bank / COD. International card flow is prepared but must be enabled only after approved gateway merchant credentials and return/webhook configuration are supplied.</div>'},
+  international(){box('kcPayment').innerHTML='<div class="kbp-center-item"><button onclick="KinbechCenter.clearPayment()">← Back to Payments</button><br><br><b>💳 International payments</b><p>Kinbech supports an adapter slot for an approved Nepal acquiring gateway that accepts international Visa/Mastercard/UnionPay. No fake payment is enabled.</p><div class="kbp-center-muted">Recommended onboarding path: Nepal acquiring bank / gateway with international-card acceptance, then enter credentials in Super Admin Payment Provider.</div></div>'},
+   clearPayment(){box('kcPayment').innerHTML='<div class="kbp-center-muted">Choose a payment section.</div>'},
+   worldwide(){box('kcPayment').innerHTML='<div class="kbp-center-item"><button onclick="KinbechCenter.clearPayment()">← Back to Payments</button><br><br><b>🌍 Worldwide Payment</b><p>Worldwide provider structure is ready for approved provider configuration. Real payment processing is not enabled in V52.</p></div>'},
   async adminOrders(){try{const d=await api2('/api/admin/orders?limit=100');const items=d.items||[];box('kcAdmin').innerHTML='<div class="kbp-center-item"><h3 style="margin-top:0">📦 Order Management</h3><div class="kbp-center-actions"><select id="kcAdminOrderStatus" class="kbp-center-input" style="margin:0"><option value="">All statuses</option><option>pending</option><option>paid</option><option>packed</option><option>shipped</option><option>delivered</option><option>cancelled</option></select><button class="primary" onclick="KinbechCenter.adminOrdersFilter()">Filter</button></div><div class="kbp-center-list">'+items.map(o=>'<div class="kbp-center-item"><b>Order #'+esc(o.id)+'</b><div>'+money(o.total_amount)+' · <span class="kbp-chip">'+esc(o.status)+'</span></div><small>Buyer: '+esc(o.buyer_email||o.buyer_id)+' · Seller: '+esc(o.seller_email||o.seller_id)+'</small><div class="kbp-center-actions"><button onclick="KinbechCenter.orderDetail(\''+o.id+'\')">Details</button><button onclick="KinbechCenter.adminOrderStatus(\''+o.id+'\')">Change Status</button><button onclick="KinbechCenter.adminDelivery(\''+o.id+'\')">🚚 Delivery</button></div></div>').join('')||'<div class="kbp-center-muted">No orders.</div>'+'</div></div>'}catch(e){v52Alert(e.message)}},
   async adminOrdersFilter(){const st=box('kcAdminOrderStatus')?.value||'';try{const d=await api2('/api/admin/orders?limit=100'+(st?'&status='+encodeURIComponent(st):''));const items=d.items||[];box('kcAdmin').querySelector('.kbp-center-list').innerHTML=items.map(o=>'<div class="kbp-center-item"><b>Order #'+esc(o.id)+'</b><div>'+money(o.total_amount)+' · <span class="kbp-chip">'+esc(o.status)+'</span></div><small>Buyer: '+esc(o.buyer_email||o.buyer_id)+' · Seller: '+esc(o.seller_email||o.seller_id)+'</small><div class="kbp-center-actions"><button onclick="KinbechCenter.orderDetail(\''+o.id+'\')">Details</button><button onclick="KinbechCenter.adminOrderStatus(\''+o.id+'\')">Change Status</button><button onclick="KinbechCenter.adminDelivery(\''+o.id+'\')">🚚 Delivery</button></div></div>').join('')||'<div class="kbp-center-muted">No orders.</div>'}catch(e){v52Alert(e.message)}},
   async adminOrderStatus(id){const status=prompt('New status: pending / paid / packed / shipped / delivered / cancelled');if(!status)return;const note=prompt('Admin note (optional):','');try{await api2('/api/admin/orders/'+encodeURIComponent(id)+'/status',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status,note})});v52Alert('Order status updated.');this.adminOrders()}catch(e){v52Alert(e.message)}},
@@ -3230,7 +3294,7 @@ body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-
 <style id="v52-home-header-location-final">
 /* V52: Homepage mobile header — exact two-row position requested:
    Row 1: ☰ किनबेच.com
-   Row 2: 🌐 📍 Kathmandu Change
+   Row 2: 🌐 📍 [Current Location] Change
    Search remains below as its own row. */
 @media(max-width:700px){
   body:has(#home:not(.hidden))>header .top{
@@ -3371,7 +3435,7 @@ body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-
      <div class="kbBuyerV52_card"><h4>🛒 Cart</h4><div class="kbBuyerV52_stat">2</div><p>Cart items</p></div>
      <div class="kbBuyerV52_card"><h4>📦 Orders</h4><div class="kbBuyerV52_stat">3</div><p>Active / recent orders</p></div>
      <div class="kbBuyerV52_card"><h4>♡ Favorites</h4><div class="kbBuyerV52_stat">5</div><p>Saved products</p></div>
-     <div class="kbBuyerV52_card"><h4>🔔 Alerts</h4><div class="kbBuyerV52_stat">2</div><p>Unread notifications</p></div>
+     <div class="kbBuyerV52_card"><h4>🔔 Alerts</h4><div class="kbBuyerV52_stat">0</div><p>Unread notifications</p></div>
     </div>
     <div class="kbBuyerV52_section"><h3>Buyer Flow</h3><div class="kbBuyerV52_grid">
      <button class="kbBuyerV52_card" onclick="kbBuyerV52Screen('product')"><h4>🛍️ Product Details</h4><p>Photo, price, variants, stock, seller and Buy/Add Cart.</p></button>
@@ -3808,20 +3872,195 @@ if(location.hash==='#profile')open('main');
 
 <script>
 function isLoggedIn(){
-  try {
-    if(window.__kinbechAuthUser) return true;
-    if(typeof window.kinbechIsLoggedIn==='function' && window.kinbechIsLoggedIn()) return true;
-    return localStorage.getItem('kinbechLoggedIn') === 'true';
-  } catch(e) { return !!window.__kinbechAuthUser; }
+  return !!(window.__kinbechAuthUser && typeof window.__kinbechAuthUser === 'object');
 }
 window.handleProfileIcon = function(event){
-  if(event) event.preventDefault();
+  if(event){ event.preventDefault(); event.stopPropagation(); }
   if(isLoggedIn()){
     if(typeof window.show === 'function') window.show('profile');
   } else {
     if(typeof window.show === 'function') window.show('login');
   }
 };
+window.handleMessagesIcon=function(event){
+  if(event){event.preventDefault();event.stopPropagation();}
+  if(isLoggedIn()){ if(typeof window.kbpGo==='function') window.kbpGo('messages',true); }
+  else if(typeof window.show==='function') window.show('login');
+};
+window.handleKycNav=function(event){
+  if(event){event.preventDefault();event.stopPropagation();}
+  if(isLoggedIn()){ if(typeof window.kbpGo==='function') window.kbpGo('kyc',true); else window.show?.('profile'); }
+  else window.show?.('login');
+};
+window.showAdminV52=function(){
+  const role=window.__kinbechAuthUser?.role;
+  if(['admin','full_admin','super_admin'].includes(role)) window.show?.('admin');
+  else window.show?.('login');
+};
+window.v52OpenLocationSelector=function(){
+  if(typeof window.openLocationPicker==='function') return window.openLocationPicker();
+  const modal=document.getElementById('locationModal');
+  if(modal){modal.classList.remove('hidden');return;}
+  window.v52Alert?.('Location selector is ready for the existing location system.');
+};
+</script>
+
+
+<!-- V52 handler completion: restores UI handlers that were referenced by existing buttons. Structure-only; backend remains deferred. -->
+<script id="v52-handler-completion">
+(function(){
+  'use strict';
+  const apiCall=window.KinbechV52API || (async function(url,opts={}){
+    const r=await fetch(url,{credentials:'include',...opts});
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error||d.message||'Request failed');
+    return d;
+  });
+  const setStatus=(id,msg,error)=>{
+    const el=document.getElementById(id); if(!el)return;
+    el.textContent=msg; el.classList.remove('hidden');
+    el.style.color=error?'#b42318':'#3970ad';
+  };
+
+  // Registration: separate Buyer/Seller account flow.
+  window.kinbechSignup=async function(){
+    const username=(document.getElementById('signupUsername')?.value||'').trim();
+    const email=(document.getElementById('signupEmail')?.value||'').trim();
+    const phone=(document.getElementById('signupPhone')?.value||'').trim();
+    const role=document.getElementById('signupRole')?.value||'buyer';
+    const password=document.getElementById('signupPassword')?.value||'';
+    const password2=document.getElementById('signupPassword2')?.value||'';
+    if(!username || (!email&&!phone) || !password) return setStatus('signupStatus','Username, email/phone र password आवश्यक छ।',true);
+    if(password.length<15) return setStatus('signupStatus','Password कम्तीमा 15 characters हुनुपर्छ।',true);
+    if(password!==password2) return setStatus('signupStatus','Password र Confirm Password मिलेन।',true);
+    try{
+      const d=await apiCall('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,email:email||null,phone:phone||null,role,password})});
+      setStatus('signupStatus',d.message||'Account registration flow तयार छ।',false);
+      if(d.user) window.__kinbechAuthUser=d.user;
+      setTimeout(()=>window.show?.(d.user?'profile':'login'),300);
+    }catch(e){setStatus('signupStatus',e.message||'Registration failed.',true);}
+  };
+
+  // Forgot-password request + reset flow.
+  window.kinbechRequestReset=async function(){
+    const destination=(document.getElementById('forgotDestination')?.value||'').trim();
+    if(!destination) return setStatus('forgotStatus','Email वा phone आवश्यक छ।',true);
+    try{
+      const d=await apiCall('/api/auth/password/request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({destination})});
+      document.getElementById('forgotVerify')?.classList.remove('hidden');
+      setStatus('forgotStatus',d.message||'Verification code पठाउने flow तयार छ।',false);
+    }catch(e){setStatus('forgotStatus',e.message||'Verification request failed.',true);}
+  };
+  window.kinbechResetPassword=async function(){
+    const destination=(document.getElementById('forgotDestination')?.value||'').trim();
+    const otp=(document.getElementById('forgotOtp')?.value||'').trim();
+    const password=document.getElementById('forgotNewPassword')?.value||'';
+    const password2=document.getElementById('forgotNewPassword2')?.value||'';
+    if(!destination||!otp||!password) return setStatus('forgotStatus','सबै आवश्यक field भर्नुहोस्।',true);
+    if(password.length<15) return setStatus('forgotStatus','Password कम्तीमा 15 characters हुनुपर्छ।',true);
+    if(password!==password2) return setStatus('forgotStatus','New Password र Confirm Password मिलेन।',true);
+    try{
+      const d=await apiCall('/api/auth/password/reset',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({destination,otp,password})});
+      setStatus('forgotStatus',d.message||'Password reset flow तयार छ। अब Login गर्नुहोस्।',false);
+      setTimeout(()=>window.show?.('login'),500);
+    }catch(e){setStatus('forgotStatus',e.message||'Password reset failed.',true);}
+  };
+
+  // Legacy KYC screen now safely forwards into the structured V52 KYC screen.
+  window.submitKycReal=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    if(typeof window.kbpGo==='function') window.kbpGo('kyc');
+    else window.show?.('profile');
+  };
+
+  // Profile Center save action.
+  window.kbpSaveProfile=async function(){
+    if(typeof window.saveProfile==='function') return window.saveProfile();
+    const name=(document.getElementById('profileName')?.value||'').trim();
+    if(!name)return window.v52Alert?.('नाम आवश्यक छ।');
+    try{
+      await apiCall('/api/profile',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({displayName:name})});
+      const d=document.getElementById('profileNameDisplay'); if(d)d.textContent=name;
+      window.v52Alert?.('Profile save flow तयार छ।');
+    }catch(e){window.v52Alert?.(e.message||'Profile save failed.');}
+  };
+
+  // KYC document save button: keep the existing preview and expose a safe local download when possible.
+  window.kbpSaveDocument=function(){
+    const img=document.getElementById('documentLargePreview');
+    if(img?.src && !img.classList.contains('hidden')){
+      const a=document.createElement('a'); a.href=img.src; a.download='kinbech-document-preview'; a.target='_blank'; a.click();
+      return;
+    }
+    window.v52Alert?.('Document preview उपलब्ध भएपछि मात्र Save to Gallery गर्न सकिन्छ।');
+  };
+
+  // Change-password flow.
+  window.kbpSendPasswordOtp=async function(){
+    const status='passwordOtpStatus';
+    try{
+      const d=await apiCall('/api/auth/password/change/otp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({})});
+      setStatus(status,d.message||'OTP पठाउने flow तयार छ।',false);
+    }catch(e){setStatus(status,e.message||'OTP request failed.',true);}
+  };
+  window.kbpChangePassword=async function(){
+    const currentPassword=document.getElementById('currentPassword')?.value||'';
+    const otp=document.getElementById('passwordOtp')?.value||'';
+    const password=document.getElementById('newPassword')?.value||'';
+    const password2=document.getElementById('confirmPassword')?.value||'';
+    if(!currentPassword||!otp||!password)return window.v52Alert?.('Current password, OTP र new password आवश्यक छ।');
+    if(password.length<15)return window.v52Alert?.('New password कम्तीमा 15 characters हुनुपर्छ।');
+    if(password!==password2)return window.v52Alert?.('New password र confirmation मिलेन।');
+    try{
+      await apiCall('/api/auth/password/change',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({currentPassword,otp,newPassword:password})});
+      window.v52Alert?.('Password change flow सफल भयो।');
+    }catch(e){window.v52Alert?.(e.message||'Password change failed.');}
+  };
+
+  // Account deletion request.
+  window.kbpSubmitDeletion=async function(){
+    const reason=document.getElementById('deletionReason')?.value||'';
+    const details=(document.getElementById('deletionDetails')?.value||'').trim();
+    const confirm=document.getElementById('deletionConfirm')?.checked;
+    if(!confirm)return window.v52Alert?.('Deletion request अघि confirmation आवश्यक छ।');
+    if(!reason || reason==='Select a reason')return window.v52Alert?.('कृपया deletion reason छान्नुहोस्।');
+    try{
+      await apiCall('/api/account/deletion-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({reason,details})});
+      window.v52Alert?.('Account deletion request review का लागि पठाउने flow तयार छ।');
+    }catch(e){window.v52Alert?.(e.message||'Deletion request failed.');}
+  };
+
+  // Payment tab switching.
+  window.kbpPaymentTab=function(tab,button){
+    const map={national:'paymentNational',international:'paymentInternational',worldwide:'paymentWorldwide'};
+    Object.keys(map).forEach(k=>document.getElementById(map[k])?.classList.toggle('hidden',k!==tab));
+    document.querySelectorAll('.kbp-payment-tabs button').forEach(b=>b.classList.remove('active'));
+    if(button)button.classList.add('active');
+    if(tab==='worldwide') window.KinbechWorldwideAdmin?.open?.();
+  };
+
+  // Admin Blue Tick controls remain server-authoritative; V52 structure mode only.
+  async function adminBlueTick(action){
+    if(!window.__kinbechAuthUser || !['admin','full_admin','super_admin'].includes(window.__kinbechAuthUser.role)) return window.show?.('login');
+    const target=window.__activeProfileUserId || document.body.dataset.profileUserId || null;
+    try{
+      const d=await apiCall('/api/admin/blue-tick',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,userId:target})});
+      window.v52Alert?.(d.message||(action==='grant'?'Blue Tick grant flow तयार छ।':'Blue Tick revoke flow तयार छ।'));
+      window.checkBlueTickEligibility?.();
+    }catch(e){window.v52Alert?.(e.message||'Blue Tick update failed.');}
+  }
+  window.adminGiveBlueTick=()=>adminBlueTick('grant');
+  window.adminRevokeBlueTick=()=>adminBlueTick('revoke');
+
+  // Existing header buttons that were still pointing at the old inline handlers.
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('header .header-nav a').forEach(a=>{
+      if((a.textContent||'').includes('KYC')) a.setAttribute('onclick','handleKycNav(event);return false;');
+      if((a.textContent||'').includes('Admin')) a.setAttribute('onclick','showAdminV52();return false;');
+    });
+    document.querySelectorAll('header .actions button[title="Messages"]').forEach(b=>b.setAttribute('onclick','handleMessagesIcon(event);return false;'));
+  });
+})();
 </script>
 
 </body>
