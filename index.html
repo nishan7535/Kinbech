@@ -1,5 +1,6 @@
  <!DOCTYPE html>
 <html lang="ne"><head>
+<!-- V52 FINAL HEADER LOCATION: mobile = menu/logo/actions row, then 🌐 📍 Select location Change row, then search. -->
 <!-- Kinbech V52 KYC V52 Complete Master: preserves the V52 KYC UI and server-backed V52 KYC flow. --><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><title>किनबेच.com — Master Marketplace</title>
 <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -368,7 +369,7 @@ body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;
 .v52-header-location .v52-header-place{font-size:12px;font-weight:700;color:#111827}
 .v52-header-location button{border:0;background:transparent;color:#ef174f;font-weight:800;font-size:12px;padding:4px 0;cursor:pointer}
 .v52-header-location select{position:absolute;inset:0;width:24px;height:28px;opacity:0;cursor:pointer;left:0}
-@media(max-width:700px){body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;position:absolute;right:12px;top:58px;z-index:30;padding:4px 0;background:#fff}.v52-header-location .v52-header-place{font-size:11px}.v52-header-location button{font-size:11px}.v52-header-location select{width:30px;height:30px}.v52-native-home{padding-top:50px}}
+@media(max-width:700px){body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;position:absolute;left:12px;right:auto;top:58px;z-index:30;padding:4px 0;background:#fff}.v52-header-location .v52-header-place{font-size:11px}.v52-header-location button{font-size:11px}.v52-header-location select{width:30px;height:30px}.v52-native-home{padding-top:50px}}
 </style>
 <style id="kinbech-national-payment-ui">
 .kbnp-overlay{position:fixed;inset:0;background:rgba(12,18,30,.58);z-index:100000;display:flex;align-items:center;justify-content:center;padding:14px;overflow:auto}.kbnp-modal{width:min(720px,100%);max-height:94vh;overflow:auto;background:#fff;border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.22);padding:18px}.kbnp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #edf0f4;padding-bottom:12px}.kbnp-head h3{margin:0;font-size:17px}.kbnp-close{border:0;background:#f3f5f7;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:18px}.kbnp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:14px 0}.kbnp-provider{border:1px solid #e2e7ee;background:#fff;border-radius:12px;padding:12px;text-align:left;cursor:pointer}.kbnp-provider b{display:block;font-size:12px}.kbnp-provider small{display:block;color:#718096;font-size:9px;margin-top:3px}.kbnp-provider em{display:inline-block;font-style:normal;font-size:8px;font-weight:900;padding:4px 6px;border-radius:10px;margin-top:7px}.kbnp-available{background:#dff7ea;color:#16824a}.kbnp-maintenance{background:#fff1d5;color:#b87800}.kbnp-disabled{background:#ffe5e5;color:#c43c3c}.kbnp-form label{display:block;font-size:11px;font-weight:800;margin:10px 0 5px}.kbnp-form input,.kbnp-form select,.kbnp-form textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #dbe3ec;border-radius:9px;background:#fafcff;font:inherit}.kbnp-note{padding:10px;border-radius:10px;background:#f3f8ff;border:1px solid #d9e9fb;color:#49647f;font-size:10px;line-height:1.45;margin:10px 0}.kbnp-method{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;border:1px solid #e1e6ed;border-radius:12px;padding:11px;margin:8px 14px}.kbnp-method b{display:block;font-size:11px}.kbnp-method small{display:block;color:#718096;font-size:9px;margin-top:3px}.kbnp-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.kbnp-actions button{border:1px solid #dbe3ec;background:#fff;border-radius:7px;padding:6px 8px;font-size:9px;font-weight:800;cursor:pointer}.kbnp-status{font-style:normal;font-size:8px;font-weight:900;padding:5px 7px;border-radius:10px}.kbnp-verified{background:#dff7ea;color:#16824a}.kbnp-pending{background:#fff1d5;color:#b87800}.kbnp-rejected{background:#ffe5e5;color:#c43c3c}.kbnp-locked{opacity:.58}.kbnp-admin-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border:1px solid #e1e6ed;border-radius:11px;padding:10px;margin:6px 0}.kbnp-admin-row b{font-size:10px}.kbnp-admin-row small{display:block;color:#718096;font-size:8px}.kbnp-admin-row select{padding:7px;border:1px solid #dbe3ec;border-radius:7px;font-size:9px}
@@ -759,7 +760,7 @@ body:has(#home:not(.hidden)) .v52-native-home{padding-bottom:16px!important;}
 </style>
 
 <style id="v52-category-photo-css">
-.v52nh-cats .v52-cat-photo{overflow:hidden;padding:0;width:52px;height:52px;margin:0 auto 5px;border-radius:50%;display:block;background:#fafafa;border:1px solid #ededf1;box-shadow:0 2px 8px rgba(17,24,39,.04);font-size:0}
+.v52nh-cats .v52-cat-photo{overflow:hidden;padding:0;width:52px;height:52px;margin:0 auto 5px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fafafa;border:1px solid #ededf1;box-shadow:0 2px 8px rgba(17,24,39,.04);font-size:34px;line-height:1;font-style:normal;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .v52nh-cats .v52-cat-photo img,.v52-ref-cat .ico img{width:100%;height:100%;display:block;object-fit:cover;border-radius:inherit}
 .v52nh-cats .v52-cat-photo img{object-position:center}
 .v52nh-cats button:first-child .v52-cat-photo img{object-fit:contain!important;padding:3px;box-sizing:border-box;background:#fff}
@@ -788,8 +789,8 @@ header .actions .profile-menu .profile-btn *{pointer-events:none!important}
 @media (max-width:700px){
   .v52nh-cats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px!important;overflow:visible!important;}
   .v52nh-cats>button{min-width:0!important;min-height:88px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;padding:8px 4px!important;overflow:visible!important;}
-  .v52nh-cats>button .v52-cat-photo{display:block!important;visibility:visible!important;opacity:1!important;width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important;max-width:58px!important;max-height:58px!important;margin:0 auto 6px!important;padding:0!important;border-radius:50%!important;overflow:hidden!important;background:#fff!important;border:1px solid #e5e7eb!important;}
-  .v52nh-cats>button .v52-cat-photo img{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:100%!important;min-width:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center!important;border-radius:50%!important;}
+  .v52nh-cats>button .v52-cat-photo{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;width:58px!important;height:58px!important;min-width:58px!important;min-height:58px!important;max-width:58px!important;max-height:58px!important;margin:0 auto 6px!important;padding:0!important;border-radius:50%!important;overflow:hidden!important;background:#fff!important;border:1px solid #e5e7eb!important;}
+  .v52nh-cats>button .v52-cat-photo{font-size:32px!important;line-height:1!important;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;font-style:normal!important;} .v52nh-cats>button .v52-cat-photo img{display:block!important;visibility:visible!important;opacity:1!important;width:100%!important;height:100%!important;min-width:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center!important;border-radius:50%!important;}
   .v52nh-cats>button .v52-cat-photo+span{display:block!important;font-size:12px!important;line-height:1.2!important;text-align:center!important;white-space:normal!important;}
 }
 </style>
@@ -809,7 +810,451 @@ body:has(#profile:not(.hidden)) > #kbSellerReviewsV52 { display:none!important; 
 body.v52-all-categories-open{overflow:hidden}
 body:not(.v52-current-home) #pullRefresh{display:none!important}
 body.v52-current-home #pullRefresh{display:block}
-</style></head><body>
+</style>
+<style id="v52-final-category-location-polish">
+@media(max-width:700px){
+ body:has(#home:not(.hidden))>header .top{grid-template-columns:40px minmax(0,1fr) auto;grid-template-areas:"menu logo actions" "location location location" "search search search";align-items:center;}
+ body:has(#home:not(.hidden))>header .v52-header-location{grid-area:location!important;display:flex!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin:0!important;padding:2px 0 3px!important;gap:7px!important;justify-content:flex-start!important;align-items:center!important;background:#fff!important;overflow:visible!important;z-index:30!important;}
+ body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{display:inline-flex!important;visibility:visible!important;opacity:1!important;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;font-size:17px!important;}
+ body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px!important;}
+ body:has(#home:not(.hidden))>header .v52-header-location button{font-size:11px!important;padding:2px 0!important;}
+ body:has(#home:not(.hidden)) .v52-native-home{padding-top:0!important;}
+}
+.v52-ref-cat .ico,.v52-all-categories-grid button span{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;font-style:normal!important;font-weight:400!important;visibility:visible!important;opacity:1!important;color:initial!important;}
+.v52-ref-cat .v52-cat-icon{display:inline-flex!important;visibility:visible!important;opacity:1!important;}
+</style>
+<style id="v52-final-mobile-header-authoritative">
+/* V52 FINAL: exact mobile header structure
+   Row 1: ☰  किनबेच.com 🇳🇵  [actions]
+   Row 2: 🌐 📍 Select location  Change
+   Row 3: Search
+*/
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    grid-template-areas:
+      "menu logo actions"
+      "location location location"
+      "search search search"!important;
+    gap:8px 9px!important;
+    align-items:center!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important;
+    display:flex!important;
+    position:static!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    width:100%!important;
+    margin:0!important;
+    padding:2px 0 4px!important;
+    justify-content:flex-start!important;
+    align-items:center!important;
+    gap:7px!important;
+    background:#fff!important;
+    z-index:2!important;
+    overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{
+    display:inline-flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;
+    font-size:17px!important;
+    line-height:1!important;
+    flex:0 0 auto!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{
+    font-size:12px!important;
+    flex:0 0 auto!important;
+    white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location button{
+    font-size:12px!important;
+    padding:2px 0!important;
+    flex:0 0 auto!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location select{
+    position:absolute!important;
+    left:0!important;
+    right:auto!important;
+    top:auto!important;
+    width:30px!important;
+    height:30px!important;
+  }
+  body:has(#home:not(.hidden)) .v52-native-home{
+    padding-top:0!important;
+  }
+
+  /* Emoji category icons: do not use the old image-only/font-size:0 rule. */
+  body:has(#home:not(.hidden)) #home .v52nh-cats .v52-cat-photo{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    visibility:visible!important;
+    opacity:1!important;
+    width:58px!important;
+    height:58px!important;
+    min-width:58px!important;
+    min-height:58px!important;
+    margin:0 auto 6px!important;
+    padding:0!important;
+    border-radius:50%!important;
+    overflow:hidden!important;
+    background:#fff!important;
+    font-size:32px!important;
+    line-height:1!important;
+    font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;
+    font-style:normal!important;
+  }
+}
+</style>
+
+<style id="v52-final-mobile-header-one-row">
+/* V52 FINAL: mobile homepage header — menu, logo, location and search stay on ONE top row. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    align-items:center!important;
+    gap:6px!important;
+    padding:9px 8px!important;
+    overflow:hidden!important;
+  }
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
+    display:flex!important;flex:0 0 34px!important;width:34px!important;height:34px!important;font-size:20px!important;
+  }
+  body:has(#home:not(.hidden))>header .logo{
+    order:2!important;flex:0 1 108px!important;width:auto!important;min-width:82px!important;font-size:18px!important;line-height:1!important;overflow:visible!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .logo .np-flag{font-size:1em!important;vertical-align:-1px!important}
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    order:3!important;display:flex!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;
+    flex:1 1 120px!important;min-width:92px!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;white-space:nowrap!important;overflow:hidden!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:16px!important;flex:0 0 auto!important}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:10px!important;display:flex!important;align-items:center!important;gap:2px!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{font-size:10px!important;white-space:nowrap!important}
+  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:10px!important;padding:2px 0!important;flex:0 0 auto!important}
+  body:has(#home:not(.hidden))>header .search{
+    order:4!important;display:flex!important;flex:0 0 34px!important;width:34px!important;height:34px!important;background:transparent!important;overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .search input{display:none!important}
+  body:has(#home:not(.hidden))>header .search button{
+    width:34px!important;height:34px!important;padding:0!important;border-radius:9px!important;font-size:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  }
+  body:has(#home:not(.hidden))>header .search button::after{content:"🔎";font-size:18px!important;line-height:1}
+  body:has(#home:not(.hidden))>header .actions{
+    order:5!important;position:static!important;display:flex!important;flex:0 0 auto!important;gap:3px!important;margin:0!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .icon-btn{width:30px!important;height:30px!important;min-width:30px!important;padding:0!important;font-size:15px!important;border-radius:8px!important}
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p{display:none!important}
+  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important}
+  body:has(#home:not(.hidden))>header .header-nav{display:none!important}
+  body:has(#home:not(.hidden)) .v52-native-home{padding-top:8px!important}
+  body:has(#home:not(.hidden)) .v52nh-location{display:none!important}
+}
+/* First three category cards: guaranteed visible emoji fallback on mobile and desktop. */
+.category-liquid-card:nth-child(1) .mobile-glass-icon svg,
+.category-liquid-card:nth-child(2) .category-liquid-icon.laptop-liquid svg,
+.category-liquid-card:nth-child(3) .category-liquid-icon.bike-liquid svg{display:none!important}
+.category-liquid-card:nth-child(1) .mobile-glass-icon::after{content:"📱";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
+.category-liquid-card:nth-child(2) .category-liquid-icon.laptop-liquid::after{content:"💻";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
+.category-liquid-card:nth-child(3) .category-liquid-icon.bike-liquid::after{content:"🚗";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
+</style>
+<style id="v52-final-header-correction-2">
+/* V52 FINAL targeted correction: preserve existing features; mobile header uses a clean top row + separate search row. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:34px minmax(88px,1fr) minmax(112px,1.35fr) auto!important;
+    grid-template-areas:"menu logo location actions" "search search search search"!important;
+    align-items:center!important;
+    gap:7px!important;
+    padding:9px 10px 8px!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
+    grid-area:menu!important;
+    display:flex!important;
+    width:34px!important;height:38px!important;min-width:34px!important;
+    font-size:22px!important;
+  }
+  body:has(#home:not(.hidden))>header .logo{
+    grid-area:logo!important;
+    order:initial!important;
+    flex:none!important;
+    width:auto!important;min-width:0!important;
+    font-size:20px!important;line-height:1!important;
+    white-space:nowrap!important;overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .logo .np-flag{
+    font-size:1em!important;vertical-align:-1px!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important;
+    order:initial!important;
+    display:flex!important;
+    position:static!important;
+    left:auto!important;right:auto!important;top:auto!important;
+    width:100%!important;min-width:0!important;
+    margin:0!important;padding:0!important;
+    gap:4px!important;align-items:center!important;justify-content:flex-start!important;
+    background:transparent!important;overflow:hidden!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{
+    display:inline-flex!important;visibility:visible!important;opacity:1!important;
+    flex:0 0 auto!important;font-size:19px!important;line-height:1!important;
+    font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{
+    display:flex!important;align-items:center!important;gap:2px!important;
+    min-width:0!important;font-size:11px!important;line-height:1.1!important;
+    overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{
+    font-size:11px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location button{
+    flex:0 0 auto!important;font-size:11px!important;font-weight:800!important;
+    padding:2px 0!important;color:#ef174f!important;
+  }
+  body:has(#home:not(.hidden))>header .search{
+    grid-area:search!important;order:initial!important;
+    display:flex!important;width:100%!important;min-width:0!important;height:40px!important;
+    flex:none!important;background:#f1f3f6!important;border-radius:10px!important;overflow:hidden!important;
+  }
+  body:has(#home:not(.hidden))>header .search input{
+    display:block!important;flex:1 1 auto!important;min-width:0!important;
+    padding:10px!important;font-size:14px!important;
+  }
+  body:has(#home:not(.hidden))>header .search button{
+    display:flex!important;width:auto!important;height:40px!important;min-width:48px!important;
+    padding:0 13px!important;border-radius:0!important;font-size:0!important;
+    align-items:center!important;justify-content:center!important;
+  }
+  body:has(#home:not(.hidden))>header .search button::after{content:"🔎"!important;font-size:19px!important;line-height:1!important;}
+  body:has(#home:not(.hidden))>header .actions{
+    grid-area:actions!important;order:initial!important;position:static!important;
+    display:flex!important;align-items:center!important;justify-content:flex-end!important;
+    gap:3px!important;margin:0!important;flex:0 0 auto!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .icon-btn{
+    width:40px!important;height:40px!important;min-width:40px!important;
+    padding:0!important;font-size:21px!important;line-height:1!important;border-radius:9px!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p,
+  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important;}
+  body:has(#home:not(.hidden))>header .actions .profile-btn{font-size:22px!important;}
+  body:has(#home:not(.hidden))>header .header-nav{display:none!important;}
+  body:has(#home:not(.hidden)) .v52-native-home{padding-top:0!important;}
+}
+</style>
+
+<script id="v52-final-header-correction-2-js">
+(function(){
+  'use strict';
+  /* Keep search in its own row so the location row never receives a stray search icon. */
+  function apply(){
+    var h=document.querySelector('header');
+    var home=document.getElementById('home');
+    if(!h||!home||home.classList.contains('hidden')||window.innerWidth>700)return;
+    var top=h.querySelector('.top'),loc=h.querySelector('.v52-header-location'),search=h.querySelector('.search');
+    if(!top||!loc||!search)return;
+    top.style.setProperty('display','grid','important');
+    top.style.setProperty('grid-template-columns','34px minmax(88px,1fr) minmax(112px,1.35fr) auto','important');
+    top.style.setProperty('grid-template-areas','"menu logo location actions" "search search search search"','important');
+    loc.style.setProperty('position','static','important');
+    loc.style.setProperty('left','auto','important');
+    loc.style.setProperty('right','auto','important');
+    loc.style.setProperty('top','auto','important');
+    loc.style.setProperty('grid-area','location','important');
+    search.style.setProperty('grid-area','search','important');
+  }
+  document.addEventListener('DOMContentLoaded',apply);
+  window.addEventListener('load',apply);
+  window.addEventListener('resize',apply);
+})();
+</script>
+<style id="v52-final-single-row-header-fix">
+/* V52 FINAL — mobile header: menu/logo/location/actions stay on ONE row; search stays on its own row. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:34px minmax(92px,1fr) minmax(105px,auto) auto!important;
+    grid-template-areas:"menu logo location actions" "search search search search"!important;
+    gap:7px!important;
+    align-items:center!important;
+    padding:9px 10px!important;
+    overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .logo{
+    grid-area:logo!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:none!important;
+    font-size:21px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
+    grid-area:menu!important;
+    width:34px!important;height:38px!important;min-width:34px!important;
+    padding:0!important;font-size:21px!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important;
+    display:flex!important;
+    position:static!important;
+    width:100%!important;min-width:0!important;
+    margin:0!important;padding:0!important;
+    gap:4px!important;
+    align-items:center!important;justify-content:flex-start!important;
+    background:transparent!important;
+    overflow:hidden!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{
+    flex:0 0 auto!important;font-size:17px!important;line-height:1!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{
+    display:flex!important;align-items:center!important;gap:2px!important;
+    min-width:0!important;overflow:hidden!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{
+    font-size:10px!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location button{
+    flex:0 0 auto!important;font-size:10px!important;font-weight:800!important;padding:2px 0!important;
+  }
+  body:has(#home:not(.hidden))>header .actions{
+    grid-area:actions!important;
+    display:flex!important;align-items:center!important;justify-content:flex-end!important;
+    gap:2px!important;margin:0!important;min-width:0!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .icon-btn{
+    width:34px!important;height:38px!important;min-width:34px!important;
+    padding:0!important;font-size:21px!important;line-height:1!important;border-radius:8px!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p,
+  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important;}
+  body:has(#home:not(.hidden))>header .actions .profile-btn{font-size:22px!important;}
+  body:has(#home:not(.hidden))>header .search{
+    grid-area:search!important;
+    display:flex!important;width:100%!important;min-width:0!important;height:42px!important;
+    margin:0!important;order:initial!important;
+  }
+  /* The native homepage had a second location/search pair. Keep the existing header location and native search only. */
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-location{display:none!important;}
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-search{
+    display:flex!important;width:100%!important;height:48px!important;margin-top:0!important;
+  }
+}
+</style>
+
+<style id="v52-authoritative-mobile-header-final">
+/* V52 FINAL — exact mobile header requested: 3 clean rows, no overlap, no duplicate native search/location. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    grid-template-areas:
+      "menu logo actions"
+      "location location location"
+      "search search search"!important;
+    gap:8px 9px!important;
+    padding:9px 12px 10px!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
+    grid-area:menu!important;display:flex!important;
+    width:40px!important;height:40px!important;min-width:40px!important;
+    font-size:24px!important;padding:0!important;
+  }
+  body:has(#home:not(.hidden))>header .logo{
+    grid-area:logo!important;width:auto!important;min-width:0!important;max-width:none!important;
+    font-size:23px!important;line-height:1.05!important;white-space:nowrap!important;overflow:visible!important;
+  }
+  body:has(#home:not(.hidden))>header .actions{
+    grid-area:actions!important;display:flex!important;align-items:center!important;justify-content:flex-end!important;
+    gap:5px!important;margin:0!important;min-width:0!important;position:static!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p,
+  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important;}
+  body:has(#home:not(.hidden))>header .actions .icon-btn{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:42px!important;height:42px!important;min-width:42px!important;
+    padding:0!important;font-size:25px!important;line-height:1!important;border-radius:10px!important;
+  }
+  body:has(#home:not(.hidden))>header .actions .profile-btn{font-size:27px!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important;display:flex!important;position:static!important;
+    width:100%!important;min-width:0!important;height:32px!important;margin:0!important;padding:0!important;
+    align-items:center!important;justify-content:flex-start!important;gap:7px!important;
+    background:#fff!important;overflow:visible!important;white-space:nowrap!important;z-index:2!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{
+    display:inline-flex!important;visibility:visible!important;opacity:1!important;flex:0 0 auto!important;
+    font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;
+    font-size:22px!important;line-height:1!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{
+    display:flex!important;align-items:center!important;gap:2px!important;flex:0 0 auto!important;
+    min-width:0!important;overflow:visible!important;white-space:nowrap!important;font-size:14px!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{font-size:14px!important;white-space:nowrap!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location button{
+    flex:0 0 auto!important;font-size:14px!important;font-weight:850!important;padding:2px 0!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location select{position:absolute!important;left:0!important;top:auto!important;width:32px!important;height:32px!important;}
+  body:has(#home:not(.hidden))>header .search{
+    grid-area:search!important;display:flex!important;width:100%!important;min-width:0!important;height:48px!important;
+    margin:0!important;order:initial!important;
+  }
+  body:has(#home:not(.hidden))>header .search input{
+    min-width:0!important;flex:1 1 auto!important;font-size:16px!important;padding:11px 12px!important;
+  }
+  body:has(#home:not(.hidden))>header .search button{
+    display:flex!important;width:52px!important;height:48px!important;min-width:52px!important;
+    padding:0!important;font-size:0!important;align-items:center!important;justify-content:center!important;
+  }
+  body:has(#home:not(.hidden))>header .search button::after{content:"🔎"!important;font-size:22px!important;line-height:1!important;}
+  /* Hide the older homepage location/search pair so there is exactly one location row and one search row. */
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-location,
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-search{display:none!important;}
+  body:has(#home:not(.hidden)) .v52-native-home{padding-top:0!important;}
+}
+</style>
+<script id="v52-authoritative-mobile-header-final-js">
+(function(){
+  'use strict';
+  function apply(){
+    if(window.innerWidth>700)return;
+    var h=document.querySelector('header'),home=document.getElementById('home');
+    if(!h||!home||home.classList.contains('hidden'))return;
+    var top=h.querySelector('.top'),loc=h.querySelector('.v52-header-location'),search=h.querySelector('.search');
+    if(!top||!loc||!search)return;
+    top.style.setProperty('display','grid','important');
+    top.style.setProperty('grid-template-columns','40px minmax(0,1fr) auto','important');
+    top.style.setProperty('grid-template-areas','"menu logo actions" "location location location" "search search search"','important');
+    loc.style.setProperty('position','static','important');
+    loc.style.setProperty('grid-area','location','important');
+    search.style.setProperty('grid-area','search','important');
+    var nativeLoc=h.parentElement?.querySelector('.v52-native-home>.v52nh-location');
+    var nativeSearch=h.parentElement?.querySelector('.v52-native-home>.v52nh-search');
+    if(nativeLoc)nativeLoc.style.setProperty('display','none','important');
+    if(nativeSearch)nativeSearch.style.setProperty('display','none','important');
+  }
+  document.addEventListener('DOMContentLoaded',apply);
+  window.addEventListener('load',apply);
+  window.addEventListener('resize',apply);
+})();
+</script>
+</head><body>
 <script id="kinbech-v52-unified-feedback-shim">
 (function(){
   const show=(msg)=>{
@@ -3116,18 +3561,18 @@ body:has(#home:not(.hidden)) .v52nh-search{order:1;width:100%;box-sizing:border-
 </style>
 
 <style id="v52-home-location-same-header-row">
-/* V52: keep language + location in the same header row as Kinbech.com; search remains below. */
+/* V52 FINAL: mobile header is two rows: logo row, then left-aligned location row; search stays below. */
 body:has(#home:not(.hidden)) .v52nh-location{display:none!important}
-body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;align-items:center;gap:7px;white-space:nowrap;position:static;flex:0 0 auto;margin-left:-4px}
+body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;align-items:center;gap:7px;white-space:nowrap;position:static;flex:0 0 auto;margin:0}
 body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px}
 body:has(#home:not(.hidden))>header .v52-header-location button{font-size:11px;padding:3px 0}
 body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:17px}
 @media(max-width:700px){
-  body:has(#home:not(.hidden))>header .top{position:relative}
-  body:has(#home:not(.hidden))>header .v52-header-location{position:absolute!important;left:calc(40px + 12px + 98px);top:9px;right:125px;margin:0;gap:5px;overflow:hidden;min-width:0;background:transparent;z-index:8}
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:10px;overflow:hidden;text-overflow:ellipsis}
-  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:10px;flex:0 0 auto}
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:15px;flex:0 0 auto}
+  body:has(#home:not(.hidden))>header .top{position:relative;grid-template-columns:40px minmax(0,1fr) auto;grid-template-areas:"menu logo actions" "location location location" "search search search";align-items:center;}
+  body:has(#home:not(.hidden))>header .v52-header-location{grid-area:location!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;margin:0!important;padding:2px 0 4px!important;gap:7px!important;overflow:visible!important;min-width:0;background:#fff!important;z-index:30!important;justify-content:flex-start!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px!important;overflow:visible!important;text-overflow:clip!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:11px!important;flex:0 0 auto;padding:2px 0!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:17px!important;flex:0 0 auto;}
   body:has(#home:not(.hidden)) .v52-native-home{padding-top:4px!important}
 }
 </style>
@@ -3901,7 +4346,6 @@ window.v52OpenLocationSelector=function(){
   if(typeof window.openLocationPicker==='function') return window.openLocationPicker();
   const modal=document.getElementById('locationModal');
   if(modal){modal.classList.remove('hidden');return;}
-  window.v52Alert?.('Location selector is ready for the existing location system.');
 };
 </script>
 
@@ -4060,6 +4504,353 @@ window.v52OpenLocationSelector=function(){
     });
     document.querySelectorAll('header .actions button[title="Messages"]').forEach(b=>b.setAttribute('onclick','handleMessagesIcon(event);return false;'));
   });
+})();
+</script>
+
+
+<!-- V52 targeted UI correction pass — preserves existing structure/features; no backend changes. -->
+<style id="v52-ui-isolation-correction">
+/* Keep the mobile menu visible when it is explicitly opened on Home. */
+@media(max-width:700px){
+  body.v52-current-home header .header-nav.mobile-open,
+  body:has(#home:not(.hidden))>header .header-nav.mobile-open{
+    display:flex!important;
+  }
+  /* Preserve the existing right-side location position. */
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    left:12px!important;
+    right:auto!important;
+  }
+}
+/* Auth screens are full-screen: no homepage/header/footer or floating modules leaking through. */
+body:has(#login:not(.hidden))>header,
+body:has(#signup:not(.hidden))>header,
+body:has(#forgot-password:not(.hidden))>header,
+body:has(#login:not(.hidden))>footer,
+body:has(#signup:not(.hidden))>footer,
+body:has(#forgot-password:not(.hidden))>footer,
+body:has(#login:not(.hidden))>#kbSellerCommsV52,
+body:has(#signup:not(.hidden))>#kbSellerCommsV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerCommsV52,
+body:has(#login:not(.hidden))>#kbSellerReviewsV52,
+body:has(#signup:not(.hidden))>#kbSellerReviewsV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerReviewsV52,
+body:has(#login:not(.hidden))>#kbSellerSupportV52,
+body:has(#signup:not(.hidden))>#kbSellerSupportV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerSupportV52,
+body:has(#login:not(.hidden))>#kbSellerOrdersV52,
+body:has(#signup:not(.hidden))>#kbSellerOrdersV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerOrdersV52,
+body:has(#login:not(.hidden))>#kbSellerFinanceV52,
+body:has(#signup:not(.hidden))>#kbSellerFinanceV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerFinanceV52,
+body:has(#login:not(.hidden))>.kbp-center-launch,
+body:has(#signup:not(.hidden))>.kbp-center-launch,
+body:has(#forgot-password:not(.hidden))>.kbp-center-launch{
+  display:none!important;
+}
+body:has(#login:not(.hidden))>#home,
+body:has(#signup:not(.hidden))>#home,
+body:has(#forgot-password:not(.hidden))>#home{
+  display:none!important;
+}
+/* Seller communication demo module is a screen, never page-bottom content. */
+body:has(#home:not(.hidden))>#kbSellerCommsV52,
+body:has(#login:not(.hidden))>#kbSellerCommsV52,
+body:has(#signup:not(.hidden))>#kbSellerCommsV52,
+body:has(#forgot-password:not(.hidden))>#kbSellerCommsV52,
+body:has(#notifications:not(.hidden))>#kbSellerCommsV52{
+  display:none!important;
+}
+/* It may appear only when the dedicated nested Messages screen is active. */
+body:has(#kbp-messages:not(.hidden))>#kbSellerCommsV52{
+  display:block!important;
+}
+/* Do not show fake unread numbers/count labels in the seller demo communication screen. */
+#kbSellerCommsV52 .kbsc-meta{ }
+#kbSellerCommsV52 .kbsc-conv .kbsc-meta:last-child{
+  /* Existing conversation/order metadata stays; unread count is removed by JS below. */
+}
+</style>
+<script id="v52-ui-isolation-correction-js">
+(function(){
+  'use strict';
+
+  /* The header location button must never fall back to the confusing developer message. */
+  const oldLocation=window.v52OpenLocationSelector;
+  window.v52OpenLocationSelector=function(){
+    try{
+      if(typeof window.openLocationPicker==='function') return window.openLocationPicker();
+      const input=document.getElementById('locationText');
+      if(input){
+        const profile=document.getElementById('profile');
+        if(profile && profile.classList.contains('hidden') && typeof window.show==='function') window.show('profile');
+        setTimeout(function(){
+          input.focus();
+          input.scrollIntoView({behavior:'smooth',block:'center'});
+        },80);
+        return;
+      }
+      const modal=document.getElementById('locationModal');
+      if(modal){modal.classList.remove('hidden');return;}
+      /* No toast/fallback message: the existing location UI remains unchanged. */
+      return;
+    }catch(e){}
+  };
+
+  /* Messages icon opens the existing Messages screen structure; authentication is still required for real actions later. */
+  window.handleMessagesIcon=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    try{
+      if(typeof window.kbpGo==='function'){ window.kbpGo('messages',true); return false; }
+    }catch(e){}
+    if(typeof window.show==='function') window.show('login');
+    return false;
+  };
+
+  /* Remove only fake unread-number text from the existing Seller Messages demo list. */
+  function cleanSellerUnread(){
+    document.querySelectorAll('#kbSellerCommsV52 .kbsc-conv').forEach(function(row){
+      row.querySelectorAll('.kbsc-meta').forEach(function(meta){
+        if(/\bunread\b/i.test(meta.textContent||'')) meta.remove();
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded',cleanSellerUnread);
+  window.addEventListener('load',cleanSellerUnread);
+  const host=document.getElementById('kbSellerCommsV52');
+  if(host){
+    new MutationObserver(cleanSellerUnread).observe(host,{subtree:true,childList:true});
+  }
+
+  /* Make sure the mobile menu is not immediately hidden by the Home-specific CSS guard. */
+  window.addEventListener('DOMContentLoaded',function(){
+    const btn=document.querySelector('.mobile-menu-toggle');
+    const nav=document.querySelector('header .header-nav');
+    if(btn && nav){
+      btn.addEventListener('click',function(){
+        const open=nav.classList.contains('mobile-open');
+        nav.style.setProperty('display',open?'flex':'','important');
+      },true);
+    }
+  });
+})();
+</script>
+
+<!-- v52-final-flow-correction -->
+<!-- v52-location-position-correction: second row starts from left, as requested -->
+<style id="v52-final-flow-correction-css">
+/* V52 final flow isolation: auth screens and dedicated center screens remain clean. */
+body:has(#login:not(.hidden)) > header,
+body:has(#signup:not(.hidden)) > header,
+body:has(#forgot-password:not(.hidden)) > header,
+body:has(#login:not(.hidden)) > footer,
+body:has(#signup:not(.hidden)) > footer,
+body:has(#forgot-password:not(.hidden)) > footer{display:none!important}
+body:has(#login:not(.hidden)) #home,
+body:has(#signup:not(.hidden)) #home,
+body:has(#forgot-password:not(.hidden)) #home{display:none!important}
+body:has(#login:not(.hidden)) > #kbSellerCommsV52,
+body:has(#signup:not(.hidden)) > #kbSellerCommsV52,
+body:has(#forgot-password:not(.hidden)) > #kbSellerCommsV52,
+body:has(#notifications:not(.hidden)) > #kbSellerCommsV52{display:none!important}
+/* Seller communications is shown only inside its dedicated Messages screen. */
+body:not(:has(#kbp-messages:not(.hidden))) > #kbSellerCommsV52{display:none!important}
+@media(max-width:700px){
+  body:has(#home:not(.hidden)) > header .v52-header-location{left:12px!important;right:auto!important}
+  body:has(#home:not(.hidden)) > header .header-nav.mobile-open{display:flex!important}
+}
+</style>
+<script id="v52-final-flow-correction-js">
+(function(){
+  'use strict';
+  function loggedIn(){
+    try{
+      if(typeof window.kinbechIsLoggedIn==='function') return !!window.kinbechIsLoggedIn();
+      return !!window.__kinbechAuthUser;
+    }catch(e){return false;}
+  }
+  /* Messages icon: unauthenticated users go to the clean Login page; authenticated users enter Messages. */
+  window.handleMessagesIcon=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    try{
+      if(loggedIn()){
+        if(typeof window.kbpGo==='function'){window.kbpGo('messages',true);return false;}
+        if(typeof window.show==='function'){window.show('profile');return false;}
+      }
+    }catch(e){}
+    if(typeof window.show==='function') window.show('login');
+    return false;
+  };
+  /* Mobile menu: preserve existing function name and force the nav open state to win over home hiding rules. */
+  var oldToggle=window.toggleKinbechMobileMenu;
+  window.toggleKinbechMobileMenu=function(e){
+    if(e){e.preventDefault();e.stopPropagation();}
+    var nav=document.querySelector('header .header-nav');
+    var btn=document.querySelector('.mobile-menu-toggle');
+    if(!nav||!btn){return false;}
+    var open=!nav.classList.contains('mobile-open');
+    nav.classList.toggle('mobile-open',open);
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(open) nav.style.setProperty('display','flex','important');
+    else nav.style.removeProperty('display');
+    return false;
+  };
+  /* Close mobile menu after selecting a navigation item; this prevents stale menu state on the next screen. */
+  document.addEventListener('click',function(e){
+    var a=e.target && e.target.closest ? e.target.closest('header .header-nav a') : null;
+    if(!a)return;
+    var nav=document.querySelector('header .header-nav');
+    var btn=document.querySelector('.mobile-menu-toggle');
+    if(nav){nav.classList.remove('mobile-open');nav.style.removeProperty('display');}
+    if(btn)btn.setAttribute('aria-expanded','false');
+  },true);
+  /* Remove only fake/demo unread labels from the seller communications UI; keep legitimate stats elsewhere. */
+  function cleanUnread(){
+    var root=document.getElementById('kbSellerCommsV52');
+    if(!root)return;
+    root.querySelectorAll('.kbsc-meta').forEach(function(el){
+      if(/\bunread\b/i.test(el.textContent||'')) el.remove();
+    });
+  }
+  cleanUnread();
+  if(window.MutationObserver){
+    var target=document.getElementById('kbSellerCommsV52');
+    if(target)new MutationObserver(cleanUnread).observe(target,{subtree:true,childList:true,characterData:true});
+  }
+})();
+</script>
+
+<!-- v52-category-emoji-fallback -->
+<style id="v52-category-emoji-fallback-css">
+/* V52: reliable mobile fallback for the first three homepage category icons. */
+.cats .category-liquid-card:nth-child(1) .mobile-glass-icon,
+.cats .category-liquid-card:nth-child(2) .category-liquid-icon,
+.cats .category-liquid-card:nth-child(3) .category-liquid-icon{display:grid!important;place-items:center!important;font-size:0!important;}
+.cats .category-liquid-card:nth-child(1) .mobile-glass-icon svg,
+.cats .category-liquid-card:nth-child(2) .category-liquid-icon svg,
+.cats .category-liquid-card:nth-child(3) .category-liquid-icon svg{display:none!important;}
+.cats .category-liquid-card:nth-child(1) .mobile-glass-icon::before,
+.cats .category-liquid-card:nth-child(2) .category-liquid-icon::before,
+.cats .category-liquid-card:nth-child(3) .category-liquid-icon::before{display:grid!important;place-items:center!important;width:58px!important;height:58px!important;border-radius:50%!important;background:#fafafa!important;border:1px solid #ededf1!important;box-shadow:0 2px 8px rgba(17,24,39,.04)!important;font-size:32px!important;line-height:1!important;margin:0 auto!important;}
+.cats .category-liquid-card:nth-child(1) .mobile-glass-icon::before{content:"📱";}
+.cats .category-liquid-card:nth-child(2) .category-liquid-icon::before{content:"💻";}
+.cats .category-liquid-card:nth-child(3) .category-liquid-icon::before{content:"🚗";}
+</style>
+
+<!-- V52 final audited correction: location + clean auth + category visibility -->
+<style id="v52-final-audited-correction-css">
+/* Header location: exact requested two-row mobile layout. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{position:relative!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    display:flex!important;
+    position:absolute!important;
+    left:12px!important;
+    right:auto!important;
+    top:48px!important;
+    width:auto!important;
+    margin:0!important;
+    padding:4px 0!important;
+    gap:7px!important;
+    align-items:center!important;
+    background:#fff!important;
+    z-index:50!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:17px!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:11px!important;padding:3px 0!important;}
+}
+
+/* Authentication is a clean page: only the selected auth form remains visible. */
+body:has(#login:not(.hidden))>header,
+body:has(#signup:not(.hidden))>header,
+body:has(#forgot-password:not(.hidden))>header,
+body:has(#login:not(.hidden))>footer,
+body:has(#signup:not(.hidden))>footer,
+body:has(#forgot-password:not(.hidden))>footer,
+body:has(#login:not(.hidden))>main.page>*:not(#login),
+body:has(#signup:not(.hidden))>main.page>*:not(#signup),
+body:has(#forgot-password:not(.hidden))>main.page>*:not(#forgot-password),
+body:has(#login:not(.hidden))>#v52AllCategoriesOverlay,
+body:has(#signup:not(.hidden))>#v52AllCategoriesOverlay,
+body:has(#forgot-password:not(.hidden))>#v52AllCategoriesOverlay,
+body:has(#login:not(.hidden))>#v52ScrollTop,
+body:has(#signup:not(.hidden))>#v52ScrollTop,
+body:has(#forgot-password:not(.hidden))>#v52ScrollTop,
+body:has(#login:not(.hidden))>#pullRefresh,
+body:has(#signup:not(.hidden))>#pullRefresh,
+body:has(#forgot-password:not(.hidden))>#pullRefresh,
+body:has(#login:not(.hidden))>#v52FloatingProductNav,
+body:has(#signup:not(.hidden))>#v52FloatingProductNav,
+body:has(#forgot-password:not(.hidden))>#v52FloatingProductNav,
+body:has(#login:not(.hidden))>#v52MediaViewer,
+body:has(#signup:not(.hidden))>#v52MediaViewer,
+body:has(#forgot-password:not(.hidden))>#v52MediaViewer,
+body:has(#login:not(.hidden))>#v52BirthdayOverlay,
+body:has(#signup:not(.hidden))>#v52BirthdayOverlay,
+body:has(#forgot-password:not(.hidden))>#v52BirthdayOverlay,
+body:has(#login:not(.hidden))>#kbpCenter,
+body:has(#signup:not(.hidden))>#kbpCenter,
+body:has(#forgot-password:not(.hidden))>#kbpCenter,
+body:has(#login:not(.hidden))>.kbp-center-launch,
+body:has(#signup:not(.hidden))>.kbp-center-launch,
+body:has(#forgot-password:not(.hidden))>.kbp-center-launch{
+  display:none!important;
+}
+body:has(#login:not(.hidden))>main.page,
+body:has(#signup:not(.hidden))>main.page,
+body:has(#forgot-password:not(.hidden))>main.page{
+  min-height:100vh!important;
+  padding:24px 16px!important;
+  background:#f6f7fb!important;
+}
+body:has(#login:not(.hidden))>main.page>#login,
+body:has(#signup:not(.hidden))>main.page>#signup,
+body:has(#forgot-password:not(.hidden))>main.page>#forgot-password{
+  display:block!important;
+}
+
+/* Do not let the seller communications module appear as page-bottom content. */
+body:not(:has(#kbp-messages:not(.hidden)))>#kbSellerCommsV52{display:none!important;}
+
+/* Reliable first-three category icon fallback on small screens. */
+@media(max-width:700px){
+  .cats .category-liquid-card:nth-child(1) .mobile-glass-icon::before,
+  .cats .category-liquid-card:nth-child(2) .category-liquid-icon::before,
+  .cats .category-liquid-card:nth-child(3) .category-liquid-icon::before{
+    display:grid!important;place-items:center!important;
+    width:58px!important;height:58px!important;border-radius:50%!important;
+    font-size:32px!important;line-height:1!important;
+    margin:0 auto!important;
+  }
+}
+</style>
+<script id="v52-final-audited-correction-js">
+(function(){
+  'use strict';
+  /* V52: location belongs to the second grid row on mobile; never float over search. */
+  function fixLocation(){
+    var el=document.querySelector('header .v52-header-location');
+    var home=document.getElementById('home');
+    if(!el || !home || home.classList.contains('hidden')) return;
+    if(window.innerWidth<=700){
+      el.style.setProperty('position','static','important');
+      el.style.setProperty('left','auto','important');
+      el.style.setProperty('right','auto','important');
+      el.style.setProperty('top','auto','important');
+      el.style.setProperty('grid-area','location','important');
+      el.style.setProperty('width','100%','important');
+      el.style.setProperty('justify-content','flex-start','important');
+    }else{
+      el.style.removeProperty('position');
+      el.style.removeProperty('grid-area');
+      el.style.removeProperty('width');
+    }
+  }
+  document.addEventListener('DOMContentLoaded',fixLocation);
+  window.addEventListener('resize',fixLocation);
+  window.addEventListener('load',fixLocation);
 })();
 </script>
 
