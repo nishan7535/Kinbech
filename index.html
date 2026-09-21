@@ -912,58 +912,7 @@ body.v52-current-home #pullRefresh{display:block}
 }
 </style>
 
-<style id="v52-final-mobile-header-one-row">
-/* V52 FINAL: mobile homepage header — menu, logo, location and search stay on ONE top row. */
-@media(max-width:700px){
-  body:has(#home:not(.hidden))>header .top{
-    display:flex!important;
-    flex-wrap:nowrap!important;
-    align-items:center!important;
-    gap:6px!important;
-    padding:9px 8px!important;
-    overflow:hidden!important;
-  }
-  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
-    display:flex!important;flex:0 0 34px!important;width:34px!important;height:34px!important;font-size:20px!important;
-  }
-  body:has(#home:not(.hidden))>header .logo{
-    order:2!important;flex:0 1 108px!important;width:auto!important;min-width:82px!important;font-size:18px!important;line-height:1!important;overflow:visible!important;white-space:nowrap!important;
-  }
-  body:has(#home:not(.hidden))>header .logo .np-flag{font-size:1em!important;vertical-align:-1px!important}
-  body:has(#home:not(.hidden))>header .v52-header-location{
-    order:3!important;display:flex!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;
-    flex:1 1 120px!important;min-width:92px!important;margin:0!important;padding:0!important;gap:4px!important;align-items:center!important;white-space:nowrap!important;overflow:hidden!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:16px!important;flex:0 0 auto!important}
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:10px!important;display:flex!important;align-items:center!important;gap:2px!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{font-size:10px!important;white-space:nowrap!important}
-  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:10px!important;padding:2px 0!important;flex:0 0 auto!important}
-  body:has(#home:not(.hidden))>header .search{
-    order:4!important;display:flex!important;flex:0 0 34px!important;width:34px!important;height:34px!important;background:transparent!important;overflow:visible!important;
-  }
-  body:has(#home:not(.hidden))>header .search input{display:none!important}
-  body:has(#home:not(.hidden))>header .search button{
-    width:34px!important;height:34px!important;padding:0!important;border-radius:9px!important;font-size:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
-  }
-  body:has(#home:not(.hidden))>header .search button::after{content:"🔎";font-size:18px!important;line-height:1}
-  body:has(#home:not(.hidden))>header .actions{
-    order:5!important;position:static!important;display:flex!important;flex:0 0 auto!important;gap:3px!important;margin:0!important;
-  }
-  body:has(#home:not(.hidden))>header .actions .icon-btn{width:30px!important;height:30px!important;min-width:30px!important;padding:0!important;font-size:15px!important;border-radius:8px!important}
-  body:has(#home:not(.hidden))>header .actions .mobile-p2p{display:none!important}
-  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important}
-  body:has(#home:not(.hidden))>header .header-nav{display:none!important}
-  body:has(#home:not(.hidden)) .v52-native-home{padding-top:8px!important}
-  body:has(#home:not(.hidden)) .v52nh-location{display:none!important}
-}
-/* First three category cards: guaranteed visible emoji fallback on mobile and desktop. */
-.category-liquid-card:nth-child(1) .mobile-glass-icon svg,
-.category-liquid-card:nth-child(2) .category-liquid-icon.laptop-liquid svg,
-.category-liquid-card:nth-child(3) .category-liquid-icon.bike-liquid svg{display:none!important}
-.category-liquid-card:nth-child(1) .mobile-glass-icon::after{content:"📱";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
-.category-liquid-card:nth-child(2) .category-liquid-icon.laptop-liquid::after{content:"💻";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
-.category-liquid-card:nth-child(3) .category-liquid-icon.bike-liquid::after{content:"🚗";display:flex;align-items:center;justify-content:center;height:100%;font-size:42px;line-height:1}
-</style>
+
 <style id="v52-final-header-correction-2">
 /* V52 FINAL targeted correction: preserve existing features; mobile header uses a clean top row + separate search row. */
 @media(max-width:700px){
@@ -1254,6 +1203,48 @@ body.v52-current-home #pullRefresh{display:block}
   window.addEventListener('resize',apply);
 })();
 </script>
+
+<style id="v52-rules-authoritative-fix">
+/* V52 ONLY — authoritative final correction. Existing UI/functions preserved. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    grid-template-areas:"menu logo actions" "location location location"!important;
+    align-items:center!important;
+    gap:6px!important;
+  }
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{grid-area:menu!important;}
+  body:has(#home:not(.hidden))>header .logo{grid-area:logo!important;width:auto!important;}
+  body:has(#home:not(.hidden))>header .actions{grid-area:actions!important;position:static!important;margin-left:auto!important;display:flex!important;gap:6px!important;}
+  body:has(#home:not(.hidden))>header .actions .icon-btn{width:42px!important;height:42px!important;font-size:25px!important;padding:4px!important;}
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p,
+  body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important;
+    position:static!important;
+    left:auto!important;right:auto!important;top:auto!important;
+    display:flex!important;width:100%!important;
+    justify-content:flex-start!important;
+    align-items:center!important;
+    padding:4px 0!important;
+    background:#fff!important;
+    gap:6px!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:18px!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:12px!important;flex:0 1 auto!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:12px!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location select{
+    position:absolute!important;left:0!important;top:0!important;width:28px!important;height:30px!important;
+    opacity:0!important;border:0!important;cursor:pointer!important;
+  }
+  /* Keep the single authoritative language/location row in the header. */
+  body:has(#home:not(.hidden)) #home>.v52-native-home .v52nh-location{display:none!important;}
+}
+@media(min-width:701px){
+  body:has(#home:not(.hidden))>header .v52-header-location{display:flex!important;align-items:center!important;}
+}
+</style>
 </head><body>
 <script id="kinbech-v52-unified-feedback-shim">
 (function(){
@@ -1267,7 +1258,7 @@ body.v52-current-home #pullRefresh{display:block}
 })();
 </script>
 <!-- KINBECH V52 MASTER — unified UI architecture; existing features preserved -->
-<header><div class="top"><button aria-expanded="false" aria-label="Menu" class="mobile-menu-toggle" onclick="toggleKinbechMobileMenu(event)" type="button">☰</button><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."/><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button aria-label="P2P SMS" class="icon-btn mobile-p2p" onclick="show('sms')" title="P2P SMS" type="button">📩</button><button aria-label="Messages" class="icon-btn" onclick="kbpGo('messages')" title="Messages" type="button">💬</button><button aria-label="Notifications" class="icon-btn" onclick="show('notifications')" title="Notifications" type="button">🔔</button><button aria-label="Cart" class="icon-btn mobile-cart" onclick="showCart()" title="Cart" type="button">🛒</button><div class="profile-menu"><button aria-expanded="false" aria-label="Profile" class="icon-btn profile-btn" onclick="handleProfileIcon(event)" title="Profile" type="button"><span class="profile-fallback" id="headerProfileFallback">👤</span><img alt="Profile photo" class="hidden" id="headerProfilePhoto"/></button><div class="profile-dropdown hidden" id="profileMenu"></div></div></div><div class="lang v52-header-location"><span class="v52-header-globe">🌐</span><span class="v52-header-place">📍 <b class="v52-location-label">Select location</b></span><button type="button" onclick="v52OpenLocationSelector();return false;">Change</button><select id="language" aria-label="Language" onchange="window.changeLanguage()"><option value="ne">🇳🇵 नेपाली</option><option value="en">🇬🇧 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="bn">🇧🇩 বাংলা</option><option value="ur">🇵🇰 اردو</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="es">🇪🇸 Español</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="ar">🇸🇦 العربية</option><option value="tr">🇹🇷 Türkçe</option><option value="fa">🇮🇷 فارسی</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="ms">🇲🇾 Bahasa Melayu</option><option value="th">🇹🇭 ไทย</option><option value="vi">🇻🇳 Tiếng Việt</option><option value="nl">🇳🇱 Nederlands</option><option value="pl">🇵🇱 Polski</option><option value="uk">🇺🇦 Українська</option><option value="cs">🇨🇿 Čeština</option><option value="sk">🇸🇰 Slovenčina</option><option value="ro">🇷🇴 Română</option><option value="hu">🇭🇺 Magyar</option><option value="el">🇬🇷 Ελληνικά</option><option value="he">🇮🇱 עברית</option><option value="sv">🇸🇪 Svenska</option><option value="no">🇳🇴 Norsk</option><option value="da">🇩🇰 Dansk</option><option value="fi">🇫🇮 Suomi</option><option value="is">🇮🇸 Íslenska</option><option value="et">🇪🇪 Eesti</option><option value="lv">🇱🇻 Latviešu</option><option value="lt">🇱🇹 Lietuvių</option><option value="sl">🇸🇮 Slovenščina</option><option value="bg">🇧🇬 Български</option><option value="sr">🇷🇸 Српски</option><option value="hr">🇭🇷 Hrvatski</option><option value="bs">🇧🇦 Bosanski</option><option value="mk">🇲🇰 Македонски</option><option value="sq">🇦🇱 Shqip</option><option value="sw">🇰🇪 Kiswahili</option><option value="am">🇪🇹 አማርኛ</option><option value="ta">🇮🇳 தமிழ்</option><option value="te">🇮🇳 తెలుగు</option><option value="mr">🇮🇳 मराठी</option><option value="gu">🇮🇳 ગુજરાતી</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="kn">🇮🇳 ಕನ್ನಡ</option><option value="ml">🇮🇳 മലയാളം</option><option value="fil">🇵🇭 Filipino</option><option value="tl">🇵🇭 Tagalog</option><option value="my">🇲🇲 မြန်မာ</option><option value="km">🇰🇭 ខ្មែរ</option><option value="lo">🇱🇦 ລາວ</option><option value="si">🇱🇰 සිංහල</option><option value="uz">🇺🇿 O‘zbek</option><option value="kk">🇰🇿 Қазақша</option><option value="az">🇦🇿 Azərbaycan</option><option value="ka">🇬🇪 ქართული</option></select></div></div><nav class="header-nav"><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="handleKycNav(event);return false;"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="showAdminV52();return false;"><span class="nav-ico">⚙️</span>Admin</a><a href="#" onclick="show('safety')"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
+<header><div class="top"><button aria-expanded="false" aria-label="Menu" class="mobile-menu-toggle" onclick="toggleKinbechMobileMenu(event)" type="button">☰</button><div class="logo">किनबेच<span>.com</span> <span class="np-flag">🇳🇵</span></div><div class="search"><input id="q" placeholder="के खोज्दै हुनुहुन्छ? Mobile, Laptop, Bike..."/><button onclick="doSearch()">खोज्नुहोस्</button></div><div class="actions"><button aria-label="P2P SMS" class="icon-btn mobile-p2p" onclick="show('sms')" title="P2P SMS" type="button">📩</button><button aria-label="Messages" class="icon-btn" onclick="kbpGo('messages')" title="Messages" type="button">💬</button><button aria-label="Notifications" class="icon-btn" onclick="show('notifications')" title="Notifications" type="button">🔔</button><button aria-label="Cart" class="icon-btn mobile-cart" onclick="showCart()" title="Cart" type="button">🛒</button><div class="profile-menu"><button aria-expanded="false" aria-label="Profile" class="icon-btn profile-btn" onclick="handleProfileIcon(event)" title="Profile" type="button"><span class="profile-fallback" id="headerProfileFallback">👤</span><img alt="Profile photo" class="hidden" id="headerProfilePhoto"/></button><div class="profile-dropdown hidden" id="profileMenu" aria-hidden="true"></div></div></div><div class="lang v52-header-location"><span class="v52-header-globe">🌐</span><span class="v52-header-place">📍 <b class="v52-location-label">Select location</b></span><button type="button" onclick="v52OpenLocationSelector();return false;">Change</button><select id="language" aria-label="Language" onchange="window.changeLanguage()"><option value="ne">🇳🇵 नेपाली</option><option value="en">🇬🇧 English</option><option value="hi">🇮🇳 हिन्दी</option><option value="bn">🇧🇩 বাংলা</option><option value="ur">🇵🇰 اردو</option><option value="zh">🇨🇳 中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="es">🇪🇸 Español</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="ar">🇸🇦 العربية</option><option value="tr">🇹🇷 Türkçe</option><option value="fa">🇮🇷 فارسی</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="ms">🇲🇾 Bahasa Melayu</option><option value="th">🇹🇭 ไทย</option><option value="vi">🇻🇳 Tiếng Việt</option><option value="nl">🇳🇱 Nederlands</option><option value="pl">🇵🇱 Polski</option><option value="uk">🇺🇦 Українська</option><option value="cs">🇨🇿 Čeština</option><option value="sk">🇸🇰 Slovenčina</option><option value="ro">🇷🇴 Română</option><option value="hu">🇭🇺 Magyar</option><option value="el">🇬🇷 Ελληνικά</option><option value="he">🇮🇱 עברית</option><option value="sv">🇸🇪 Svenska</option><option value="no">🇳🇴 Norsk</option><option value="da">🇩🇰 Dansk</option><option value="fi">🇫🇮 Suomi</option><option value="is">🇮🇸 Íslenska</option><option value="et">🇪🇪 Eesti</option><option value="lv">🇱🇻 Latviešu</option><option value="lt">🇱🇹 Lietuvių</option><option value="sl">🇸🇮 Slovenščina</option><option value="bg">🇧🇬 Български</option><option value="sr">🇷🇸 Српски</option><option value="hr">🇭🇷 Hrvatski</option><option value="bs">🇧🇦 Bosanski</option><option value="mk">🇲🇰 Македонски</option><option value="sq">🇦🇱 Shqip</option><option value="sw">🇰🇪 Kiswahili</option><option value="am">🇪🇹 አማርኛ</option><option value="ta">🇮🇳 தமிழ்</option><option value="te">🇮🇳 తెలుగు</option><option value="mr">🇮🇳 मराठी</option><option value="gu">🇮🇳 ગુજરાતી</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="kn">🇮🇳 ಕನ್ನಡ</option><option value="ml">🇮🇳 മലയാളം</option><option value="fil">🇵🇭 Filipino</option><option value="tl">🇵🇭 Tagalog</option><option value="my">🇲🇲 မြန်မာ</option><option value="km">🇰🇭 ខ្មែរ</option><option value="lo">🇱🇦 ລາວ</option><option value="si">🇱🇰 සිංහල</option><option value="uz">🇺🇿 O‘zbek</option><option value="kk">🇰🇿 Қазақша</option><option value="az">🇦🇿 Azərbaycan</option><option value="ka">🇬🇪 ქართული</option></select></div></div><nav class="header-nav"><a href="#" onclick="show('home',{restore:true})"><span class="nav-ico">🏠</span>Home</a><a href="#cats"><span class="nav-ico">🗂️</span>Categories</a><a href="#products"><span class="nav-ico">✨</span>New</a><a href="#products"><span class="nav-ico">♻️</span>Second-hand</a><a href="#" onclick="handleKycNav(event);return false;"><span class="nav-ico">🛡️</span>KYC Verify</a><a href="#" onclick="showAdminV52();return false;"><span class="nav-ico">⚙️</span>Admin</a><a href="#" onclick="show('safety')"><span class="nav-ico">🛡️</span>Safety</a></nav></header>
 <main class="page">
 <section id="home">
 <!-- V52 NATIVE HOMEPAGE — visual structure only; existing V52 nodes/functions remain below -->
@@ -3737,53 +3728,7 @@ body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-
 
 
 <style id="v52-home-header-location-final">
-/* V52: Homepage mobile header — exact two-row position requested:
-   Row 1: ☰ किनबेच.com
-   Row 2: 🌐 📍 [Current Location] Change
-   Search remains below as its own row. */
-@media(max-width:700px){
-  body:has(#home:not(.hidden))>header .top{
-    position:relative!important;
-    min-height:92px!important;
-    align-items:flex-start!important;
-  }
-  body:has(#home:not(.hidden))>header .logo{
-    position:relative!important;
-    z-index:10!important;
-  }
-  body:has(#home:not(.hidden))>header .mobile-menu-toggle{
-    position:relative!important;
-    z-index:11!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location{
-    display:flex!important;
-    position:absolute!important;
-    left:12px!important;
-    right:auto!important;
-    top:48px!important;
-    width:auto!important;
-    margin:0!important;
-    padding:4px 0!important;
-    gap:7px!important;
-    align-items:center!important;
-    background:#fff!important;
-    z-index:20!important;
-    overflow:visible!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{
-    font-size:11px!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location button{
-    font-size:11px!important;
-    padding:3px 0!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{
-    font-size:17px!important;
-  }
-  body:has(#home:not(.hidden)) .v52-native-home{
-    padding-top:0!important;
-  }
-}
+/* V52 legacy location rules intentionally neutralized. The authoritative mobile header is defined at the end of this file. */
 </style>
 
 
@@ -4740,28 +4685,6 @@ body:not(:has(#kbp-messages:not(.hidden))) > #kbSellerCommsV52{display:none!impo
 
 <!-- V52 final audited correction: location + clean auth + category visibility -->
 <style id="v52-final-audited-correction-css">
-/* Header location: exact requested two-row mobile layout. */
-@media(max-width:700px){
-  body:has(#home:not(.hidden))>header .top{position:relative!important;}
-  body:has(#home:not(.hidden))>header .v52-header-location{
-    display:flex!important;
-    position:absolute!important;
-    left:12px!important;
-    right:auto!important;
-    top:48px!important;
-    width:auto!important;
-    margin:0!important;
-    padding:4px 0!important;
-    gap:7px!important;
-    align-items:center!important;
-    background:#fff!important;
-    z-index:50!important;
-  }
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{font-size:17px!important;}
-  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{font-size:11px!important;}
-  body:has(#home:not(.hidden))>header .v52-header-location button{font-size:11px!important;padding:3px 0!important;}
-}
-
 /* Authentication is a clean page: only the selected auth form remains visible. */
 body:has(#login:not(.hidden))>header,
 body:has(#signup:not(.hidden))>header,
@@ -4825,6 +4748,26 @@ body:not(:has(#kbp-messages:not(.hidden)))>#kbSellerCommsV52{display:none!import
     margin:0 auto!important;
   }
 }
+
+/* V52 FINAL authoritative mobile header: row 1 menu/logo/actions, row 2 location, row 3 search. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{display:grid!important;grid-template-columns:40px minmax(0,1fr) auto!important;grid-template-areas:"menu logo actions" "location location location" "search search search"!important;gap:8px 9px!important;align-items:center!important;padding:10px 12px!important;overflow:visible!important;}
+  body:has(#home:not(.hidden))>header .mobile-menu-toggle{grid-area:menu!important;display:flex!important;width:40px!important;height:40px!important;min-width:40px!important;font-size:22px!important;}
+  body:has(#home:not(.hidden))>header .logo{grid-area:logo!important;width:auto!important;min-width:0!important;font-size:23px!important;line-height:1!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location{grid-area:location!important;display:flex!important;position:static!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;min-width:0!important;margin:0!important;padding:3px 0!important;gap:7px!important;align-items:center!important;justify-content:flex-start!important;background:#fff!important;z-index:2!important;overflow:visible!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-globe{display:inline-flex!important;visibility:visible!important;opacity:1!important;font-size:19px!important;line-height:1!important;flex:0 0 auto!important;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place{display:flex!important;align-items:center!important;gap:2px!important;min-width:0!important;font-size:14px!important;line-height:1.1!important;white-space:nowrap!important;overflow:visible!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location .v52-header-place b{font-size:14px!important;white-space:nowrap!important;}
+  body:has(#home:not(.hidden))>header .v52-header-location button{flex:0 0 auto!important;font-size:14px!important;font-weight:850!important;padding:2px 0!important;color:#ef174f!important;}
+  body:has(#home:not(.hidden))>header .search{grid-area:search!important;display:flex!important;width:100%!important;min-width:0!important;flex:0 0 auto!important;overflow:hidden!important;}
+  body:has(#home:not(.hidden))>header .search input{display:block!important;min-width:0!important;}
+  body:has(#home:not(.hidden))>header .search button{display:flex!important;align-items:center!important;justify-content:center!important;}
+  body:has(#home:not(.hidden))>header .actions{grid-area:actions!important;position:static!important;display:flex!important;gap:6px!important;margin:0!important;align-items:center!important;justify-content:flex-end!important;}
+  body:has(#home:not(.hidden))>header .actions .icon-btn{width:38px!important;height:38px!important;min-width:38px!important;padding:0!important;font-size:21px!important;border-radius:9px!important;}
+  body:has(#home:not(.hidden))>header .actions .mobile-p2p,body:has(#home:not(.hidden))>header .actions .mobile-cart{display:none!important;}
+  body:has(#home:not(.hidden))>header .header-nav{display:none!important;}
+  body:has(#home:not(.hidden)) .v52-native-home{padding-top:0!important;}
+}
 </style>
 <script id="v52-final-audited-correction-js">
 (function(){
@@ -4835,6 +4778,13 @@ body:not(:has(#kbp-messages:not(.hidden)))>#kbSellerCommsV52{display:none!import
     var home=document.getElementById('home');
     if(!el || !home || home.classList.contains('hidden')) return;
     if(window.innerWidth<=700){
+      var top=document.querySelector('header .top');
+      if(top){
+        top.style.setProperty('display','grid','important');
+        top.style.setProperty('grid-template-columns','40px minmax(0,1fr) auto','important');
+        top.style.setProperty('grid-template-areas','\"menu logo actions\" \"location location location\" \"search search search\"','important');
+        top.style.setProperty('align-items','center','important');
+      }
       el.style.setProperty('position','static','important');
       el.style.setProperty('left','auto','important');
       el.style.setProperty('right','auto','important');
@@ -4854,5 +4804,171 @@ body:not(:has(#kbp-messages:not(.hidden)))>#kbSellerCommsV52{display:none!import
 })();
 </script>
 
+
+<script id="v52-rules-profile-photo-routing-fix">
+(function(){
+  function isLogged(){
+    try{
+      if(typeof window.kinbechIsLoggedIn==='function') return !!window.kinbechIsLoggedIn();
+      return !!(window.__kinbechAuthUser && typeof window.__kinbechAuthUser==='object');
+    }catch(e){return false;}
+  }
+  window.handleProfileIcon=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    try{
+      var menu=document.getElementById('profileMenu');
+      if(menu) menu.classList.add('hidden');
+      var btn=document.querySelector('.profile-btn');
+      if(btn) btn.setAttribute('aria-expanded','false');
+      if(typeof window.show==='function'){
+        window.show(isLogged()?'profile':'login');
+        return false;
+      }
+    }catch(e){}
+    return false;
+  };
+  window.kbpEditPhoto=function(input){
+    var file=input&&input.files&&input.files[0];
+    if(!file) return;
+    if(!/^image\//i.test(file.type)){
+      if(typeof window.v52Alert==='function') window.v52Alert('कृपया image photo छान्नुहोस्।');
+      input.value=''; return;
+    }
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var src=ev.target.result;
+      var av=document.getElementById('avatarPreview');
+      var ea=document.getElementById('kbpEditAvatar');
+      var hp=document.getElementById('headerProfilePhoto');
+      var hf=document.getElementById('headerProfileFallback');
+      var img='<img src="'+String(src).replace(/"/g,'&quot;')+'" alt="Profile photo" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block">';
+      if(av) av.innerHTML=img;
+      if(ea) ea.innerHTML=img;
+      if(hp){hp.src=src;hp.classList.remove('hidden');}
+      if(hf) hf.classList.add('hidden');
+    };
+    reader.readAsDataURL(file);
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',restoreAvatar); else restoreAvatar();
+})();
+</script>
+<style id="v52-final-rules-cleanup-css">
+/* V52 ONLY: final conflict cleanup. Existing UI/features remain unchanged. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    grid-template-areas:"menu logo actions" "location location location" "search search search"!important;
+    align-items:center!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    position:static!important;left:auto!important;right:auto!important;top:auto!important;
+    grid-area:location!important;width:100%!important;margin:0!important;
+    justify-content:flex-start!important;z-index:2!important;
+  }
+  body:has(#home:not(.hidden))>header .search{grid-area:search!important;width:100%!important;margin:0!important;}
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-location,
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-search{display:none!important;}
+}
+</style>
+<script id="v52-final-rules-cleanup-js">
+(function(){
+  'use strict';
+  /* One final Profile route: unauthenticated -> Login, authenticated -> Main Profile. */
+  function logged(){
+    try{
+      if(typeof window.kinbechIsLoggedIn==='function') return !!window.kinbechIsLoggedIn();
+      return !!(window.__kinbechAuthUser && typeof window.__kinbechAuthUser==='object');
+    }catch(e){return false;}
+  }
+  window.handleProfileIcon=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    try{
+      var menu=document.getElementById('profileMenu');
+      if(menu){menu.classList.add('hidden');menu.setAttribute('aria-hidden','true');}
+      var btn=document.querySelector('.profile-btn');
+      if(btn)btn.setAttribute('aria-expanded','false');
+      if(typeof window.show==='function') window.show(logged()?'profile':'login');
+    }catch(e){}
+    return false;
+  };
+  function enforceHeader(){
+    if(window.innerWidth>700)return;
+    var h=document.querySelector('header'),home=document.getElementById('home');
+    if(!h||!home||home.classList.contains('hidden'))return;
+    var top=h.querySelector('.top'),loc=h.querySelector('.v52-header-location'),search=h.querySelector('.search');
+    if(top){top.style.setProperty('display','grid','important');top.style.setProperty('grid-template-columns','40px minmax(0,1fr) auto','important');top.style.setProperty('grid-template-areas','"menu logo actions" "location location location" "search search search"','important');}
+    if(loc){loc.style.setProperty('position','static','important');loc.style.setProperty('left','auto','important');loc.style.setProperty('right','auto','important');loc.style.setProperty('top','auto','important');loc.style.setProperty('grid-area','location','important');loc.style.setProperty('width','100%','important');}
+    if(search){search.style.setProperty('grid-area','search','important');search.style.setProperty('width','100%','important');}
+    h.querySelectorAll('.v52-native-home .v52nh-location,.v52-native-home .v52nh-search').forEach(function(x){x.style.setProperty('display','none','important');});
+  }
+  document.addEventListener('DOMContentLoaded',enforceHeader);
+  window.addEventListener('load',enforceHeader);
+  window.addEventListener('resize',enforceHeader);
+})();
+</script>
+<style id="v52-authoritative-final-cleanup">
+/* V52 ONLY: final additive cleanup. No existing V52 feature is removed. */
+@media(max-width:700px){
+  body:has(#home:not(.hidden))>header .top{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr) auto!important;
+    grid-template-areas:"menu logo actions" "location location location" "search search search"!important;
+  }
+  body:has(#home:not(.hidden))>header .v52-header-location{
+    grid-area:location!important; position:static!important; left:auto!important; right:auto!important; top:auto!important;
+    width:100%!important; margin:0!important; transform:none!important;
+    display:flex!important; align-items:center!important; justify-content:flex-start!important;
+    white-space:nowrap!important; z-index:30!important;
+  }
+  body:has(#home:not(.hidden))>header .search{grid-area:search!important;width:100%!important;margin:0!important;}
+  body:has(#home:not(.hidden))>header .actions{grid-area:actions!important;display:flex!important;align-items:center!important;gap:4px!important;}
+  body:has(#home:not(.hidden))>header .actions .icon-btn{font-size:22px!important;line-height:1!important;min-width:34px!important;min-height:34px!important;padding:4px!important;}
+  body:has(#home:not(.hidden))>header .profile-btn{position:relative!important;overflow:hidden!important;border-radius:50%!important;}
+  body:has(#home:not(.hidden))>header #headerProfilePhoto{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:50%!important;}
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-location,
+  body:has(#home:not(.hidden)) .v52-native-home>.v52nh-search{display:none!important;}
+}
+.v52-header-location .v52-header-globe{display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;}
+.v52-header-location .v52-header-place{display:inline-flex!important;align-items:center!important;white-space:nowrap!important;}
+.v52-header-location button{flex:0 0 auto!important;}
+</style>
+<script id="v52-authoritative-final-routing">
+(function(){
+  'use strict';
+  function isLogged(){
+    try{
+      if(typeof window.kinbechIsLoggedIn==='function') return !!window.kinbechIsLoggedIn();
+      return !!(window.__kinbechAuthUser && typeof window.__kinbechAuthUser==='object');
+    }catch(e){return false;}
+  }
+  function closeMenu(){
+    var menu=document.getElementById('profileMenu');
+    if(menu){menu.classList.add('hidden');menu.setAttribute('aria-hidden','true');}
+    var btn=document.querySelector('.profile-btn');
+    if(btn)btn.setAttribute('aria-expanded','false');
+  }
+  window.handleProfileIcon=function(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    closeMenu();
+    try{
+      if(typeof window.show==='function'){ window.show(isLogged()?'profile':'login'); }
+      else if(typeof window.kbpGo==='function'){ window.kbpGo(isLogged()?'profile':'login',true); }
+    }catch(e){}
+    return false;
+  };
+  window.v52SetHeaderProfilePhoto=function(src){
+    if(!src)return;
+    var hp=document.getElementById('headerProfilePhoto');
+    var hf=document.getElementById('headerProfileFallback');
+    if(hp){hp.src=src;hp.classList.remove('hidden');}
+    if(hf)hf.classList.add('hidden');
+  };
+  function restoreHeaderPhoto(){
+    try{var src=localStorage.getItem('kinbechProfilePhoto');if(src)window.v52SetHeaderProfilePhoto(src);}catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',restoreHeaderPhoto);else restoreHeaderPhoto();
+})();
+</script>
 </body>
 </html>
